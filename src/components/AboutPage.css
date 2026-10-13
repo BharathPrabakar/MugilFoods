@@ -421,46 +421,92 @@
 }
 
 @media (max-width: 768px) {
-  .about-story-section {
-    padding: 2rem 1.25rem;
-    border-radius: 20px;
-  }
   .about-hero-banner {
-    padding: 6.5rem 1.25rem 2.5rem;
+    padding: 5rem 1rem 1.75rem;
   }
-  .about-bottom-cta {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 2rem 1.5rem;
-    border-radius: 20px;
+  .about-page-title {
+    font-size: 1.75rem;
+    margin-bottom: 0.35rem;
+  }
+  .about-page-desc {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  .about-story-section {
+    padding: 1.5rem 1rem;
+    border-radius: 18px;
+  }
+  .story-media-box {
+    aspect-ratio: 16 / 10;
+    border-radius: 18px;
+  }
+  .story-headline {
+    font-size: 1.45rem;
+    margin-bottom: 0.65rem;
+  }
+  .story-paragraph {
+    font-size: 0.85rem;
+    line-height: 1.55;
+    margin-bottom: 0.85rem;
+  }
+  .founder-quote-box {
+    padding: 1rem 1.15rem;
+    border-radius: 14px;
+    margin-top: 0.5rem;
+  }
+  .quote-text {
+    font-size: 0.825rem;
+    line-height: 1.45;
   }
   .about-metrics-strip {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem 0.75rem;
-    padding: 1.75rem 1.25rem;
-    border-radius: 20px;
+    gap: 1.25rem 0.75rem;
+    padding: 1.35rem 1rem;
+    border-radius: 18px;
+    margin-bottom: 2rem;
   }
   .milestone-number {
-    font-size: 1.85rem;
+    font-size: 1.6rem;
   }
   .milestone-label {
-    font-size: 0.75rem;
+    font-size: 0.725rem;
   }
   .milestone-col::after {
     display: none !important;
   }
   .values-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.85rem;
+    gap: 0.75rem;
   }
   .value-card {
-    padding: 1.25rem 1rem;
-    border-radius: 18px;
+    padding: 1rem 0.85rem;
+    border-radius: 16px;
   }
   .value-title {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
   }
   .value-desc {
-    font-size: 0.825rem;
+    font-size: 0.775rem;
+    line-height: 1.4;
+  }
+  .about-bottom-cta {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.75rem 1.25rem;
+    border-radius: 18px;
+    gap: 1.25rem;
+  }
+  .cta-box-title {
+    font-size: 1.45rem;
+  }
+  .cta-box-sub {
+    font-size: 0.85rem;
+  }
+  .btn-about-action {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
   }
 }

@@ -423,10 +423,54 @@
 
 @media (max-width: 768px) {
   .detail-top-nav-bar {
-    padding: 7rem 0 1.5rem;
+    padding: 5rem 0 1.25rem;
   }
   .detail-top-nav-bar .detail-container {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .back-to-catalog-btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.95rem;
+  }
+  .breadcrumb-trail {
+    font-size: 0.8rem;
+  }
+  .detail-main-section {
+    padding: 1.75rem 0 3.5rem;
+  }
+  .main-image-display {
+    border-radius: 20px;
+  }
+  .detail-title {
+    font-size: 1.6rem;
+    margin-bottom: 0.4rem;
+  }
+  .detail-category-origin {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  .block-heading {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  .detail-description-text {
+    font-size: 0.885rem;
+    line-height: 1.55;
+  }
+  .features-checklist li {
+    font-size: 0.825rem;
+    gap: 0.5rem;
+  }
+  .size-pill {
+    font-size: 0.775rem;
+    padding: 0.35rem 0.85rem;
+  }
+  .btn-detail-enquire {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.925rem;
   }
 }
