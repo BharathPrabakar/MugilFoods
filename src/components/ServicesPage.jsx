@@ -114,10 +114,10 @@ export default function ServicesPage() {
       {/* Top Banner with rich gradient for transparent navbar blend */}
       <section className="services-hero-banner">
         <div className="services-hero-inner">
-          <span className="services-top-badge">Our Capabilities</span>
-          <h1 className="services-page-title">Comprehensive Supply & Processing Solutions</h1>
+          <span className="services-top-badge">Our Services</span>
+          <h1 className="services-page-title">Supply & Processing Solutions</h1>
           <p className="services-page-desc">
-            At Mugil Foods, our state-of-the-art curing, processing, and packaging infrastructure bridges the gap between fertile agricultural harvests and global culinary demands across three specialized supply segments.
+            Direct processing, retail distribution, and private label packaging from Dharmapuri.
           </p>
         </div>
       </section>

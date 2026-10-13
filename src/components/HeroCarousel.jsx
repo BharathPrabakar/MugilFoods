@@ -10,38 +10,38 @@ const slidesData = [
   {
     id: 1,
     image: slide1,
-    tag: "Finest Natural Processing",
-    title: "Pure Seedless Tamarind Slabs",
-    subtitle: "Cleaned, hygienically cured, and compacted into premium export-grade blocks with rich tang and long shelf life.",
+    tag: "Natural Processing",
+    title: "Seedless Tamarind Slabs",
+    subtitle: "Cleaned, cured, and vacuum-compacted export blocks with authentic tang.",
     primaryCta: { label: "Explore Products", href: "#products" },
     secondaryCta: { label: "Make an Enquiry", href: "#enquiry" }
   },
   {
     id: 2,
     image: slide2,
-    tag: "Traditional Artisanship",
-    title: "Master Ring-Packed Tamarind",
-    subtitle: "Artfully spiraled traditional tamarind, preserving freshness, aroma, and authentic culinary zest.",
-    primaryCta: { label: "Our Standards", href: "#about" },
+    tag: "Traditional Curing",
+    title: "Ring-Packed Tamarind",
+    subtitle: "Artfully spiraled traditional tamarind preserving natural aroma and zest.",
+    primaryCta: { label: "Our Story", href: "#about" },
     secondaryCta: { label: "Bulk Orders", href: "#enquiry" }
   },
   {
     id: 3,
     image: slide3,
-    tag: "Farm to Factory",
-    title: "Direct Harvest Tamarind Pods",
-    subtitle: "Sourced directly from fertile groves, carefully sun-dried and hand-sorted for unadulterated purity.",
+    tag: "Dharmapuri Harvest",
+    title: "Direct Harvest Tamarind",
+    subtitle: "Sun-dried pods sourced directly from fertile groves in Dharmapuri.",
     primaryCta: { label: "Our Services", href: "#services" },
-    secondaryCta: { label: "Contact Us", href: "#contact" }
+    secondaryCta: { label: "Make an Enquiry", href: "#enquiry" }
   },
   {
     id: 4,
     image: slide4,
-    tag: "Commercial & Culinary Grade",
-    title: "Rich Tamarind Paste & Pulp",
-    subtitle: "Thick, silky, ready-to-blend pulp crafted for food industries, restaurants, and everyday kitchens.",
+    tag: "Culinary & Commercial",
+    title: "Rich Tamarind Pulp",
+    subtitle: "Ready-to-blend pulp crafted for food processors, restaurants, and kitchens.",
     primaryCta: { label: "Enquire Wholesale", href: "#enquiry" },
-    secondaryCta: { label: "View Specifications", href: "#products" }
+    secondaryCta: { label: "View Products", href: "#products" }
   }
 ];
 

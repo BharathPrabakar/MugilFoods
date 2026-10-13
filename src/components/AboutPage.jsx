@@ -9,10 +9,10 @@ export default function AboutPage({ onNavigateToServices, onNavigateToContact })
       {/* Top Banner with rich gradient for transparent navbar blend */}
       <section className="about-hero-banner">
         <div className="about-hero-inner">
-          <span className="about-top-badge">Est. 2006 • Dharmapuri</span>
-          <h1 className="about-page-title">Rooted in Tradition, Built with Trust</h1>
+          <span className="about-top-badge">Since 2006</span>
+          <h1 className="about-page-title">Rooted in Tradition</h1>
           <p className="about-page-desc">
-            Founded by <strong>Kermugil Venthen</strong> in Dharmapuri, Tamil Nadu, Mugil Foods has spent nearly two decades bridging authentic farming heritage with global supply standards.
+            Agricultural processing excellence from Dharmapuri, Tamil Nadu.
           </p>
         </div>
       </section>

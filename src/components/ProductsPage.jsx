@@ -32,8 +32,8 @@ export default function ProductsPage({
       {/* Top Banner with Rich Backdrop so transparent header blends nicely */}
       <section className="products-top-banner">
         <div className="products-banner-inner">
-          <h1 className="products-clean-title">Explore the world of MugilFoods</h1>
-          <p className="products-clean-subtitle">Select a category to view our authentic range</p>
+          <h1 className="products-clean-title">Our Products</h1>
+          <p className="products-clean-subtitle">Direct from Dharmapuri groves to your kitchen</p>
         </div>
       </section>
 
