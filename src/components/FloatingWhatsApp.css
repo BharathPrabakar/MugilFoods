@@ -103,22 +103,40 @@
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .floating-whatsapp-container {
-    bottom: 20px;
-    right: 20px;
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+    right: 18px;
   }
   
   .floating-whatsapp-btn {
-    width: 54px;
-    height: 54px;
+    width: 52px;
+    height: 52px;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
   }
   
   .floating-whatsapp-svg {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
   }
   
   /* Hide tooltip on touch devices */
   .floating-whatsapp-tooltip {
     display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .floating-whatsapp-container {
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    right: 14px;
+  }
+  
+  .floating-whatsapp-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .floating-whatsapp-svg {
+    width: 24px;
+    height: 24px;
   }
 }

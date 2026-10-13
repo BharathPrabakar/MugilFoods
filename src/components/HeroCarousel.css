@@ -105,17 +105,21 @@
 /* Mobile & Tablet Adjustments */
 @media (max-width: 960px) {
   .hero-carousel-container {
-    height: 240px; /* Compact clean banner on mobile */
+    height: 250px;
     min-height: 200px;
-    max-height: 260px;
+    max-height: 280px;
   }
 
   .carousel-slide-inner {
-    padding: 1rem 1.25rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .carousel-img-full {
+    max-width: 100%;
   }
 
   .carousel-pagination {
-    bottom: 0.75rem;
+    bottom: 0.65rem;
     padding: 0.25rem 0.55rem;
   }
 
@@ -126,5 +130,36 @@
 
   .pagination-dot.active {
     width: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-carousel-container {
+    height: 210px;
+    min-height: 180px;
+  }
+
+  .carousel-slide-inner {
+    padding: 0.65rem 0.75rem;
+  }
+
+  .pagination-dot {
+    width: 8px;
+    height: 7px;
+  }
+
+  .pagination-dot.active {
+    width: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-carousel-container {
+    height: 185px;
+    min-height: 160px;
+  }
+
+  .carousel-slide-inner {
+    padding: 0.5rem;
   }
 }

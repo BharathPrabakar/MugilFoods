@@ -468,7 +468,7 @@
 
 @media (max-width: 768px) {
   .services-hero-banner {
-    padding: 4.75rem 1rem 1.5rem;
+    padding: 2rem 1rem 1.5rem;
   }
   .services-top-badge {
     font-size: var(--badge-mobile);
@@ -615,5 +615,53 @@
     justify-content: center;
     padding: 0.75rem 1.25rem;
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-hero-banner {
+    padding: 1.75rem 0.85rem 1.25rem;
+  }
+  .services-content-wrapper {
+    padding: 1.25rem 0.75rem 0;
+  }
+  .service-detail-card {
+    padding: 1.15rem 0.8rem;
+    border-radius: 16px;
+  }
+  .service-media-frame {
+    height: 160px;
+    border-radius: 14px;
+  }
+  .service-detail-title {
+    font-size: 1.25rem;
+  }
+  .capabilities-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.65rem;
+  }
+  .capability-card {
+    padding: 0.85rem 0.75rem;
+  }
+  .services-assurance-strip {
+    padding: 1.15rem 0.85rem;
+    border-radius: 16px;
+  }
+  .services-bottom-cta {
+    padding: 1.35rem 1rem;
+    border-radius: 16px;
+  }
+  .cta-box-title {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .service-tab-btn {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.65rem;
+  }
+  .service-detail-title {
+    font-size: 1.15rem;
   }
 }

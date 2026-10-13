@@ -422,14 +422,14 @@
 
 @media (max-width: 768px) {
   .about-hero-banner {
-    padding: 5rem 1rem 1.75rem;
+    padding: 2rem 1rem 1.5rem;
   }
   .about-page-title {
-    font-size: 1.75rem;
+    font-size: var(--title-mobile);
     margin-bottom: 0.35rem;
   }
   .about-page-desc {
-    font-size: 0.875rem;
+    font-size: var(--subtitle-mobile);
     line-height: 1.5;
   }
   .about-story-section {
@@ -508,5 +508,45 @@
     justify-content: center;
     padding: 0.75rem 1.25rem;
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-hero-banner {
+    padding: 1.75rem 0.85rem 1.25rem;
+  }
+  .about-content-wrapper {
+    padding: 1.25rem 0.75rem 0;
+  }
+  .about-story-section {
+    padding: 1.25rem 0.85rem;
+    border-radius: 16px;
+  }
+  .story-headline {
+    font-size: 1.25rem;
+  }
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+  .value-card {
+    padding: 0.85rem 0.75rem;
+  }
+  .about-metrics-strip {
+    padding: 1.15rem 0.85rem;
+    border-radius: 16px;
+  }
+  .about-bottom-cta {
+    padding: 1.35rem 1rem;
+    border-radius: 16px;
+  }
+  .cta-box-title {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .about-metrics-strip {
+    grid-template-columns: 1fr;
   }
 }
