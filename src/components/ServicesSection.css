@@ -1,0 +1,214 @@
+.services-section {
+  width: 100%;
+  background: linear-gradient(180deg, #fcfbf7 0%, #f6efe7 100%);
+  padding: 5rem 1.5rem 6rem;
+  border-top: 1px solid #eee7de;
+  border-bottom: 1px solid #eee7de;
+}
+
+.services-container {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* Header */
+.services-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 3.5rem;
+}
+
+.services-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-primary);
+  background: #f1e2d4;
+  padding: 0.35rem 1rem;
+  border-radius: 9999px;
+  margin-bottom: 0.85rem;
+}
+
+.services-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.1rem, 3.8vw, 2.75rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.services-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+
+/* Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* Individual Card */
+.service-card {
+  background: #ffffff;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid #ebd9c8;
+  box-shadow: 0 6px 20px rgba(92, 44, 22, 0.06);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 36px rgba(92, 44, 22, 0.13);
+  border-color: #dfba98;
+}
+
+/* Image */
+.service-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  overflow: hidden;
+  background-color: #eee4d9;
+}
+
+.service-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+.service-card:hover .service-img {
+  transform: scale(1.06);
+}
+
+.service-img-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(20, 10, 5, 0.6) 100%);
+}
+
+.service-badge-pill {
+  position: absolute;
+  bottom: 1rem;
+  left: 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #ffffff;
+  background: rgba(45, 21, 10, 0.82);
+  backdrop-filter: blur(8px);
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Body */
+.service-body {
+  padding: 1.75rem 1.65rem 1.65rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.service-name {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #381c0d;
+  margin-bottom: 0.75rem;
+}
+
+.service-description {
+  font-size: 0.95rem;
+  color: #63554b;
+  line-height: 1.6;
+  margin-bottom: 1.35rem;
+  flex: 1;
+}
+
+/* Highlight Tags */
+.service-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: 1.65rem;
+  padding: 0.85rem 1rem;
+  background: #fbf8f4;
+  border-radius: 12px;
+  border: 1px dashed #e8dacb;
+}
+
+.highlight-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: #4a382c;
+}
+
+.highlight-tag svg {
+  color: #2e6930; /* Tamarind leaf green */
+}
+
+/* Footer / CTA link */
+.service-footer {
+  border-top: 1px solid #f2e9df;
+  padding-top: 1.15rem;
+}
+
+.service-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.925rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  transition: all 0.25s ease;
+}
+
+.service-cta-link:hover {
+  color: #9e4312;
+}
+
+.service-cta-link .cta-arrow {
+  transition: transform 0.2s ease;
+}
+
+.service-card:hover .service-cta-link .cta-arrow {
+  transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .services-section {
+    padding: 3.5rem 1rem 4rem;
+  }
+  .service-body {
+    padding: 1.35rem 1.25rem 1.25rem;
+  }
+}

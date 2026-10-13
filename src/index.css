@@ -1,0 +1,42 @@
+:root {
+  --color-primary: #5c2c16;      /* Rich Tamarind Brown matching logo */
+  --color-primary-dark: #3f1c0d;
+  --color-primary-light: #7b3c20;
+  --color-accent: #2e6930;       /* Natural Tamarind Leaf Green */
+  --color-accent-light: #eaf5eb;
+  --color-warm-bg: #fcfbf7;
+  --color-white: #ffffff;
+  --color-text-main: #2b231d;
+  --color-text-muted: #6e645e;
+  --color-border: #ede8e1;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --shadow-sm: 0 2px 8px rgba(92, 44, 22, 0.06);
+  --shadow-md: 0 8px 24px rgba(92, 44, 22, 0.08);
+  --shadow-lg: 0 16px 40px rgba(92, 44, 22, 0.12);
+  --transition-smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-warm-bg);
+  color: var(--color-text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}

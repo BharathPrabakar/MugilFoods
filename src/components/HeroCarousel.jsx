@@ -1,0 +1,169 @@
+import React, { useState, useEffect, useRef } from 'react';
+import './HeroCarousel.css';
+
+import slide1 from '../assets/slide1.jpg'; // Stacked Slab Tamarind
+import slide2 from '../assets/slide2.jpg'; // Circular Bloom Packaged Tamarind
+import slide3 from '../assets/slide3.jpg'; // Raw Tamarind Pods & Harvest
+import slide4 from '../assets/slide4.jpg'; // Pure Tamarind Paste / Concentrate
+
+const slidesData = [
+  {
+    id: 1,
+    image: slide1,
+    tag: "Finest Natural Processing",
+    title: "Pure Seedless Tamarind Slabs",
+    subtitle: "Cleaned, hygienically cured, and compacted into premium export-grade blocks with rich tang and long shelf life.",
+    primaryCta: { label: "Explore Products", href: "#products" },
+    secondaryCta: { label: "Make an Enquiry", href: "#enquiry" }
+  },
+  {
+    id: 2,
+    image: slide2,
+    tag: "Traditional Artisanship",
+    title: "Master Ring-Packed Tamarind",
+    subtitle: "Artfully spiraled traditional tamarind, preserving freshness, aroma, and authentic culinary zest.",
+    primaryCta: { label: "Our Standards", href: "#about" },
+    secondaryCta: { label: "Bulk Orders", href: "#enquiry" }
+  },
+  {
+    id: 3,
+    image: slide3,
+    tag: "Farm to Factory",
+    title: "Direct Harvest Tamarind Pods",
+    subtitle: "Sourced directly from fertile groves, carefully sun-dried and hand-sorted for unadulterated purity.",
+    primaryCta: { label: "Our Services", href: "#services" },
+    secondaryCta: { label: "Contact Us", href: "#contact" }
+  },
+  {
+    id: 4,
+    image: slide4,
+    tag: "Commercial & Culinary Grade",
+    title: "Rich Tamarind Paste & Pulp",
+    subtitle: "Thick, silky, ready-to-blend pulp crafted for food industries, restaurants, and everyday kitchens.",
+    primaryCta: { label: "Enquire Wholesale", href: "#enquiry" },
+    secondaryCta: { label: "View Specifications", href: "#products" }
+  }
+];
+
+export default function HeroCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const timerRef = useRef(null);
+
+  const totalSlides = slidesData.length;
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % totalSlides);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+  };
+
+  useEffect(() => {
+    if (isPlaying) {
+      timerRef.current = setInterval(() => {
+        nextSlide();
+      }, 5000); // 5 seconds per slide
+    }
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [isPlaying, currentIndex]);
+
+  return (
+    <section 
+      id="home" 
+      className="hero-carousel-container"
+      onMouseEnter={() => setIsPlaying(false)}
+      onMouseLeave={() => setIsPlaying(true)}
+      aria-label="Mugil Foods Featured Showcase"
+    >
+      {slidesData.map((slide, index) => {
+        const isActive = index === currentIndex;
+        return (
+          <div
+            key={slide.id}
+            className={`carousel-slide ${isActive ? 'active' : ''}`}
+            aria-hidden={!isActive}
+          >
+            {/* Background Image with Zoom Ken Burns Effect */}
+            <div 
+              className="carousel-bg-image"
+              style={{ backgroundImage: `url(${slide.image})` }}
+            />
+            
+            {/* Cinematic Gradient Vignette Overlay for readability */}
+            <div className="carousel-overlay" />
+
+            {/* Slide Content */}
+            <div className="carousel-content-wrapper">
+              <div className="carousel-content">
+                <div className="slide-tag">
+                  <span className="slide-tag-dot" />
+                  {slide.tag}
+                </div>
+                <h1 className="slide-title">{slide.title}</h1>
+                <p className="slide-subtitle">{slide.subtitle}</p>
+                <div className="slide-cta-row">
+                  <a href={slide.primaryCta.href} className="btn-carousel-primary">
+                    {slide.primaryCta.label}
+                  </a>
+                  <a href={slide.secondaryCta.href} className="btn-carousel-secondary">
+                    {slide.secondaryCta.label}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+
+      {/* Prev / Next Navigation Arrows */}
+      <button 
+        className="carousel-arrow arrow-prev" 
+        onClick={prevSlide}
+        aria-label="Previous Slide"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <button 
+        className="carousel-arrow arrow-next" 
+        onClick={nextSlide}
+        aria-label="Next Slide"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+
+      {/* Modern Indicators & Progress Bar */}
+      <div className="carousel-pagination">
+        {slidesData.map((_, idx) => (
+          <button
+            key={idx}
+            className={`pagination-dot ${idx === currentIndex ? 'active' : ''}`}
+            onClick={() => goToSlide(idx)}
+            aria-label={`Go to slide ${idx + 1}`}
+          >
+            <span className="dot-fill" />
+          </button>
+        ))}
+      </div>
+
+      {/* Slide Counter badge */}
+      <div className="carousel-counter">
+        <span className="current-num">0{currentIndex + 1}</span>
+        <span className="divider">/</span>
+        <span className="total-num">0{totalSlides}</span>
+      </div>
+    </section>
+  );
+}
