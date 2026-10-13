@@ -7,6 +7,14 @@
   overflow: hidden;
   background-color: #ffffff;
   border-bottom: 1px solid var(--color-border);
+  touch-action: pan-y; /* Allows natural vertical page scroll while capturing horizontal swipe */
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+}
+
+.hero-carousel-container:active {
+  cursor: grabbing;
 }
 
 /* Slide Base & Transitions */
