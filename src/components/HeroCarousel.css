@@ -35,15 +35,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
-  padding: 1.5rem 2rem;
+  padding: 1.25rem 2rem;
 }
 
-/* Master slide image: Full length, crisp logo presentation */
+.carousel-slide.slide-bg-red {
+  background-color: #bb2629;
+}
+
+.carousel-slide.slide-bg-red .carousel-slide-inner {
+  background-color: #bb2629;
+}
+
+.carousel-slide.slide-bg-white {
+  background-color: #ffffff;
+}
+
+.carousel-slide.slide-bg-white .carousel-slide-inner {
+  background-color: #ffffff;
+}
+
+/* Master slide image: Full length, crisp logo presentation with increased visibility size */
 .carousel-img-full {
   width: 100%;
   height: 100%;
-  max-width: 1100px;
+  max-width: 1380px;
   object-fit: contain;
   object-position: center;
   display: block;

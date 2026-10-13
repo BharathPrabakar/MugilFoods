@@ -1,19 +1,28 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './HeroCarousel.css';
 
-import slideHoney from '../assets/slide_honey.png';
-import slideTamarind from '../assets/slide_tamarind.jpg';
+import slideMugilFoods from '../assets/slide_mugil_foods.png';
+import slideMugilTamarind from '../assets/slide_mugil_tamarind.png';
+import slideMugilHoney from '../assets/slide_mugil_honey.png';
 
 const slidesData = [
   {
     id: 1,
-    image: slideHoney,
-    alt: "Mugil Honey"
+    image: slideMugilFoods,
+    alt: "Mugil Foods - Pure, Fresh, Traditional",
+    bgClass: "slide-bg-red"
   },
   {
     id: 2,
-    image: slideTamarind,
-    alt: "Mugil Tamarind - Built With Trust"
+    image: slideMugilTamarind,
+    alt: "Mugil Tamarind - Built With Trust",
+    bgClass: "slide-bg-white"
+  },
+  {
+    id: 3,
+    image: slideMugilHoney,
+    alt: "Mugil Honey - Pure & Natural",
+    bgClass: "slide-bg-white"
   }
 ];
 
@@ -60,7 +69,7 @@ export default function HeroCarousel({ onNavigate }) {
         return (
           <div
             key={slide.id}
-            className={`carousel-slide ${isActive ? 'active' : ''}`}
+            className={`carousel-slide ${slide.bgClass} ${isActive ? 'active' : ''}`}
             aria-hidden={!isActive}
           >
             {/* Full length master slide image */}
