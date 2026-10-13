@@ -2,7 +2,16 @@ import React from 'react';
 import './Footer.css';
 import logoImg from '../assets/logo.png';
 
-export default function Footer() {
+export default function Footer({ onNavigate }) {
+  const handleLinkClick = (pageId, href, e) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate(pageId, href);
+    } else {
+      window.location.hash = pageId;
+    }
+  };
+
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -22,11 +31,11 @@ export default function Footer() {
           <div className="footer-nav-pane">
             <span className="footer-pane-heading">Quick Links</span>
             <div className="footer-nav-links">
-              <a href="#home">Home</a>
-              <a href="#products">Products</a>
-              <a href="#services">Services</a>
-              <a href="#about">About Us</a>
-              <a href="#enquiry">Make an Enquiry</a>
+              <a href="#home" onClick={(e) => handleLinkClick('home', '#home', e)}>Home</a>
+              <a href="#products" onClick={(e) => handleLinkClick('products', '#products', e)}>Products</a>
+              <a href="#services" onClick={(e) => handleLinkClick('services', '#services', e)}>Services</a>
+              <a href="#about" onClick={(e) => handleLinkClick('about', '#about', e)}>About Us</a>
+              <a href="#enquiry" onClick={(e) => handleLinkClick('enquiry', '#enquiry', e)}>Make an Enquiry</a>
             </div>
           </div>
 

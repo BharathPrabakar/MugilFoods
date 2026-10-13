@@ -59,7 +59,7 @@ function App() {
         setCurrentPage('about');
         setActiveProduct(null);
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === 'enquiry') {
+      } else if (hash === 'enquiry' || hash.includes('enquiry')) {
         setCurrentPage('enquiry');
         setActiveProduct(null);
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -158,7 +158,7 @@ function App() {
       ) : (
         <main>
           {/* Master Full-Screen Auto-Carousel */}
-          <HeroCarousel />
+          <HeroCarousel onNavigate={handleNavigation} />
 
           {/* Product Categories Cards (Tamarind, Cold-pressed Oil, Pure Ghee, Natural Honey/comb) */}
           <CategoryCards onSelectCategory={handleCategorySelectFromHome} />

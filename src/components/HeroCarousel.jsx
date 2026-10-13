@@ -45,12 +45,22 @@ const slidesData = [
   }
 ];
 
-export default function HeroCarousel() {
+export default function HeroCarousel({ onNavigate }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const timerRef = useRef(null);
 
   const totalSlides = slidesData.length;
+
+  const handleCtaClick = (href, e) => {
+    e.preventDefault();
+    const pageId = href.replace('#', '');
+    if (onNavigate) {
+      onNavigate(pageId, href);
+    } else {
+      window.location.hash = pageId;
+    }
+  };
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % totalSlides);
@@ -110,10 +120,18 @@ export default function HeroCarousel() {
                 <h1 className="slide-title">{slide.title}</h1>
                 <p className="slide-subtitle">{slide.subtitle}</p>
                 <div className="slide-cta-row">
-                  <a href={slide.primaryCta.href} className="btn-carousel-primary">
+                  <a 
+                    href={slide.primaryCta.href} 
+                    className="btn-carousel-primary"
+                    onClick={(e) => handleCtaClick(slide.primaryCta.href, e)}
+                  >
                     {slide.primaryCta.label}
                   </a>
-                  <a href={slide.secondaryCta.href} className="btn-carousel-secondary">
+                  <a 
+                    href={slide.secondaryCta.href} 
+                    className="btn-carousel-secondary"
+                    onClick={(e) => handleCtaClick(slide.secondaryCta.href, e)}
+                  >
                     {slide.secondaryCta.label}
                   </a>
                 </div>

@@ -64,7 +64,7 @@ export default function Header({ currentPage = 'home', onNavigate, isScrolled = 
             <a
               href="#enquiry"
               className="enquiry-btn"
-              onClick={(e) => handleNavClick('home', '#enquiry', e)}
+              onClick={(e) => handleNavClick('enquiry', '#enquiry', e)}
             >
               <span>Make an Enquiry</span>
               <svg 
@@ -118,7 +118,7 @@ export default function Header({ currentPage = 'home', onNavigate, isScrolled = 
             <a
               href="#enquiry"
               className="mobile-enquiry-btn"
-              onClick={(e) => handleNavClick('home', '#enquiry', e)}
+              onClick={(e) => handleNavClick('enquiry', '#enquiry', e)}
             >
               Make an Enquiry
             </a>
