@@ -18,6 +18,14 @@
   --color-border: #f1f1f3;          /* Ultra-subtle light border */
   --color-border-subtle: #f4f4f5;
 
+  /* Mobile-first standardized typography scale (matching Why Choose Us) */
+  --title-mobile: 1.65rem;
+  --subtitle-mobile: 0.875rem;
+  --card-title-mobile: 0.95rem;
+  --body-mobile: 0.775rem;
+  --badge-mobile: 0.65rem;
+  --btn-mobile-font: 0.85rem;
+
   /* Typography: Poppins & Outfit like Everest Spices */
   --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-heading: 'Poppins', 'Outfit', sans-serif;

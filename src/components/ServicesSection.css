@@ -205,6 +205,27 @@
 
 /* Responsive */
 @media (max-width: 960px) {
+  .services-header {
+    margin-bottom: 2rem;
+  }
+
+  .services-badge {
+    font-size: var(--badge-mobile);
+    padding: 0.2rem 0.65rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .services-title {
+    font-size: var(--title-mobile);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  .services-subtitle {
+    font-size: var(--subtitle-mobile);
+    line-height: 1.5;
+  }
+
   .services-grid {
     display: flex;
     overflow-x: auto;
@@ -216,9 +237,9 @@
   }
 
   .service-card {
-    flex: 0 0 265px;
+    flex: 0 0 260px;
     scroll-snap-align: start;
-    border-radius: 20px;
+    border-radius: 18px;
   }
 
   .service-img-wrap {
@@ -230,23 +251,25 @@
   }
 
   .service-name {
-    font-size: 1.05rem;
-    margin-bottom: 0.4rem;
+    font-size: var(--card-title-mobile);
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    line-height: 1.25;
   }
 
   .service-description {
-    font-size: 0.8rem;
+    font-size: var(--body-mobile);
     line-height: 1.45;
     margin-bottom: 0.85rem;
   }
 
   .service-cta-link {
-    font-size: 0.85rem;
+    font-size: var(--btn-mobile-font);
   }
 }
 
 @media (max-width: 640px) {
   .services-section {
-    padding: 2.5rem 0.85rem 3rem;
+    padding: 2.75rem 0.85rem 3rem;
   }
 }

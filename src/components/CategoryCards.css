@@ -157,6 +157,21 @@
 }
 
 @media (max-width: 768px) {
+  .categories-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .categories-badge {
+    font-size: var(--badge-mobile);
+    padding: 0.2rem 0.65rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .categories-title {
+    font-size: var(--title-mobile);
+    line-height: 1.2;
+  }
+
   .categories-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -165,7 +180,7 @@
   }
 
   .category-card {
-    border-radius: 20px;
+    border-radius: 18px;
     width: 100%;
   }
 
@@ -178,7 +193,8 @@
   }
 
   .category-name {
-    font-size: 0.875rem;
+    font-size: var(--card-title-mobile);
+    font-weight: 700;
   }
 
   .category-arrow-btn {
@@ -193,6 +209,6 @@
   }
 
   .categories-section {
-    padding: 2rem 1rem 0.75rem;
+    padding: 2.25rem 1rem 0.75rem;
   }
 }

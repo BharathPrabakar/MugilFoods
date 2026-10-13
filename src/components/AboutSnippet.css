@@ -142,24 +142,44 @@
 
 @media (max-width: 600px) {
   .about-snippet-section {
-    padding: 3rem 0.85rem 3.5rem;
+    padding: 2.75rem 0.85rem 3rem;
+  }
+  .about-tag {
+    font-size: var(--badge-mobile);
+    padding: 0.2rem 0.65rem;
+    margin-bottom: 0.4rem;
+  }
+  .about-snippet-title {
+    font-size: var(--title-mobile);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  .about-snippet-lead {
+    font-size: var(--subtitle-mobile);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
   }
   .about-snippet-card {
-    padding: 1.75rem 1rem;
-    border-radius: 20px;
-    gap: 1.75rem;
+    padding: 1.5rem 1rem;
+    border-radius: 18px;
+    gap: 1.5rem;
   }
   .about-snippet-stats {
     gap: 0.75rem;
   }
   .stat-box {
-    padding: 1.25rem 1rem;
-    border-radius: 18px;
+    padding: 1.15rem 0.85rem;
+    border-radius: 16px;
   }
   .stat-number {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
   }
   .stat-label {
-    font-size: 0.775rem;
+    font-size: var(--body-mobile);
+    line-height: 1.35;
+  }
+  .btn-snippet-link {
+    font-size: var(--btn-mobile-font);
   }
 }
