@@ -14,7 +14,7 @@
 /* Top Navigation & Breadcrumbs Bar */
 .detail-top-nav-bar {
   padding: 8rem 0 1.75rem; /* space for transparent fixed navbar */
-  background: linear-gradient(180deg, #240810 0%, #380f1a 100%);
+  background: linear-gradient(180deg, #093f1d 0%, #0d5f2c 100%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   color: #eedccb;
 }
@@ -267,21 +267,22 @@
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  background: linear-gradient(135deg, var(--color-primary) 0%, #681f2f 100%);
+  font-family: var(--font-heading);
+  background: var(--color-green);
   color: #ffffff !important;
   font-weight: 700;
   font-size: 1rem;
   padding: 0.95rem 2rem;
   border-radius: 9999px;
-  border: 1px solid rgba(212, 154, 61, 0.3);
-  box-shadow: 0 6px 20px rgba(74, 21, 33, 0.28);
+  border: 1px solid var(--color-green-dark);
+  box-shadow: 0 6px 20px rgba(10, 130, 58, 0.28);
   transition: all 0.25s ease;
 }
 
 .btn-detail-enquire:hover {
-  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  background: var(--color-green-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 26px rgba(74, 21, 33, 0.38);
+  box-shadow: 0 8px 26px rgba(6, 96, 41, 0.38);
 }
 
 .btn-detail-secondary {

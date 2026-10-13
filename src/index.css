@@ -1,23 +1,32 @@
 :root {
-  --color-primary: #4a1521;      /* Royal Heritage Burgundy */
-  --color-primary-dark: #320c15; /* Deep Vintage Burgundy */
-  --color-primary-light: #6a2433;/* Rich Mulberry */
-  --color-accent: #d49a3d;       /* Warm Imperial Gold */
-  --color-accent-dark: #b87f28;  /* Burnished Gold */
-  --color-accent-light: #faedd9; /* Soft Champagne Gold Tint */
-  --color-warm-bg: #fdfbf7;      /* Warm Pearl Cream */
-  --color-card-bg: #ffffff;      /* Pure Crisp White */
+  /* Brand Palette: Fresh Farm Green, Warm Heritage Tamarind Brown, Amber Gold */
+  --color-primary: #5c2a18;         /* Earthy Harvest Tamarind Brown */
+  --color-primary-dark: #3e190c;    /* Deep Roaster Brown */
+  --color-primary-light: #7a3922;   /* Warm Terra Brown */
+  --color-green: #0a823a;           /* Fresh Agricultural Green (as in reference image) */
+  --color-green-dark: #066029;      /* Deep Farm Green */
+  --color-green-light: #eaf6ee;     /* Soft Mint/Herb Green Tint */
+  --color-accent: #d89a24;          /* Warm Harvest Gold */
+  --color-accent-dark: #b87c12;     /* Antique Mustard Gold */
+  --color-accent-light: #fef7e8;    /* Champagne Honey Gold Tint */
+  --color-warm-bg: #f9f8f5;         /* Soft Off-White Human Canvas */
   --color-white: #ffffff;
-  --color-text-main: #221e1f;    /* Dark Charcoal */
-  --color-text-muted: #6b6365;   /* Sophisticated Taupe/Slate */
-  --color-border: #ede4db;       /* Delicate Warm Border */
-  --color-border-gold: #e2cfa7;  /* Subtle Gold Border */
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --shadow-sm: 0 2px 10px rgba(74, 21, 33, 0.05);
-  --shadow-md: 0 10px 28px rgba(74, 21, 33, 0.08);
-  --shadow-lg: 0 20px 48px rgba(74, 21, 33, 0.13);
-  --transition-smooth: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  --color-card-glass: rgba(255, 255, 255, 0.88); /* Translucent Frosted Glass Card */
+  --color-card-glass-hover: rgba(255, 255, 255, 0.98);
+  --color-text-main: #1f1e1d;       /* High-contrast human text (like Indian retail grocery) */
+  --color-text-muted: #5e5955;      /* Natural Slate Muted */
+  --color-border: #e8e3dc;          /* Clean Organic Card Border */
+  --color-border-subtle: rgba(0, 0, 0, 0.06);
+
+  /* Typography: Human Retail FMCG Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-heading: 'Outfit', 'Poppins', sans-serif;
+  --font-serif: 'Outfit', sans-serif; /* Friendly, crisp modern bold sans headline like reference */
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.1);
+  --transition-smooth: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {

@@ -12,23 +12,25 @@
 
 .categories-badge {
   display: inline-block;
-  font-size: 0.8rem;
+  font-family: var(--font-heading);
+  font-size: 0.825rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--color-primary);
-  background: #f5ebe1;
-  padding: 0.35rem 1rem;
+  letter-spacing: 1.2px;
+  color: var(--color-green-dark);
+  background: var(--color-green-light);
+  padding: 0.4rem 1.15rem;
   border-radius: 9999px;
   margin-bottom: 0.75rem;
+  border: 1px solid rgba(10, 130, 58, 0.2);
 }
 
 .categories-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-heading);
   font-size: clamp(2rem, 3.5vw, 2.6rem);
-  font-weight: 700;
-  color: var(--color-primary);
-  letter-spacing: -0.3px;
+  font-weight: 800;
+  color: var(--color-text-main);
+  letter-spacing: -0.4px;
 }
 
 /* 4-Card Responsive Grid */
@@ -38,26 +40,29 @@
   gap: 1.75rem;
 }
 
-/* Individual Card Styling */
+/* Individual Card Styling: Crisp translucent glass card */
 .category-card {
   position: relative;
-  background: #ffffff;
+  background: var(--color-card-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 20px;
   overflow: hidden;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 4px 16px rgba(92, 44, 22, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, background 0.28s ease;
   outline: none;
 }
 
 .category-card:hover,
 .category-card:focus-visible {
   transform: translateY(-6px);
-  box-shadow: 0 14px 32px rgba(92, 44, 22, 0.12);
-  border-color: #dfd4c7;
+  background: #ffffff;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+  border-color: #ffffff;
 }
 
 /* Image Wrapper */
@@ -103,16 +108,16 @@
 }
 
 .category-name {
-  font-family: var(--font-sans);
-  font-size: 1.125rem;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
   font-weight: 700;
-  color: #381c0d;
+  color: var(--color-text-main);
   line-height: 1.3;
   transition: color 0.25s ease;
 }
 
 .category-card:hover .category-name {
-  color: #a44813;
+  color: var(--color-green-dark);
 }
 
 /* Circular Arrow Icon */
@@ -121,12 +126,12 @@
   height: 38px;
   min-width: 38px;
   border-radius: 50%;
-  background: #fbf5ef;
-  color: var(--color-primary);
+  background: #f4f3ef;
+  color: var(--color-text-main);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .category-arrow-btn svg {
@@ -134,9 +139,9 @@
 }
 
 .category-card:hover .category-arrow-btn {
-  background: var(--color-primary);
+  background: var(--color-green);
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(92, 44, 22, 0.25);
+  box-shadow: 0 4px 12px rgba(10, 130, 58, 0.35);
 }
 
 .category-card:hover .category-arrow-btn svg {

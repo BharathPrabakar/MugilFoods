@@ -103,10 +103,11 @@
 
 /* Nav Links: Crisp white when transparent/blended, dark rich brown on scroll */
 .nav-link {
-  font-size: 1rem;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
   font-weight: 600;
   color: #ffffff;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
   position: relative;
   padding: 0.45rem 0.2rem;
   display: inline-flex;
@@ -116,11 +117,11 @@
 }
 
 .nav-link:hover {
-  color: #f7d598;
+  color: #a7f3bf;
 }
 
 .nav-link.active {
-  color: var(--color-accent);
+  color: #fef08a;
   font-weight: 700;
 }
 
@@ -131,8 +132,8 @@
   bottom: 0;
   left: 0;
   width: 0;
-  height: 2.5px;
-  background: var(--color-accent);
+  height: 3px;
+  background: var(--color-green);
   border-radius: 4px;
   transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease;
 }
@@ -149,15 +150,15 @@
 }
 
 .header.scrolled .nav-link:hover {
-  color: var(--color-primary);
+  color: var(--color-green);
 }
 
 .header.scrolled .nav-link.active {
-  color: var(--color-primary);
+  color: var(--color-green-dark);
 }
 
 .header.scrolled .nav-link::after {
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  background: var(--color-green);
 }
 
 /* Make an Enquiry CTA Button */
@@ -171,34 +172,38 @@
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  background: linear-gradient(135deg, #d49a3d 0%, #b87f28 100%);
-  color: #1a0f05 !important;
-  font-size: 0.95rem;
-  font-weight: 700;
-  padding: 0.72rem 1.5rem;
+  font-family: var(--font-heading);
+  background: #ffffff;
+  color: var(--color-green-dark) !important;
+  font-size: 0.98rem;
+  font-weight: 800;
+  padding: 0.72rem 1.6rem;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  box-shadow: 0 4px 16px rgba(212, 154, 61, 0.3);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   letter-spacing: 0.2px;
 }
 
 .enquiry-btn:hover {
-  background: linear-gradient(135deg, #e5aa4e 0%, #c48a30 100%);
+  background: var(--color-green);
+  color: #ffffff !important;
+  border-color: var(--color-green);
   transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(212, 154, 61, 0.45);
+  box-shadow: 0 8px 24px rgba(10, 130, 58, 0.35);
 }
 
 .header.scrolled .enquiry-btn {
-  background: linear-gradient(135deg, var(--color-primary) 0%, #631d2c 100%);
+  background: var(--color-green);
   color: #ffffff !important;
-  border: 1px solid rgba(212, 154, 61, 0.3);
-  box-shadow: 0 4px 16px rgba(74, 21, 33, 0.25);
+  border: 1px solid var(--color-green-dark);
+  box-shadow: 0 4px 14px rgba(10, 130, 58, 0.25);
 }
 
 .header.scrolled .enquiry-btn:hover {
-  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
-  box-shadow: 0 6px 20px rgba(74, 21, 33, 0.35);
+  background: var(--color-green-dark);
+  border-color: var(--color-green-dark);
+  box-shadow: 0 6px 20px rgba(6, 96, 41, 0.35);
 }
 
 .enquiry-btn .cta-arrow {
