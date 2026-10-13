@@ -241,17 +241,59 @@
 
 @media (max-width: 600px) {
   .why-choose-us-section {
-    padding: 4rem 1.25rem 4.5rem;
+    padding: 3rem 0.85rem 3.5rem;
   }
 
   .features-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+    margin-bottom: 2rem;
+  }
+
+  .feature-card {
+    padding: 1.35rem 1rem;
+    border-radius: 20px;
+  }
+
+  .feature-icon-box {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+
+  .feature-icon-box svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .feature-pill {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.55rem;
+  }
+
+  .feature-title {
+    font-size: 1.05rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .feature-desc {
+    font-size: 0.825rem;
+    line-height: 1.5;
   }
 
   .trust-metrics-ribbon {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 0.75rem;
+    padding: 1.75rem 1rem;
+    border-radius: 22px;
+  }
+
+  .metric-value {
+    font-size: 1.75rem;
+  }
+
+  .metric-label {
+    font-size: 0.775rem;
   }
 
   .metric-item::after {

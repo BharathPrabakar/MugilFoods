@@ -423,19 +423,44 @@
 @media (max-width: 768px) {
   .about-story-section {
     padding: 2rem 1.25rem;
+    border-radius: 20px;
   }
   .about-hero-banner {
-    padding: 7rem 1.25rem 2.5rem;
+    padding: 6.5rem 1.25rem 2.5rem;
   }
   .about-bottom-cta {
     flex-direction: column;
     align-items: flex-start;
     padding: 2rem 1.5rem;
+    border-radius: 20px;
   }
   .about-metrics-strip {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 0.75rem;
+    padding: 1.75rem 1.25rem;
+    border-radius: 20px;
+  }
+  .milestone-number {
+    font-size: 1.85rem;
+  }
+  .milestone-label {
+    font-size: 0.75rem;
   }
   .milestone-col::after {
     display: none !important;
+  }
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+  }
+  .value-card {
+    padding: 1.25rem 1rem;
+    border-radius: 18px;
+  }
+  .value-title {
+    font-size: 1.05rem;
+  }
+  .value-desc {
+    font-size: 0.825rem;
   }
 }
