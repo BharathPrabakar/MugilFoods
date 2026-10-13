@@ -74,12 +74,41 @@ button {
   font-family: inherit;
 }
 
-/* Ensure smooth word wrapping across small screen sizes */
+/* Ensure smooth word wrapping & balanced justification across screen sizes */
 h1, h2, h3, h4, h5, h6 {
   word-wrap: break-word;
   overflow-wrap: break-word;
+  text-wrap: balance;
 }
 
 p, span, label, input, select, textarea {
   word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Natural editorial content justification for descriptive body copy */
+.about-snippet-lead,
+.service-description,
+.story-paragraph,
+.service-lead-text,
+.quote-text,
+.reachout-desc,
+.form-card-sub,
+.location-address {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* On small screens, keep text justification clean with hyphens prevention */
+@media (max-width: 600px) {
+  .about-snippet-lead,
+  .service-description,
+  .story-paragraph,
+  .service-lead-text,
+  .quote-text,
+  .reachout-desc,
+  .form-card-sub,
+  .location-address {
+    text-align: left; /* Keep left-aligned on very small screens to avoid awkward loose spacing gaps */
+  }
 }

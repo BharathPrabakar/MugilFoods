@@ -97,6 +97,7 @@
 /* Sideways Scrollable Container */
 .testimonials-scroll-wrapper {
   display: flex;
+  align-items: stretch; /* Forces all cards in the row to stretch to identical height */
   gap: 1.75rem;
   overflow-x: auto;
   overflow-y: hidden;
@@ -121,13 +122,16 @@
   border-radius: 9999px;
 }
 
-/* Individual Card (Fixed width for horizontal scrolling) */
+/* Individual Card: Identical height, width, and structure */
 .testimonial-card {
   flex: 0 0 380px;
+  width: 380px;
+  height: 380px; /* Fixed identical uniform height */
+  box-sizing: border-box;
   scroll-snap-align: start;
   background: #ffffff;
   border-radius: 28px;
-  padding: 2.5rem 2.25rem;
+  padding: 2.25rem 2rem;
   border: 1px solid #f1f1f4;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
   display: flex;
@@ -148,7 +152,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .star-rating {
@@ -162,22 +166,28 @@
   font-size: 0.725rem;
   font-weight: 700;
   letter-spacing: 0.4px;
-  color: #5c2c16;
-  background: #faf2eb;
+  color: var(--color-green-dark);
+  background: var(--color-green-light);
   padding: 0.28rem 0.75rem;
   border-radius: 9999px;
-  border: 1px solid #ebd9c8;
+  border: 1px solid rgba(10, 130, 58, 0.2);
   white-space: nowrap;
 }
 
-/* Quote */
+/* Quote: Justified / balanced typography */
 .testimonial-quote {
-  font-size: 0.975rem;
-  line-height: 1.7;
+  font-size: 0.95rem;
+  line-height: 1.65;
   color: #4a3e36;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
   font-style: italic;
   flex: 1;
+  text-align: justify;
+  text-justify: inter-word;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
 }
 
 /* Author Row */
@@ -185,23 +195,24 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding-top: 1.25rem;
+  padding-top: 1rem;
   border-top: 1px solid #f6f0ea;
+  margin-top: auto;
 }
 
 .avatar-circle {
-  width: 48px;
-  height: 48px;
-  min-width: 48px;
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #7b3815 0%, #461f0f 100%);
-  color: #ffd699;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #b5141d 100%);
+  color: #ffffff;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.95rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(92, 44, 22, 0.2);
+  box-shadow: 0 4px 12px rgba(217, 35, 45, 0.2);
 }
 
 .author-info {
@@ -210,15 +221,15 @@
 }
 
 .author-name {
-  font-family: var(--font-sans);
-  font-size: 1.05rem;
+  font-family: var(--font-heading);
+  font-size: 1rem;
   font-weight: 700;
   color: #2b1f17;
   line-height: 1.3;
 }
 
 .author-role {
-  font-size: 0.825rem;
+  font-size: 0.8rem;
   color: #72655b;
   line-height: 1.35;
   margin-top: 0.15rem;
@@ -230,11 +241,11 @@
   gap: 0.3rem;
   font-size: 0.75rem;
   color: #8c7d72;
-  margin-top: 0.35rem;
+  margin-top: 0.25rem;
 }
 
 .author-location svg {
-  color: #2e6930;
+  color: var(--color-green);
 }
 
 /* Responsive */
@@ -243,7 +254,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
   }
 
   .testimonials-badge {
@@ -263,15 +274,23 @@
     line-height: 1.5;
   }
 
+  .testimonials-scroll-wrapper {
+    gap: 1rem;
+    padding-bottom: 1.25rem;
+  }
+
   .testimonial-card {
-    flex: 0 0 250px;
-    padding: 1.25rem 1rem;
-    border-radius: 18px;
+    flex: 0 0 270px;
+    width: 270px;
+    height: 320px; /* Uniform height on mobile */
+    padding: 1.25rem 1.15rem;
+    border-radius: 20px;
   }
 
   .testimonial-quote {
     font-size: var(--body-mobile);
     line-height: 1.5;
+    -webkit-line-clamp: 6;
   }
 
   .author-name {
@@ -288,6 +307,31 @@
   }
 
   .testimonials-section {
-    padding: 2.75rem 0.85rem 3rem;
+    padding: 2.25rem 0.85rem 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-card {
+    flex: 0 0 250px;
+    width: 250px;
+    height: 300px;
+    padding: 1.15rem 1rem;
+  }
+
+  .avatar-circle {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .testimonial-card {
+    flex: 0 0 230px;
+    width: 230px;
+    height: 290px;
+    padding: 1rem 0.85rem;
   }
 }
