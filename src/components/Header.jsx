@@ -20,11 +20,9 @@ export default function Header({ currentPage = 'home', onNavigate, isScrolled = 
     setMobileMenuOpen(false);
   };
 
-  // Header starts transparent initially; has solid background only on scroll movement
-  const showSolidHeader = isScrolled;
-
+  // Header is permanently non-transparent with a clean solid background
   return (
-    <header className={`header ${showSolidHeader ? 'scrolled' : ''}`}>
+    <header className="header scrolled">
       <div className="header-container">
         {/* Logo Section on Left */}
         <a 

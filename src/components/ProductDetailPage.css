@@ -13,7 +13,7 @@
 
 /* Top Navigation & Breadcrumbs Bar */
 .detail-top-nav-bar {
-  padding: 8rem 0 1.75rem; /* space for transparent fixed navbar */
+  padding: 2.5rem 0 1.75rem;
   background: linear-gradient(180deg, #093f1d 0%, #0d5f2c 100%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   color: #eedccb;

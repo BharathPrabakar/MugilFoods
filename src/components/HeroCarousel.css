@@ -1,11 +1,12 @@
 .hero-carousel-container {
   position: relative;
   width: 100%;
-  height: 480px; /* Sleek rectangular widescreen banner */
-  min-height: 400px;
+  height: 480px; /* Sleek rectangular widescreen master slide */
+  min-height: 380px;
   max-height: 520px;
   overflow: hidden;
-  background-color: #120c09;
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--color-border);
 }
 
 /* Slide Base & Transitions */
@@ -17,7 +18,7 @@
   height: 100%;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 1.1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1;
 }
 
@@ -27,330 +28,88 @@
   z-index: 2;
 }
 
-/* Background image & Ken Burns zoom animation */
-.carousel-bg-image {
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Full length slide container */
+.carousel-slide-inner {
   width: 100%;
   height: 100%;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  transform: scale(1.04);
-  transition: transform 7s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.carousel-slide.active .carousel-bg-image {
-  transform: scale(1.12);
-}
-
-/* Rich Dark Gradient Overlay for optimal legibility & depth */
-.carousel-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg, 
-    rgba(18, 9, 5, 0.88) 0%, 
-    rgba(25, 12, 6, 0.72) 45%, 
-    rgba(25, 12, 6, 0.35) 100%
-  );
-  z-index: 2;
-}
-
-/* Content Container */
-.carousel-content-wrapper {
-  position: relative;
-  z-index: 3;
-  max-width: 1320px;
-  height: 100%;
-  margin: 0 auto;
-  padding: 0 3rem;
-  display: flex;
-  align-items: center;
-}
-
-.carousel-content {
-  max-width: 680px;
-  color: #ffffff;
-  transform: translateY(20px);
-  opacity: 0;
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
-}
-
-.carousel-slide.active .carousel-content {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-/* Tag Badge */
-.slide-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #ffcf96;
-  background: rgba(255, 207, 150, 0.14);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 207, 150, 0.28);
-  padding: 0.25rem 0.8rem;
-  border-radius: 9999px;
-  margin-bottom: 0.75rem;
-}
-
-.slide-tag-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: #62c366;
-  box-shadow: 0 0 8px #62c366;
-}
-
-/* Slide Typography */
-.slide-title {
-  font-family: var(--font-heading);
-  font-size: clamp(1.85rem, 3.4vw, 2.75rem);
-  font-weight: 800;
-  line-height: 1.15;
-  color: #ffffff;
-  margin-bottom: 0.6rem;
-  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
-  letter-spacing: -0.4px;
-}
-
-.slide-subtitle {
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  line-height: 1.55;
-  color: #f3eee8;
-  margin-bottom: 1.35rem;
-  font-weight: 400;
-  max-width: 500px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-}
-
-/* Call to action buttons inside slide */
-.slide-cta-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-/* Order Now / Explore Products: Crisp white pill button with green text as in the user reference image */
-.btn-carousel-primary {
-  display: inline-flex;
-  align-items: center;
-  font-family: var(--font-heading);
-  background: #ffffff;
-  color: var(--color-green-dark);
-  font-weight: 800;
-  font-size: 1.05rem;
-  padding: 0.95rem 2.25rem;
-  border-radius: 9999px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  border: 2px solid #ffffff;
-}
-
-.btn-carousel-primary:hover {
-  background: var(--color-green);
-  color: #ffffff;
-  border-color: var(--color-green);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(10, 130, 58, 0.45);
-}
-
-.btn-carousel-secondary {
-  display: inline-flex;
-  align-items: center;
-  font-family: var(--font-heading);
-  background: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 1.05rem;
-  padding: 0.95rem 2rem;
-  border-radius: 9999px;
-  border: 1.5px solid rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
-  transition: all 0.25s ease;
-}
-
-.btn-carousel-secondary:hover {
-  background: #ffffff;
-  color: var(--color-primary);
-  border-color: #ffffff;
-  transform: translateY(-2px);
-}
-
-/* Nav Arrows */
-.carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  transition: all 0.25s ease;
+  background-color: #ffffff;
+  padding: 1.5rem 2rem;
 }
 
-.carousel-arrow:hover {
-  background: #ffffff;
-  color: var(--color-primary);
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.3);
-  transform: translateY(-50%) scale(1.08);
+/* Master slide image: Full length, crisp logo presentation */
+.carousel-img-full {
+  width: 100%;
+  height: 100%;
+  max-width: 1100px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s ease;
 }
 
-.arrow-prev {
-  left: 2rem;
+.carousel-slide.active .carousel-img-full {
+  transform: scale(1.02);
 }
 
-.arrow-next {
-  right: 2rem;
-}
-
-/* Modern Pill Pagination */
+/* Modern Pill Pagination for 2 slides */
 .carousel-pagination {
   position: absolute;
-  bottom: 2.25rem;
+  bottom: 1.25rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
   z-index: 10;
-  padding: 0.4rem 0.8rem;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(12px);
+  padding: 0.35rem 0.75rem;
+  background: rgba(45, 21, 10, 0.08);
+  backdrop-filter: blur(10px);
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(45, 21, 10, 0.12);
 }
 
 .pagination-dot {
   width: 12px;
-  height: 12px;
+  height: 10px;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(45, 21, 10, 0.25);
   border: none;
   cursor: pointer;
   padding: 0;
-  transition: all 0.35s ease;
-  position: relative;
-  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .pagination-dot.active {
-  width: 38px;
-  background: #ffffff;
-}
-
-/* Slide Counter in bottom-right corner */
-.carousel-counter {
-  position: absolute;
-  bottom: 2.25rem;
-  right: 3rem;
-  z-index: 10;
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.85);
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  padding: 0.35rem 0.9rem;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.carousel-counter .current-num {
-  color: #ffc885;
-}
-
-.carousel-counter .divider {
-  opacity: 0.4;
+  width: 32px;
+  background: var(--color-green-dark);
 }
 
 /* Mobile & Tablet Adjustments */
 @media (max-width: 960px) {
   .hero-carousel-container {
-    height: 310px; /* Clean rectangular banner on mobile */
-    min-height: 280px;
-    max-height: 350px;
+    height: 240px; /* Compact clean banner on mobile */
+    min-height: 200px;
+    max-height: 260px;
   }
 
-  .carousel-content-wrapper {
-    padding: 0 1.25rem;
+  .carousel-slide-inner {
+    padding: 1rem 1.25rem;
   }
 
-  .carousel-overlay {
-    background: linear-gradient(
-      180deg,
-      rgba(18, 9, 5, 0.75) 0%,
-      rgba(25, 12, 6, 0.85) 100%
-    );
+  .carousel-pagination {
+    bottom: 0.75rem;
+    padding: 0.25rem 0.55rem;
   }
 
-  .slide-title {
-    font-size: 1.35rem;
-    margin-bottom: 0.25rem;
-    line-height: 1.2;
+  .pagination-dot {
+    width: 9px;
+    height: 8px;
   }
 
-  .slide-subtitle {
-    font-size: 0.785rem;
-    line-height: 1.35;
-    margin-bottom: 0.85rem;
-    max-width: 100%;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .slide-tag {
-    font-size: 0.625rem;
-    padding: 0.18rem 0.55rem;
-    margin-bottom: 0.35rem;
-  }
-
-  .slide-cta-row {
-    gap: 0.5rem;
-  }
-
-  .btn-carousel-primary {
-    font-size: 0.775rem;
-    padding: 0.45rem 1rem;
-    border-width: 1.5px;
-  }
-
-  .btn-carousel-secondary {
-    font-size: 0.775rem;
-    padding: 0.45rem 0.9rem;
-    border-width: 1px;
-  }
-
-  .carousel-arrow {
-    display: none; /* Swipe & dots preferred on mobile */
-  }
-
-  .carousel-counter {
-    display: none;
+  .pagination-dot.active {
+    width: 24px;
   }
 }

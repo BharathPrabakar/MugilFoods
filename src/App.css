@@ -4,6 +4,13 @@
   flex-direction: column;
   background-color: var(--color-warm-bg);
   overflow-x: hidden;
+  padding-top: 76px; /* Offset for non-transparent fixed header */
+}
+
+@media (max-width: 960px) {
+  .app-container {
+    padding-top: 64px;
+  }
 }
 
 /* Smooth anchor scrolling */

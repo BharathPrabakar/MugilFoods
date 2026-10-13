@@ -1,47 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './HeroCarousel.css';
 
-import slide1 from '../assets/slide1.jpg'; // Stacked Slab Tamarind
-import slide2 from '../assets/slide2.jpg'; // Circular Bloom Packaged Tamarind
-import slide3 from '../assets/slide3.jpg'; // Raw Tamarind Pods & Harvest
-import slide4 from '../assets/slide4.jpg'; // Pure Tamarind Paste / Concentrate
+import slideHoney from '../assets/slide_honey.png';
+import slideTamarind from '../assets/slide_tamarind.jpg';
 
 const slidesData = [
   {
     id: 1,
-    image: slide1,
-    tag: "Natural Processing",
-    title: "Seedless Tamarind Slabs",
-    subtitle: "Cleaned, cured, and vacuum-compacted export blocks with authentic tang.",
-    primaryCta: { label: "Explore Products", href: "#products" },
-    secondaryCta: { label: "Make an Enquiry", href: "#enquiry" }
+    image: slideHoney,
+    alt: "Mugil Honey"
   },
   {
     id: 2,
-    image: slide2,
-    tag: "Traditional Curing",
-    title: "Ring-Packed Tamarind",
-    subtitle: "Artfully spiraled traditional tamarind preserving natural aroma and zest.",
-    primaryCta: { label: "Our Story", href: "#about" },
-    secondaryCta: { label: "Bulk Orders", href: "#enquiry" }
-  },
-  {
-    id: 3,
-    image: slide3,
-    tag: "Dharmapuri Harvest",
-    title: "Direct Harvest Tamarind",
-    subtitle: "Sun-dried pods sourced directly from fertile groves in Dharmapuri.",
-    primaryCta: { label: "Our Services", href: "#services" },
-    secondaryCta: { label: "Make an Enquiry", href: "#enquiry" }
-  },
-  {
-    id: 4,
-    image: slide4,
-    tag: "Culinary & Commercial",
-    title: "Rich Tamarind Pulp",
-    subtitle: "Ready-to-blend pulp crafted for food processors, restaurants, and kitchens.",
-    primaryCta: { label: "Enquire Wholesale", href: "#enquiry" },
-    secondaryCta: { label: "View Products", href: "#products" }
+    image: slideTamarind,
+    alt: "Mugil Tamarind - Built With Trust"
   }
 ];
 
@@ -51,16 +23,6 @@ export default function HeroCarousel({ onNavigate }) {
   const timerRef = useRef(null);
 
   const totalSlides = slidesData.length;
-
-  const handleCtaClick = (href, e) => {
-    e.preventDefault();
-    const pageId = href.replace('#', '');
-    if (onNavigate) {
-      onNavigate(pageId, href);
-    } else {
-      window.location.hash = pageId;
-    }
-  };
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % totalSlides);
@@ -91,7 +53,7 @@ export default function HeroCarousel({ onNavigate }) {
       className="hero-carousel-container"
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
-      aria-label="Mugil Foods Featured Showcase"
+      aria-label="Mugil Foods Showcase"
     >
       {slidesData.map((slide, index) => {
         const isActive = index === currentIndex;
@@ -101,41 +63,13 @@ export default function HeroCarousel({ onNavigate }) {
             className={`carousel-slide ${isActive ? 'active' : ''}`}
             aria-hidden={!isActive}
           >
-            {/* Background Image with Zoom Ken Burns Effect */}
-            <div 
-              className="carousel-bg-image"
-              style={{ backgroundImage: `url(${slide.image})` }}
-            />
-            
-            {/* Cinematic Gradient Vignette Overlay for readability */}
-            <div className="carousel-overlay" />
-
-            {/* Slide Content */}
-            <div className="carousel-content-wrapper">
-              <div className="carousel-content">
-                <div className="slide-tag">
-                  <span className="slide-tag-dot" />
-                  {slide.tag}
-                </div>
-                <h1 className="slide-title">{slide.title}</h1>
-                <p className="slide-subtitle">{slide.subtitle}</p>
-                <div className="slide-cta-row">
-                  <a 
-                    href={slide.primaryCta.href} 
-                    className="btn-carousel-primary"
-                    onClick={(e) => handleCtaClick(slide.primaryCta.href, e)}
-                  >
-                    {slide.primaryCta.label}
-                  </a>
-                  <a 
-                    href={slide.secondaryCta.href} 
-                    className="btn-carousel-secondary"
-                    onClick={(e) => handleCtaClick(slide.secondaryCta.href, e)}
-                  >
-                    {slide.secondaryCta.label}
-                  </a>
-                </div>
-              </div>
+            {/* Full length master slide image */}
+            <div className="carousel-slide-inner">
+              <img 
+                src={slide.image} 
+                alt={slide.alt} 
+                className="carousel-img-full" 
+              />
             </div>
           </div>
         );

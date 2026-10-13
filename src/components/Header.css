@@ -4,21 +4,19 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  /* Initial State: Blends completely into the master slide */
-  background: transparent;
-  backdrop-filter: blur(0px);
-  -webkit-backdrop-filter: blur(0px);
-  border-bottom: none;
-  transition: background-color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease, padding 0.35s ease;
+  /* Non-transparent solid clean header */
+  background-color: #ffffff;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 2px 14px rgba(45, 21, 10, 0.06);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
 }
 
-/* Scrolled / Movement State: Definite solid & blurred background */
+/* Scrolled / Movement State: slightly more compact and pronounced shadow */
 .header.scrolled {
-  background-color: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: 0 4px 24px rgba(45, 21, 10, 0.1);
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 4px 20px rgba(45, 21, 10, 0.1);
 }
 
 .header-container {
@@ -95,27 +93,27 @@
   position: relative;
 }
 
-/* Nav Links: Crisp white when transparent/blended, dark rich brown on scroll */
+/* Nav Links: Clean dark slate typography for solid header */
 .nav-link {
   font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 600;
-  color: #ffffff;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  color: var(--color-text-main);
+  text-shadow: none;
   position: relative;
   padding: 0.45rem 0.2rem;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  transition: color 0.25s ease, text-shadow 0.25s ease;
+  transition: color 0.25s ease;
 }
 
 .nav-link:hover {
-  color: #fde047;
+  color: var(--color-green);
 }
 
 .nav-link.active {
-  color: #fde047;
+  color: var(--color-green-dark);
   font-weight: 700;
 }
 
@@ -127,7 +125,7 @@
   left: 0;
   width: 0;
   height: 3px;
-  background: var(--color-primary);
+  background: var(--color-green);
   border-radius: 4px;
   transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease;
 }
@@ -135,28 +133,6 @@
 .nav-link:hover::after,
 .nav-link.active::after {
   width: 100%;
-}
-
-/* On Scroll: Nav link colors switch to brand typography */
-.header.scrolled .nav-link {
-  color: var(--color-text-main);
-  text-shadow: none;
-}
-
-.header.scrolled .nav-link:hover {
-  color: var(--color-primary);
-}
-
-.header.scrolled .nav-link:hover {
-  color: var(--color-green);
-}
-
-.header.scrolled .nav-link.active {
-  color: var(--color-green-dark);
-}
-
-.header.scrolled .nav-link::after {
-  background: var(--color-green);
 }
 
 /* Make an Enquiry CTA Button */
@@ -171,37 +147,24 @@
   align-items: center;
   gap: 0.55rem;
   font-family: var(--font-heading);
-  background: #ffffff;
-  color: var(--color-green-dark) !important;
+  background: var(--color-green);
+  color: #ffffff !important;
   font-size: 0.98rem;
   font-weight: 800;
   padding: 0.72rem 1.6rem;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--color-green-dark);
+  box-shadow: 0 4px 14px rgba(10, 130, 58, 0.25);
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   letter-spacing: 0.2px;
 }
 
 .enquiry-btn:hover {
-  background: var(--color-green);
+  background: var(--color-green-dark);
   color: #ffffff !important;
-  border-color: var(--color-green);
+  border-color: var(--color-green-dark);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(10, 130, 58, 0.35);
-}
-
-.header.scrolled .enquiry-btn {
-  background: var(--color-green);
-  color: #ffffff !important;
-  border: 1px solid var(--color-green-dark);
-  box-shadow: 0 4px 14px rgba(10, 130, 58, 0.25);
-}
-
-.header.scrolled .enquiry-btn:hover {
-  background: var(--color-green-dark);
-  border-color: var(--color-green-dark);
-  box-shadow: 0 6px 20px rgba(6, 96, 41, 0.35);
 }
 
 .enquiry-btn .cta-arrow {
@@ -219,9 +182,8 @@
   justify-content: space-around;
   width: 36px;
   height: 36px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  border: none;
   border-radius: 8px;
   cursor: pointer;
   padding: 7px;
@@ -229,21 +191,12 @@
   transition: all 0.25s ease;
 }
 
-.header.scrolled .mobile-toggle-btn {
-  background: transparent;
-  border: none;
-}
-
 .mobile-toggle-btn .bar {
   width: 100%;
   height: 2.5px;
-  background-color: #ffffff;
+  background-color: var(--color-primary);
   border-radius: 4px;
   transition: all 0.3s ease;
-}
-
-.header.scrolled .mobile-toggle-btn .bar {
-  background-color: var(--color-primary);
 }
 
 .mobile-toggle-btn.open .bar:nth-child(1) {
