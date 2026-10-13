@@ -224,15 +224,31 @@
 .form-select,
 .form-textarea {
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   font-family: var(--font-sans);
   font-size: 0.95rem;
   color: var(--color-text-main);
   background: #fafaf9;
   border: 1.5px solid #e4e4e7;
   border-radius: 14px;
-  padding: 0.85rem 1.1rem;
+  padding: 0.9rem 1.15rem;
   transition: all 0.25s ease;
   outline: none;
+  display: block;
+}
+
+.form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23d9232d' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.15rem center;
+  background-size: 16px;
+  padding-right: 2.85rem;
+  cursor: pointer;
+  line-height: 1.4;
 }
 
 .form-input:focus,
@@ -376,22 +392,63 @@
 
 /* Responsive */
 @media (max-width: 960px) {
+  .enquiry-content-container {
+    padding: 2rem 1rem 0;
+  }
   .reachout-header-bar {
     flex-direction: column;
-    align-items: flex-start;
-    padding: 2rem 1.5rem;
+    align-items: stretch;
+    padding: 1.75rem 1.25rem;
+    border-radius: 20px;
+    gap: 1.5rem;
+  }
+  .whatsapp-rounded-btn {
+    justify-content: center;
+    width: 100%;
+    padding: 0.95rem 1.25rem;
   }
   .enquiry-main-grid {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
   }
   .form-row {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
   .enquiry-form-card {
-    padding: 2.25rem 1.5rem;
+    padding: 1.75rem 1.25rem;
+    border-radius: 20px;
   }
   .enquiry-location-card {
-    padding: 2.25rem 1.5rem;
+    padding: 1.75rem 1.25rem;
+    border-radius: 20px;
+  }
+  .btn-submit-enquiry {
+    width: 100%;
+    padding: 1rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .enquiry-hero-banner {
+    padding: 6.5rem 1rem 2.25rem;
+  }
+  .enquiry-content-container {
+    padding: 1.5rem 0.85rem 0;
+  }
+  .enquiry-form-card,
+  .enquiry-location-card,
+  .reachout-header-bar {
+    padding: 1.5rem 1rem;
+    border-radius: 18px;
+  }
+  .form-input,
+  .form-select,
+  .form-textarea {
+    font-size: 0.9rem;
+    padding: 0.8rem 1rem;
+  }
+  .form-select {
+    padding-right: 2.5rem;
   }
 }

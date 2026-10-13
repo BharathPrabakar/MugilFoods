@@ -30,15 +30,16 @@
 
 .footer-logo-wrapper {
   display: inline-flex;
-  background: #ffffff;
-  padding: 5px 12px;
-  border-radius: 10px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
   margin-bottom: 1rem;
 }
 
 .footer-logo-img {
-  height: 44px;
+  height: 52px;
   width: auto;
+  border-radius: 12px;
   object-fit: contain;
   display: block;
 }

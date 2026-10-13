@@ -90,20 +90,59 @@
 }
 
 .feature-icon-box {
-  width: 54px;
-  height: 54px;
+  width: 52px;
+  height: 52px;
   border-radius: 16px;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: #ffffff;
+  background: #fdf2f2;
+  color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 18px rgba(217, 35, 45, 0.28);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 14px rgba(217, 35, 45, 0.1);
+  border: 1px solid rgba(217, 35, 45, 0.15);
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.feature-card:nth-child(2) .feature-icon-box {
+  background: #ecfdf5;
+  color: var(--color-green);
+  box-shadow: 0 4px 14px rgba(10, 130, 58, 0.1);
+  border-color: rgba(10, 130, 58, 0.15);
+}
+
+.feature-card:nth-child(3) .feature-icon-box {
+  background: #fffbeb;
+  color: var(--color-accent-dark);
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.18);
+}
+
+.feature-card:nth-child(4) .feature-icon-box {
+  background: #f0fdf4;
+  color: var(--color-green-dark);
+  box-shadow: 0 4px 14px rgba(6, 96, 41, 0.1);
+  border-color: rgba(6, 96, 41, 0.15);
 }
 
 .feature-card:hover .feature-icon-box {
   transform: scale(1.08) rotate(3deg);
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+.feature-card:nth-child(2):hover .feature-icon-box {
+  background: var(--color-green);
+  color: #ffffff;
+}
+
+.feature-card:nth-child(3):hover .feature-icon-box {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+.feature-card:nth-child(4):hover .feature-icon-box {
+  background: var(--color-green-dark);
+  color: #ffffff;
 }
 
 .feature-pill {
@@ -111,11 +150,11 @@
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.5px;
-  color: var(--color-primary);
-  background: #fef2f2;
+  color: #52525b;
+  background: #f4f4f5;
   padding: 0.3rem 0.8rem;
   border-radius: 9999px;
-  border: 1px solid rgba(217, 35, 45, 0.15);
+  border: 1px solid #e4e4e7;
 }
 
 .feature-title {

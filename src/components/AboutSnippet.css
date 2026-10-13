@@ -111,6 +111,18 @@
   margin-bottom: 0.35rem;
 }
 
+.stat-box:nth-child(2) .stat-number {
+  color: var(--color-green);
+}
+
+.stat-box:nth-child(3) .stat-number {
+  color: var(--color-accent-dark);
+}
+
+.stat-box:nth-child(4) .stat-number {
+  color: var(--color-primary);
+}
+
 .stat-label {
   font-family: var(--font-sans);
   font-size: 0.85rem;

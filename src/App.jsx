@@ -12,6 +12,7 @@ import ServicesPage from './components/ServicesPage'
 import AboutPage from './components/AboutPage'
 import EnquiryPage from './components/EnquiryPage'
 import Footer from './components/Footer'
+import FloatingWhatsApp from './components/FloatingWhatsApp'
 import { productsData } from './data/productsData'
 import './App.css'
 
@@ -182,6 +183,9 @@ function App() {
 
       {/* Comprehensive Brand Footer */}
       <Footer onNavigate={handleNavigation} />
+
+      {/* Persistent Floating WhatsApp Icon */}
+      <FloatingWhatsApp />
     </div>
   )
 }
