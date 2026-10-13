@@ -74,6 +74,7 @@ export default function TestimonialsSection() {
   const scrollContainerRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [expandedCardId, setExpandedCardId] = useState(null);
 
   const checkScroll = () => {
     if (!scrollContainerRef.current) return;
@@ -95,6 +96,10 @@ export default function TestimonialsSection() {
       left: direction === 'left' ? -scrollAmount : scrollAmount,
       behavior: 'smooth'
     });
+  };
+
+  const toggleExpand = (id) => {
+    setExpandedCardId((prev) => (prev === id ? null : id));
   };
 
   return (
@@ -141,36 +146,59 @@ export default function TestimonialsSection() {
           ref={scrollContainerRef}
           onScroll={checkScroll}
         >
-          {testimonials.map((item) => (
-            <article key={item.id} className="testimonial-card">
-              <div className="card-top-row">
-                <div className="star-rating" aria-label={`${item.rating} out of 5 stars`}>
-                  {[...Array(item.rating)].map((_, i) => (
-                    <svg
-                      key={i}
-                      className="star-icon"
-                      width="17"
-                      height="17"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                    </svg>
-                  ))}
+          {testimonials.map((item) => {
+            const isExpanded = expandedCardId === item.id;
+            return (
+              <article 
+                key={item.id} 
+                className={`testimonial-card ${isExpanded ? 'expanded' : ''}`}
+                onClick={() => toggleExpand(item.id)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleExpand(item.id);
+                  }
+                }}
+                aria-expanded={isExpanded}
+                title="Click or tap to elaborate"
+              >
+                <div className="card-top-row">
+                  <div className="star-rating" aria-label={`${item.rating} out of 5 stars`}>
+                    {[...Array(item.rating)].map((_, i) => (
+                      <svg
+                        key={i}
+                        className="star-icon"
+                        width="17"
+                        height="17"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                      </svg>
+                    ))}
+                  </div>
+                  {/* Subtle expand / collapse indicator */}
+                  <span className="card-expand-hint" aria-hidden="true">
+                    {isExpanded ? 'Show less' : 'Read more...'}
+                  </span>
                 </div>
-                <span className="product-tag">{item.product}</span>
-              </div>
 
-              <p className="testimonial-quote">“{item.quote}”</p>
+                <div className="testimonial-quote-wrap">
+                  <p className={`testimonial-quote ${isExpanded ? 'full-view' : 'clamped-view'}`}>
+                    “{item.quote}”
+                  </p>
+                </div>
 
-              <div className="author-row">
-                <div className="avatar-circle">{item.avatar}</div>
-                <div className="author-info">
-                  <h3 className="author-name">{item.name}</h3>
-                  <p className="author-role">{item.role}</p>
-                  <span className="author-location">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                <div className="author-row">
+                  <div className="avatar-circle">{item.avatar}</div>
+                  <div className="author-info">
+                    <h3 className="author-name">{item.name}</h3>
+                    <p className="author-role">{item.role}</p>
+                    <span className="author-location">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
                       <circle cx="12" cy="10" r="3"></circle>
                     </svg>
                     {item.location}
@@ -178,7 +206,8 @@ export default function TestimonialsSection() {
                 </div>
               </div>
             </article>
-          ))}
+          );
+        })}
         </div>
       </div>
     </section>
