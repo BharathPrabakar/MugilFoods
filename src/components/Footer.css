@@ -1,9 +1,9 @@
 .footer {
   width: 100%;
-  background-color: #1a0f0a;
+  background-color: #191214;
   color: #dfd5cb;
   position: relative;
-  border-top: 1px solid #2e1b12;
+  border-top: 1px solid rgba(212, 154, 61, 0.2);
   padding: 3rem 1.5rem 1.75rem;
 }
 
@@ -55,13 +55,13 @@
   display: inline-block;
   font-size: 0.775rem;
   font-weight: 700;
-  color: #ffd699;
+  color: var(--color-accent);
   letter-spacing: 0.75px;
   text-transform: uppercase;
-  background: rgba(255, 214, 153, 0.1);
+  background: rgba(212, 154, 61, 0.12);
   padding: 0.25rem 0.65rem;
   border-radius: 6px;
-  border: 1px solid rgba(255, 214, 153, 0.2);
+  border: 1px solid rgba(212, 154, 61, 0.28);
 }
 
 /* Pane Headings */
@@ -96,7 +96,7 @@
 }
 
 .footer-nav-links a:hover {
-  color: #ffd699;
+  color: var(--color-accent);
   transform: translateX(3px);
 }
 
@@ -124,7 +124,7 @@
 }
 
 .footer-contact-items li svg {
-  color: #ffd699;
+  color: var(--color-accent);
   flex-shrink: 0;
 }
 
@@ -135,7 +135,7 @@
 }
 
 .footer-contact-items a:hover {
-  color: #ffd699;
+  color: var(--color-accent);
 }
 
 /* Compact Bottom */

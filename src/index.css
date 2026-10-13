@@ -1,20 +1,23 @@
 :root {
-  --color-primary: #5c2c16;      /* Rich Tamarind Brown matching logo */
-  --color-primary-dark: #3f1c0d;
-  --color-primary-light: #7b3c20;
-  --color-accent: #2e6930;       /* Natural Tamarind Leaf Green */
-  --color-accent-light: #eaf5eb;
-  --color-warm-bg: #fcfbf7;
+  --color-primary: #4a1521;      /* Royal Heritage Burgundy */
+  --color-primary-dark: #320c15; /* Deep Vintage Burgundy */
+  --color-primary-light: #6a2433;/* Rich Mulberry */
+  --color-accent: #d49a3d;       /* Warm Imperial Gold */
+  --color-accent-dark: #b87f28;  /* Burnished Gold */
+  --color-accent-light: #faedd9; /* Soft Champagne Gold Tint */
+  --color-warm-bg: #fdfbf7;      /* Warm Pearl Cream */
+  --color-card-bg: #ffffff;      /* Pure Crisp White */
   --color-white: #ffffff;
-  --color-text-main: #2b231d;
-  --color-text-muted: #6e645e;
-  --color-border: #ede8e1;
+  --color-text-main: #221e1f;    /* Dark Charcoal */
+  --color-text-muted: #6b6365;   /* Sophisticated Taupe/Slate */
+  --color-border: #ede4db;       /* Delicate Warm Border */
+  --color-border-gold: #e2cfa7;  /* Subtle Gold Border */
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
-  --shadow-sm: 0 2px 8px rgba(92, 44, 22, 0.06);
-  --shadow-md: 0 8px 24px rgba(92, 44, 22, 0.08);
-  --shadow-lg: 0 16px 40px rgba(92, 44, 22, 0.12);
-  --transition-smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-sm: 0 2px 10px rgba(74, 21, 33, 0.05);
+  --shadow-md: 0 10px 28px rgba(74, 21, 33, 0.08);
+  --shadow-lg: 0 20px 48px rgba(74, 21, 33, 0.13);
+  --transition-smooth: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {

@@ -116,11 +116,11 @@
 }
 
 .nav-link:hover {
-  color: #ffcf96;
+  color: #f7d598;
 }
 
 .nav-link.active {
-  color: #ffc27d;
+  color: var(--color-accent);
   font-weight: 700;
 }
 
@@ -132,7 +132,7 @@
   left: 0;
   width: 0;
   height: 2.5px;
-  background: #ffc27d;
+  background: var(--color-accent);
   border-radius: 4px;
   transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease;
 }
@@ -144,7 +144,7 @@
 
 /* On Scroll: Nav link colors switch to brand typography */
 .header.scrolled .nav-link {
-  color: #3f2f26;
+  color: var(--color-text-main);
   text-shadow: none;
 }
 
@@ -157,7 +157,7 @@
 }
 
 .header.scrolled .nav-link::after {
-  background: linear-gradient(90deg, var(--color-primary), #a64c23);
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
 }
 
 /* Make an Enquiry CTA Button */
@@ -171,33 +171,34 @@
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  background: linear-gradient(135deg, #d36a28 0%, #9e4312 100%);
-  color: #ffffff !important;
+  background: linear-gradient(135deg, #d49a3d 0%, #b87f28 100%);
+  color: #1a0f05 !important;
   font-size: 0.95rem;
   font-weight: 700;
   padding: 0.72rem 1.5rem;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 16px rgba(212, 154, 61, 0.3);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   letter-spacing: 0.2px;
 }
 
 .enquiry-btn:hover {
-  background: linear-gradient(135deg, #e47530 0%, #b85216 100%);
+  background: linear-gradient(135deg, #e5aa4e 0%, #c48a30 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(184, 82, 22, 0.45);
+  box-shadow: 0 6px 22px rgba(212, 154, 61, 0.45);
 }
 
 .header.scrolled .enquiry-btn {
-  background: linear-gradient(135deg, var(--color-primary) 0%, #753416 100%);
-  border: 1px solid transparent;
-  box-shadow: 0 4px 14px rgba(92, 44, 22, 0.22);
+  background: linear-gradient(135deg, var(--color-primary) 0%, #631d2c 100%);
+  color: #ffffff !important;
+  border: 1px solid rgba(212, 154, 61, 0.3);
+  box-shadow: 0 4px 16px rgba(74, 21, 33, 0.25);
 }
 
 .header.scrolled .enquiry-btn:hover {
-  background: linear-gradient(135deg, #461f0f 0%, var(--color-primary) 100%);
-  box-shadow: 0 6px 20px rgba(92, 44, 22, 0.32);
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  box-shadow: 0 6px 20px rgba(74, 21, 33, 0.35);
 }
 
 .enquiry-btn .cta-arrow {

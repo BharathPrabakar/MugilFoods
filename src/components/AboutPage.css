@@ -8,7 +8,7 @@
 /* Hero Banner with seamless blend for transparent header */
 .about-hero-banner {
   padding: 8.5rem 1.5rem 3.5rem;
-  background: linear-gradient(135deg, #241006 0%, #461f0f 55%, #301407 100%);
+  background: linear-gradient(135deg, #240810 0%, #4a1521 55%, #320c15 100%);
   color: #ffffff;
   text-align: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -25,12 +25,12 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: #ffd699;
-  background: rgba(255, 214, 153, 0.15);
+  color: var(--color-accent);
+  background: rgba(212, 154, 61, 0.15);
   padding: 0.35rem 1.1rem;
   border-radius: 9999px;
   margin-bottom: 1rem;
-  border: 1px solid rgba(255, 214, 153, 0.25);
+  border: 1px solid rgba(212, 154, 61, 0.3);
 }
 
 .about-page-title {
