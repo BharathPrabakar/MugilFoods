@@ -117,11 +117,11 @@
 }
 
 .nav-link:hover {
-  color: #a7f3bf;
+  color: #fde047;
 }
 
 .nav-link.active {
-  color: #fef08a;
+  color: #fde047;
   font-weight: 700;
 }
 
@@ -133,7 +133,7 @@
   left: 0;
   width: 0;
   height: 3px;
-  background: var(--color-green);
+  background: var(--color-primary);
   border-radius: 4px;
   transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease;
 }
@@ -150,15 +150,15 @@
 }
 
 .header.scrolled .nav-link:hover {
-  color: var(--color-green);
+  color: var(--color-primary);
 }
 
 .header.scrolled .nav-link.active {
-  color: var(--color-green-dark);
+  color: var(--color-primary);
 }
 
 .header.scrolled .nav-link::after {
-  background: var(--color-green);
+  background: var(--color-primary);
 }
 
 /* Make an Enquiry CTA Button */
@@ -174,36 +174,36 @@
   gap: 0.55rem;
   font-family: var(--font-heading);
   background: #ffffff;
-  color: var(--color-green-dark) !important;
+  color: var(--color-primary) !important;
   font-size: 0.98rem;
   font-weight: 800;
   padding: 0.72rem 1.6rem;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.9);
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   letter-spacing: 0.2px;
 }
 
 .enquiry-btn:hover {
-  background: var(--color-green);
+  background: var(--color-primary);
   color: #ffffff !important;
-  border-color: var(--color-green);
+  border-color: var(--color-primary);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(10, 130, 58, 0.35);
+  box-shadow: 0 8px 24px rgba(217, 35, 45, 0.35);
 }
 
 .header.scrolled .enquiry-btn {
-  background: var(--color-green);
+  background: var(--color-primary);
   color: #ffffff !important;
-  border: 1px solid var(--color-green-dark);
-  box-shadow: 0 4px 14px rgba(10, 130, 58, 0.25);
+  border: 1px solid var(--color-primary-dark);
+  box-shadow: 0 4px 14px rgba(217, 35, 45, 0.25);
 }
 
 .header.scrolled .enquiry-btn:hover {
-  background: var(--color-green-dark);
-  border-color: var(--color-green-dark);
-  box-shadow: 0 6px 20px rgba(6, 96, 41, 0.35);
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  box-shadow: 0 6px 20px rgba(181, 20, 29, 0.35);
 }
 
 .enquiry-btn .cta-arrow {

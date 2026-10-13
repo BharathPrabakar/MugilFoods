@@ -1,32 +1,32 @@
 :root {
-  /* Brand Palette: Fresh Farm Green, Warm Heritage Tamarind Brown, Amber Gold */
-  --color-primary: #5c2a18;         /* Earthy Harvest Tamarind Brown */
-  --color-primary-dark: #3e190c;    /* Deep Roaster Brown */
-  --color-primary-light: #7a3922;   /* Warm Terra Brown */
-  --color-green: #0a823a;           /* Fresh Agricultural Green (as in reference image) */
-  --color-green-dark: #066029;      /* Deep Farm Green */
-  --color-green-light: #eaf6ee;     /* Soft Mint/Herb Green Tint */
-  --color-accent: #d89a24;          /* Warm Harvest Gold */
-  --color-accent-dark: #b87c12;     /* Antique Mustard Gold */
-  --color-accent-light: #fef7e8;    /* Champagne Honey Gold Tint */
-  --color-warm-bg: #f9f8f5;         /* Soft Off-White Human Canvas */
+  /* Everest Inspired FMCG Palette: Vibrant Spice Red, Fresh Green, Warm Saffron Gold, Crisp White */
+  --color-primary: #d9232d;         /* Everest Signature Spice Red */
+  --color-primary-dark: #b5141d;    /* Deep Crimson */
+  --color-primary-light: #ef4444;   /* Bright Coral Red */
+  --color-green: #0a823a;           /* Fresh Agricultural Green */
+  --color-green-dark: #066029;      /* Forest Green */
+  --color-green-light: #ecfdf5;     /* Fresh Mint Tint */
+  --color-accent: #f59e0b;          /* Vibrant Saffron Gold */
+  --color-accent-dark: #d97706;     /* Burnished Gold */
+  --color-accent-light: #fffbeb;    /* Warm Saffron Glow */
+  --color-warm-bg: #fcfcfb;         /* Clean, Bright Everest Style Off-White */
   --color-white: #ffffff;
-  --color-card-glass: rgba(255, 255, 255, 0.88); /* Translucent Frosted Glass Card */
-  --color-card-glass-hover: rgba(255, 255, 255, 0.98);
-  --color-text-main: #1f1e1d;       /* High-contrast human text (like Indian retail grocery) */
-  --color-text-muted: #5e5955;      /* Natural Slate Muted */
-  --color-border: #e8e3dc;          /* Clean Organic Card Border */
-  --color-border-subtle: rgba(0, 0, 0, 0.06);
+  --color-card-bg: #ffffff;         /* Clean Crisp White Card (Bordered, Not Heavy Box) */
+  --color-card-glass: #ffffff;
+  --color-text-main: #18181b;       /* Crisp Charcoal Black */
+  --color-text-muted: #52525b;      /* Slate Grey */
+  --color-border: #f1f1f3;          /* Ultra-subtle light border */
+  --color-border-subtle: #f4f4f5;
 
-  /* Typography: Human Retail FMCG Typography */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --font-heading: 'Outfit', 'Poppins', sans-serif;
-  --font-serif: 'Outfit', sans-serif; /* Friendly, crisp modern bold sans headline like reference */
+  /* Typography: Poppins & Outfit like Everest Spices */
+  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Poppins', 'Outfit', sans-serif;
+  --font-serif: 'Poppins', sans-serif;
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.07);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.1);
-  --transition-smooth: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.08);
+  --transition-smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {

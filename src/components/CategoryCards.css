@@ -40,50 +40,47 @@
   gap: 1.75rem;
 }
 
-/* Individual Card Styling: Crisp translucent glass card */
+/* Individual Card Styling: Modern organic curved display (Everest Spices aesthetic) */
 .category-card {
   position: relative;
-  background: var(--color-card-glass);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 20px;
+  background: #ffffff;
+  border-radius: 28px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f1f4;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, background 0.28s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
   outline: none;
 }
 
 .category-card:hover,
 .category-card:focus-visible {
-  transform: translateY(-6px);
-  background: #ffffff;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
-  border-color: #ffffff;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(217, 35, 45, 0.09);
+  border-color: rgba(217, 35, 45, 0.2);
 }
 
-/* Image Wrapper */
+/* Image Wrapper: rounded image window */
 .category-image-wrap {
   position: relative;
   width: 100%;
   height: 250px;
   overflow: hidden;
-  background-color: #f6f2ec;
+  background-color: #fafaf9;
 }
 
 .category-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   display: block;
 }
 
 .category-card:hover .category-image {
-  transform: scale(1.07);
+  transform: scale(1.08);
 }
 
 .category-image-overlay {
@@ -92,19 +89,19 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 60%, rgba(35, 17, 9, 0.25) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.2) 100%);
   pointer-events: none;
 }
 
-/* Footer: Name and Arrow */
+/* Footer: Name and Rounded Pill Action */
 .category-footer {
-  padding: 1.25rem 1.35rem;
+  padding: 1.35rem 1.4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
   background-color: #ffffff;
-  border-top: 1px solid #f6f2ec;
+  border-top: 1px solid #f7f7f8;
 }
 
 .category-name {
@@ -117,21 +114,21 @@
 }
 
 .category-card:hover .category-name {
-  color: var(--color-green-dark);
+  color: var(--color-primary);
 }
 
 /* Circular Arrow Icon */
 .category-arrow-btn {
-  width: 38px;
-  height: 38px;
-  min-width: 38px;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
   border-radius: 50%;
-  background: #f4f3ef;
+  background: #f4f4f5;
   color: var(--color-text-main);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .category-arrow-btn svg {
@@ -139,9 +136,9 @@
 }
 
 .category-card:hover .category-arrow-btn {
-  background: var(--color-green);
+  background: var(--color-primary);
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(10, 130, 58, 0.35);
+  box-shadow: 0 6px 16px rgba(217, 35, 45, 0.35);
 }
 
 .category-card:hover .category-arrow-btn svg {

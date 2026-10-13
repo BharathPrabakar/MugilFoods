@@ -25,12 +25,12 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.2px;
-  color: var(--color-green-dark);
-  background: var(--color-green-light);
+  color: var(--color-primary);
+  background: #fef2f2;
   padding: 0.35rem 1.15rem;
   border-radius: 9999px;
   margin-bottom: 1rem;
-  border: 1px solid rgba(10, 130, 58, 0.2);
+  border: 1px solid rgba(217, 35, 45, 0.15);
 }
 
 .why-title {
@@ -44,7 +44,7 @@
 }
 
 .why-highlight {
-  color: var(--color-green);
+  color: var(--color-primary);
   font-style: normal;
 }
 
@@ -64,24 +64,22 @@
 }
 
 .feature-card {
-  background: var(--color-card-glass);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid #f1f1f4;
+  border-radius: 26px;
   padding: 2.25rem 1.75rem;
   display: flex;
   flex-direction: column;
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, background 0.28s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
   position: relative;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
 .feature-card:hover {
   transform: translateY(-8px);
   background: #ffffff;
-  border-color: #ffffff;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+  border-color: rgba(217, 35, 45, 0.2);
+  box-shadow: 0 20px 40px rgba(217, 35, 45, 0.08);
 }
 
 .feature-card-top {
@@ -94,13 +92,13 @@
 .feature-icon-box {
   width: 54px;
   height: 54px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, var(--color-green) 0%, var(--color-green-dark) 100%);
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 16px rgba(10, 130, 58, 0.28);
+  box-shadow: 0 6px 18px rgba(217, 35, 45, 0.28);
   transition: transform 0.3s ease;
 }
 
@@ -113,11 +111,11 @@
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.5px;
-  color: var(--color-green-dark);
-  background: var(--color-green-light);
+  color: var(--color-primary);
+  background: #fef2f2;
   padding: 0.3rem 0.8rem;
   border-radius: 9999px;
-  border: 1px solid rgba(10, 130, 58, 0.2);
+  border: 1px solid rgba(217, 35, 45, 0.15);
 }
 
 .feature-title {
@@ -136,10 +134,10 @@
   line-height: 1.65;
 }
 
-/* Trust Metrics Ribbon */
+/* Trust Metrics Ribbon: Organic pill curved ribbon */
 .trust-metrics-ribbon {
-  background: linear-gradient(135deg, #1f1e1d 0%, #2e2825 100%);
-  border-radius: 22px;
+  background: linear-gradient(135deg, #18181b 0%, #27272a 100%);
+  border-radius: 30px;
   padding: 2.75rem 2.5rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
