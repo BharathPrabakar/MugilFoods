@@ -347,12 +347,17 @@
 }
 
 .explore-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Symmetrically centers and justifies cards */
   gap: 1.75rem;
 }
 
 .explore-item-card {
+  flex: 0 1 calc(25% - 1.35rem); /* Exactly 4 on top, remaining centered below */
+  max-width: calc(25% - 1.35rem);
+  min-width: 230px;
+  box-sizing: border-box;
   background: #fdfaf6;
   border: 1px solid #ebd9c8;
   border-radius: 18px;
@@ -372,6 +377,13 @@
   background: #ffffff;
   border-color: #dfba98;
   box-shadow: 0 10px 24px rgba(92, 44, 22, 0.1);
+}
+
+@media (max-width: 1140px) and (min-width: 769px) {
+  .explore-item-card {
+    flex: 0 1 calc(33.333% - 1.25rem);
+    max-width: calc(33.333% - 1.25rem);
+  }
 }
 
 .explore-img-wrap {
@@ -490,11 +502,15 @@
   .detail-container {
     padding: 0 1rem;
   }
-  .related-grid {
+  .explore-grid {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
   }
   .explore-item-card {
+    flex: initial;
+    max-width: 100%;
+    min-width: 0;
     padding: 0.75rem;
   }
   .explore-item-name {
@@ -503,7 +519,7 @@
 }
 
 @media (max-width: 360px) {
-  .related-grid {
+  .explore-grid {
     grid-template-columns: 1fr;
   }
 }
