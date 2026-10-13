@@ -242,15 +242,38 @@
   .testimonials-header-row {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.25rem;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonials-title {
+    font-size: 1.65rem;
+  }
+
+  .testimonials-sub {
+    font-size: 0.875rem;
   }
 
   .testimonial-card {
-    flex: 0 0 310px;
-    padding: 1.75rem 1.4rem;
+    flex: 0 0 260px;
+    padding: 1.35rem 1.15rem;
+    border-radius: 20px;
+  }
+
+  .testimonial-quote {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .author-name {
+    font-size: 0.95rem;
+  }
+
+  .author-role {
+    font-size: 0.775rem;
   }
 
   .testimonials-section {
-    padding: 4rem 1.25rem 4.5rem;
+    padding: 2.75rem 1rem 3.5rem;
   }
 }

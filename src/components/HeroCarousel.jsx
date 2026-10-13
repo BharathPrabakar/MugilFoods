@@ -123,27 +123,6 @@ export default function HeroCarousel() {
         );
       })}
 
-      {/* Prev / Next Navigation Arrows */}
-      <button 
-        className="carousel-arrow arrow-prev" 
-        onClick={prevSlide}
-        aria-label="Previous Slide"
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
-
-      <button 
-        className="carousel-arrow arrow-next" 
-        onClick={nextSlide}
-        aria-label="Next Slide"
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </button>
-
       {/* Modern Indicators & Progress Bar */}
       <div className="carousel-pagination">
         {slidesData.map((_, idx) => (
@@ -156,13 +135,6 @@ export default function HeroCarousel() {
             <span className="dot-fill" />
           </button>
         ))}
-      </div>
-
-      {/* Slide Counter badge */}
-      <div className="carousel-counter">
-        <span className="current-num">0{currentIndex + 1}</span>
-        <span className="divider">/</span>
-        <span className="total-num">0{totalSlides}</span>
       </div>
     </section>
   );

@@ -28,12 +28,12 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.2px;
-  color: var(--color-primary);
-  background: #fef2f2;
+  color: var(--color-green-dark);
+  background: var(--color-green-light);
   padding: 0.35rem 1rem;
   border-radius: 9999px;
   margin-bottom: 0.85rem;
-  border: 1px solid rgba(217, 35, 45, 0.15);
+  border: 1px solid rgba(10, 130, 58, 0.2);
 }
 
 .about-snippet-title {
@@ -66,15 +66,15 @@
   font-family: var(--font-heading);
   font-size: 1rem;
   font-weight: 700;
-  color: var(--color-primary);
-  border-bottom: 2px solid var(--color-primary);
+  color: var(--color-green-dark);
+  border-bottom: 2px solid var(--color-green);
   padding-bottom: 3px;
   transition: all 0.2s ease;
 }
 
 .btn-snippet-link:hover {
-  color: var(--color-primary-dark);
-  border-color: var(--color-primary-dark);
+  color: var(--color-green);
+  border-color: var(--color-green);
   transform: translateX(4px);
 }
 
