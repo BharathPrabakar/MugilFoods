@@ -31,7 +31,7 @@ export default function Header({ currentPage = 'home', onNavigate, isScrolled = 
           onClick={(e) => handleNavClick('home', '#home', e)}
         >
           <div className="logo-wrapper">
-            <img src={logoImg} alt="Mugil Foods Logo" className="header-logo-img" />
+            <img src={logoImg} alt="Mugil Foods Logo" className="header-logo-img" width="52" height="52" />
           </div>
         </a>
 

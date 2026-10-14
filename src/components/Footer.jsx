@@ -19,7 +19,7 @@ export default function Footer({ onNavigate }) {
           {/* Brand Info */}
           <div className="footer-brand-pane">
             <div className="footer-logo-wrapper">
-              <img src={logoImg} alt="Mugil Foods Logo" className="footer-logo-img" />
+              <img src={logoImg} alt="Mugil Foods Logo" className="footer-logo-img" width="52" height="52" loading="lazy" />
             </div>
             <p className="footer-tagline">
               Premium seedless tamarind & agro-commodities from Dharmapuri since 2006.

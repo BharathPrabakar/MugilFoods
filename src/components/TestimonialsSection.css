@@ -293,8 +293,9 @@
   align-items: center;
   gap: 0.3rem;
   font-size: 0.75rem;
-  color: #8c7d72;
+  color: #574c43;
   margin-top: 0.25rem;
+  font-weight: 500;
 }
 
 .author-location svg {
