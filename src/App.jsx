@@ -139,23 +139,33 @@ function App() {
 
       {/* Route Views: Home | Products Catalog | Dedicated Product Detail | Detailed Services | Detailed About | Dedicated Enquiry */}
       {currentPage === 'product-detail' && activeProduct ? (
-        <ProductDetailPage 
-          key={activeProduct.id}
-          product={activeProduct}
-          onBackToProducts={handleBackToProducts}
-          onSelectProduct={handleProductSelect}
-        />
+        <main>
+          <ProductDetailPage 
+            key={activeProduct.id}
+            product={activeProduct}
+            onBackToProducts={handleBackToProducts}
+            onSelectProduct={handleProductSelect}
+          />
+        </main>
       ) : currentPage === 'products' ? (
-        <ProductsPage 
-          initialCategory={selectedCategory} 
-          onSelectProduct={handleProductSelect}
-        />
+        <main>
+          <ProductsPage 
+            initialCategory={selectedCategory} 
+            onSelectProduct={handleProductSelect}
+          />
+        </main>
       ) : currentPage === 'services' ? (
-        <ServicesPage />
+        <main>
+          <ServicesPage />
+        </main>
       ) : currentPage === 'about' ? (
-        <AboutPage />
+        <main>
+          <AboutPage />
+        </main>
       ) : currentPage === 'enquiry' ? (
-        <EnquiryPage />
+        <main>
+          <EnquiryPage />
+        </main>
       ) : (
         <main>
           {/* Master Full-Screen Auto-Carousel */}
