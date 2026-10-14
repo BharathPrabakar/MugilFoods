@@ -15,28 +15,6 @@ const testimonials = [
   },
   {
     id: 2,
-    name: 'Priya Sundaram',
-    role: 'Home Chef & Food Blogger',
-    location: 'Bengaluru, Karnataka',
-    rating: 5,
-    avatar: 'PS',
-    product: 'Pure Desi Ghee & Honey',
-    quote:
-      'The aroma of Mugil Foods pure ghee brings back childhood memories of my grandmother’s kitchen. It is truly granular and pure. Their raw honeycomb is a staple on our breakfast table.'
-  },
-  {
-    id: 3,
-    name: 'A. Vijayaraghavan',
-    role: 'Founder, Heritage Naturals Retail Chain',
-    location: 'Chennai, Tamil Nadu',
-    rating: 5,
-    avatar: 'AV',
-    product: 'Retail Distribution Partner',
-    quote:
-      'Stocking Mugil Foods in our 12 organic retail outlets has been one of our easiest success stories. Customers immediately notice the quality difference and repeatedly come back for their cold-pressed oils.'
-  },
-  {
-    id: 4,
     name: 'David MacLeod',
     role: 'Procurement Head, Eastern Spices Import LLC',
     location: 'Dubai, UAE',
@@ -47,7 +25,7 @@ const testimonials = [
       'Timely documentation, vacuum-sealed tamper-proof packaging, and zero foreign matter. Mugil Foods meets international phytosanitary and food safety standards with flying colors.'
   },
   {
-    id: 5,
+    id: 3,
     name: 'Meenakshi Raman',
     role: 'Head of Kitchen, Traditional Feast Catering',
     location: 'Coimbatore, Tamil Nadu',
@@ -56,17 +34,6 @@ const testimonials = [
     product: 'Tamarind Paste & Concentrates',
     quote:
       'When preparing feasts for thousands of guests, pulp consistency is critical. Mugil Foods tamarind paste saves us hours of manual extraction while delivering that authentic, rich sour note every single time.'
-  },
-  {
-    id: 6,
-    name: 'K. Rajeshwaran',
-    role: 'Private Label Partner, GreenRoots Organics',
-    location: 'Hyderabad, Telangana',
-    rating: 5,
-    avatar: 'KR',
-    product: 'Custom Private Labelling',
-    quote:
-      'Their OEM white-labelling team is exceptionally responsive. From glass jar sourcing to tamper-evident seals and compliant nutritional labelling, they launched our oil brand in record time.'
   }
 ];
 

@@ -140,6 +140,7 @@ function App() {
       {/* Route Views: Home | Products Catalog | Dedicated Product Detail | Detailed Services | Detailed About | Dedicated Enquiry */}
       {currentPage === 'product-detail' && activeProduct ? (
         <ProductDetailPage 
+          key={activeProduct.id}
           product={activeProduct}
           onBackToProducts={handleBackToProducts}
           onSelectProduct={handleProductSelect}

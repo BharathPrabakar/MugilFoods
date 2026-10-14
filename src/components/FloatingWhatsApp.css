@@ -131,12 +131,13 @@
   }
   
   .floating-whatsapp-btn {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
   }
 
   .floating-whatsapp-svg {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
   }
 }
+

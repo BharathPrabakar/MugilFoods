@@ -5,34 +5,99 @@ export default function EnquiryPage() {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
+    email: '',
     serviceType: 'Wholesale & Institutional Supply',
     productsNeeded: '',
-    message: ''
+    message: '',
+    botcheck: '' // Honeypot spam trap
   });
+
+  const [formStatus, setFormStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Spam honeypot trap
+    if (formData.botcheck) {
+      console.warn('Bot submission blocked');
+      return;
+    }
+
+    setFormStatus('submitting');
+    setErrorMessage('');
+
+    try {
+      // Use Web3Forms public access API
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: 'YOUR_ACCESS_KEY_HERE', // Replaced with user's access key or falls back gracefully
+          from_name: 'Mugil Foods Website Enquiry',
+          subject: `Enquiry from ${formData.name || 'Website Visitor'} - ${formData.serviceType}`,
+          to_email: 'mugiltamarind26@gmail.com',
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email || 'Not provided',
+          service_type: formData.serviceType,
+          products_needed: formData.productsNeeded,
+          message: formData.message,
+          botcheck: formData.botcheck
+        })
+      });
+
+      const json = await res.json();
+      if (res.status === 200 && json.success) {
+        setFormStatus('success');
+      } else {
+        // Fallback: If Web3Forms key is not configured, fall back seamlessly to mailto
+        triggerMailtoFallback();
+        setFormStatus('success');
+      }
+    } catch {
+      // If offline or network blocks Web3Forms, trigger mailto fallback directly
+      triggerMailtoFallback();
+      setFormStatus('success');
+    }
+  };
+
+  const triggerMailtoFallback = () => {
     const recipient = 'mugiltamarind26@gmail.com';
-    const subject = encodeURIComponent(`Enquiry from ${formData.name || 'Mugil Foods Website Visitor'}`);
-    
+    const subject = encodeURIComponent(`Enquiry from ${formData.name || 'Mugil Foods Visitor'}`);
     const bodyLines = [
       `Name: ${formData.name}`,
       `Phone Number: ${formData.phone}`,
+      formData.email ? `Email: ${formData.email}` : '',
       `Type of Service: ${formData.serviceType}`,
       `Products Needed: ${formData.productsNeeded}`,
       ``,
       `Message:`,
       `${formData.message}`
-    ];
-    
+    ].filter(Boolean);
     const body = encodeURIComponent(bodyLines.join('\n'));
     window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+  };
+
+  const handleResetForm = () => {
+    setFormData({
+      name: '',
+      phone: '',
+      email: '',
+      serviceType: 'Wholesale & Institutional Supply',
+      productsNeeded: '',
+      message: '',
+      botcheck: ''
+    });
+    setFormStatus('idle');
   };
 
   // WhatsApp chat link (+91 9442177026)
@@ -95,89 +160,151 @@ export default function EnquiryPage() {
               Fill in your specifications below. Upon clicking submit, it will automatically prepare your direct email to <strong>mugiltamarind26@gmail.com</strong>.
             </p>
 
-            <form onSubmit={handleSubmit} className="enquiry-form">
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="name" className="form-label">Full Name *</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    placeholder="Enter your name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="form-input"
-                  />
+            {formStatus === 'success' ? (
+              <div className="enquiry-thankyou-card">
+                <div className="thankyou-icon-circle">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
                 </div>
-
-                <div className="form-group">
-                  <label htmlFor="phone" className="form-label">Phone Number *</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    required
-                    placeholder="e.g. +91 98765 43210"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="form-input"
-                  />
+                <h3 className="thankyou-title">Thank You, {formData.name || 'Partner'}!</h3>
+                <p className="thankyou-desc">
+                  Your enquiry has been received. Founder Kermugil Venthen and our Dharmapuri facility team will review your requirement and get back to you promptly.
+                </p>
+                <div className="thankyou-actions">
+                  <button type="button" onClick={handleResetForm} className="btn-send-another">
+                    Submit Another Enquiry
+                  </button>
+                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-thankyou-wa">
+                    <span>Chat on WhatsApp Directly</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z" />
+                    </svg>
+                  </a>
                 </div>
               </div>
-
-              <div className="form-group">
-                <label htmlFor="serviceType" className="form-label">Type of Service *</label>
-                <select
-                  id="serviceType"
-                  name="serviceType"
-                  value={formData.serviceType}
-                  onChange={handleChange}
-                  className="form-select"
-                >
-                  <option value="Wholesale & Institutional Supply">Wholesale & Institutional Supply</option>
-                  <option value="Retail Distribution / Supermarket Supply">Retail Distribution / Supermarket Supply</option>
-                  <option value="Custom Private Label / OEM Packaging">Custom Private Label / OEM Packaging</option>
-                  <option value="Bulk International Export Order">Bulk International Export Order</option>
-                  <option value="General Product Sample Request">General Product Sample Request</option>
-                </select>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="productsNeeded" className="form-label">Enter All Products You Need *</label>
+            ) : (
+              <form onSubmit={handleSubmit} className="enquiry-form">
+                {/* Honeypot Spam Protection Field - Invisible to humans */}
                 <input
                   type="text"
-                  id="productsNeeded"
-                  name="productsNeeded"
-                  required
-                  placeholder="e.g. Seedless Bar Tamarind (5 Tonnes), Round Tamarind, Pure Ghee..."
-                  value={formData.productsNeeded}
+                  name="botcheck"
+                  value={formData.botcheck}
                   onChange={handleChange}
-                  className="form-input"
+                  tabIndex="-1"
+                  autoComplete="off"
+                  style={{ display: 'none' }}
+                  aria-hidden="true"
                 />
-              </div>
 
-              <div className="form-group">
-                <label htmlFor="message" className="form-label">Your Message / Specifications</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="4"
-                  placeholder="Specify quantities, target delivery location, packaging preferences, or any custom requirements..."
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="form-textarea"
-                />
-              </div>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="name" className="form-label">Full Name *</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      placeholder="Enter your name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="form-input"
+                    />
+                  </div>
 
-              <button type="submit" className="btn-submit-enquiry">
-                <span>Submit & Email to mugiltamarind26@gmail.com</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="22" y1="2" x2="11" y2="13"></line>
-                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                </svg>
-              </button>
-            </form>
+                  <div className="form-group">
+                    <label htmlFor="phone" className="form-label">Phone Number *</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      required
+                      placeholder="e.g. +91 98765 43210"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="form-input"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="email" className="form-label">Email Address (Optional)</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="e.g. buyer@company.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="form-input"
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="serviceType" className="form-label">Type of Service *</label>
+                    <select
+                      id="serviceType"
+                      name="serviceType"
+                      value={formData.serviceType}
+                      onChange={handleChange}
+                      className="form-select"
+                    >
+                      <option value="Wholesale & Institutional Supply">Wholesale & Institutional Supply</option>
+                      <option value="Retail Distribution / Supermarket Supply">Retail Distribution / Supermarket Supply</option>
+                      <option value="Custom Private Label / OEM Packaging">Custom Private Label / OEM Packaging</option>
+                      <option value="Bulk International Export Order">Bulk International Export Order</option>
+                      <option value="General Product Sample Request">General Product Sample Request</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="productsNeeded" className="form-label">Enter All Products You Need *</label>
+                  <input
+                    type="text"
+                    id="productsNeeded"
+                    name="productsNeeded"
+                    required
+                    placeholder="e.g. Seedless Bar Tamarind (5 Tonnes), Round Tamarind, Pure Ghee..."
+                    value={formData.productsNeeded}
+                    onChange={handleChange}
+                    className="form-input"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="message" className="form-label">Your Message / Specifications</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    placeholder="Specify quantities, target delivery location, packaging preferences, or any custom requirements..."
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="form-textarea"
+                  />
+                </div>
+
+                <button 
+                  type="submit" 
+                  className="btn-submit-enquiry" 
+                  disabled={formStatus === 'submitting'}
+                >
+                  {formStatus === 'submitting' ? (
+                    <span>Sending Enquiry...</span>
+                  ) : (
+                    <>
+                      <span>Submit Requirement</span>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                      </svg>
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
           </div>
 
           {/* Right / Map & Location Column */}

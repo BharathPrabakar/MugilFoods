@@ -55,7 +55,7 @@ export default function ProductDetailPage({
             <div className="main-image-display">
               <img src={selectedImage} alt={product.name} className="product-primary-img" />
               <div className="detail-badge-pill">
-                <span>{product.status === 'coming-soon' ? 'Coming Soon' : 'Pure & Cured'}</span>
+                <span>{product.status === 'coming-soon' ? 'Launching Soon' : 'Pure & Cured'}</span>
               </div>
             </div>
 
