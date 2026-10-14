@@ -84,7 +84,7 @@ export default function ProductsPage({
             ) : (
               <div className="coming-soon-pill">
                 <span className="pulse-dot" />
-                <span>Coming Soon</span>
+                <span>Launching Soon</span>
               </div>
             )}
           </div>
@@ -115,7 +115,7 @@ export default function ProductsPage({
                     
                     {isComingSoon && (
                       <div className="clean-coming-overlay">
-                        <span>Coming Soon</span>
+                        <span>Launching Soon</span>
                       </div>
                     )}
 

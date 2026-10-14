@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './ServicesPage.css';
 
-import wholesaleImg from '../assets/service_wholesale.jpg';
-import retailImg from '../assets/service_retail.jpg';
-import customLabelImg from '../assets/service_custom_label.jpg';
+import wholesaleImg from '../assets/service_wholesale.webp';
+import retailImg from '../assets/service_retail.webp';
+import customLabelImg from '../assets/service_custom_label.webp';
 
 const serviceSegments = [
   {
@@ -11,7 +11,7 @@ const serviceSegments = [
     name: 'Wholesale & Institutional Supply',
     subtitle: 'Direct Agro-Processing • Container Loads • Pan-India & Export Logistics',
     image: wholesaleImg,
-    lead: 'We operate at commercial agricultural scale, supplying premium seedless tamarind slabs, whole pods, cold-pressed oils, and pure desi ghee directly to food manufacturers, large-scale caterers, spice millers, and international importers.',
+    lead: 'We operate at commercial agricultural scale, supplying premium seedless tamarind slabs, whole pods, and concentrates (with cold-pressed oils and pure desi ghee launching soon) directly to food manufacturers, large-scale caterers, spice millers, and international importers.',
     capabilities: [
       {
         title: 'High-Volume Capacity',

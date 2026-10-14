@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './HeroCarousel.css';
 
-import slideMugilFoods from '../assets/slide_mugil_foods.png';
-import slideMugilTamarind from '../assets/slide_mugil_tamarind.png';
-import slideMugilHoney from '../assets/slide_mugil_honey.png';
+import slideMugilFoods from '../assets/slide_mugil_foods.webp';
+import slideMugilTamarind from '../assets/slide_mugil_tamarind.webp';
+import slideMugilHoney from '../assets/slide_mugil_honey.webp';
 
 const slidesData = [
   {

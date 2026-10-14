@@ -1,10 +1,10 @@
 import React from 'react';
 import './CategoryCards.css';
 
-import tamarindImg from '../assets/category_tamarind.jpg';
-import oilImg from '../assets/category_oil.jpg';
-import gheeImg from '../assets/category_ghee.jpg';
-import honeyImg from '../assets/category_honey.jpg';
+import tamarindImg from '../assets/category_tamarind.webp';
+import oilImg from '../assets/category_oil.webp';
+import gheeImg from '../assets/category_ghee.webp';
+import honeyImg from '../assets/category_honey.webp';
 
 const categories = [
   {

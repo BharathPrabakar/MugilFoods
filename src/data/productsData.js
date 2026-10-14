@@ -1,13 +1,13 @@
-import tamarindImg from '../assets/category_tamarind.jpg';
-import oilImg from '../assets/category_oil.jpg';
-import gheeImg from '../assets/category_ghee.jpg';
-import honeyImg from '../assets/category_honey.jpg';
+import tamarindImg from '../assets/category_tamarind.webp';
+import oilImg from '../assets/category_oil.webp';
+import gheeImg from '../assets/category_ghee.webp';
+import honeyImg from '../assets/category_honey.webp';
 
-import slide1Img from '../assets/slide1.jpg'; // Slab Tamarind
-import slide2Img from '../assets/slide2.jpg'; // Round Swirl Tamarind
-import slide3Img from '../assets/slide3.jpg'; // Raw Tamarind Pods
-import slide4Img from '../assets/slide4.jpg'; // Tamarind Paste
-import karipuliImg from '../assets/prod_karipuli.jpg'; // Karipuli
+import slide1Img from '../assets/slide1.webp'; // Slab Tamarind
+import slide2Img from '../assets/slide2.webp'; // Round Swirl Tamarind
+import slide3Img from '../assets/slide3.webp'; // Raw Tamarind Pods
+import slide4Img from '../assets/slide4.webp'; // Tamarind Paste
+import karipuliImg from '../assets/prod_karipuli.webp'; // Karipuli
 
 export const categoriesData = [
   {

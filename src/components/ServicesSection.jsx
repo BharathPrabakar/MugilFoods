@@ -1,9 +1,9 @@
 import React from 'react';
 import './ServicesSection.css';
 
-import wholesaleImg from '../assets/service_wholesale.jpg';
-import retailImg from '../assets/service_retail.jpg';
-import customLabelImg from '../assets/service_custom_label.jpg';
+import wholesaleImg from '../assets/service_wholesale.webp';
+import retailImg from '../assets/service_retail.webp';
+import customLabelImg from '../assets/service_custom_label.webp';
 
 const services = [
   {
@@ -12,7 +12,7 @@ const services = [
     subtitle: 'Bulk Quantities & Institutional Supply',
     image: wholesaleImg,
     description:
-      'Direct farm-to-industry bulk shipments of seedless tamarind slabs, pure oils, and ghee with consistent volume, batch certifications, and competitive wholesale pricing.',
+      'Direct farm-to-industry bulk shipments of seedless tamarind slabs and concentrates, with cold-pressed oils and pure ghee launching soon.',
     highlights: ['Export Grade Quality', 'Container & Tonne Volumes', 'Standardized Pallet Logistics'],
     ctaLabel: 'Request Wholesale Quote',
     href: '#enquiry'
