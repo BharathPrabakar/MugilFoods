@@ -116,7 +116,7 @@ export default function TestimonialsSection() {
           {testimonials.map((item) => {
             const isExpanded = expandedCardId === item.id;
             return (
-              <article 
+              <div 
                 key={item.id} 
                 className={`testimonial-card ${isExpanded ? 'expanded' : ''}`}
                 onClick={() => toggleExpand(item.id)}
@@ -129,6 +129,7 @@ export default function TestimonialsSection() {
                   }
                 }}
                 aria-expanded={isExpanded}
+                aria-label={`Testimonial from ${item.name}`}
                 title="Click or tap to elaborate"
               >
                 <div className="card-top-row">
@@ -172,7 +173,7 @@ export default function TestimonialsSection() {
                   </span>
                 </div>
               </div>
-            </article>
+            </div>
           );
         })}
         </div>
