@@ -15,6 +15,12 @@ import rawTamClean from '../assets/raw_tamarind_clean.jpg';
 import rawTamBag from '../assets/raw_tamarind_bag.jpg';
 import rawTamBulk from '../assets/raw_tamarind_bulk.jpg';
 
+// Client Seedless Tamarind High-Res Photos
+import seedlessBlock from '../assets/seedless_tamarind_block.jpg';
+import seedlessClose from '../assets/seedless_tamarind_close.jpg';
+import seedlessBags from '../assets/seedless_tamarind_bags.jpg';
+import seedlessBulk from '../assets/seedless_tamarind_bulk.jpg';
+
 export const categoriesData = [
   {
     id: 'tamarind',
@@ -82,19 +88,39 @@ export const productsData = {
       id: 'seedless-tamarind',
       categoryId: 'tamarind',
       name: 'Seedless Tamarind',
-      tagline: 'Carefully Deseeded, High-Yield Natural Pulp',
-      image: slide1Img,
-      gallery: [slide1Img, slide2Img],
+      tagline: 'Carefully Deseeded, Pure Tangy Pulp & Seedless Tamarind Cake',
+      image: seedlessBlock,
+      gallery: [seedlessBlock, seedlessClose, seedlessBags, seedlessBulk],
       description:
-        'Carefully deseeded and destringed whole pulp with uniform moisture, high pulping yield, and natural tang. Thoroughly sorted to ensure zero stone particles and foreign matter, making it ready for instant kitchen and commercial use.',
+        'Our Seedless Tamarind is carefully processed to deliver natural tanginess, rich flavour, and consistent quality. Hygienically handled and prepared from premium sun-cured harvest with seeds and fibres thoroughly removed, it is perfectly suited for industrial food processing, culinary applications, gourmet sauces & chutneys, bulk wholesalers, and global export markets.',
       features: [
-        'Clean & Stone-Free Seedless Pulp',
-        'Optimal Moisture Retained for Fast Dissolving',
-        'Export Grade Sorting & Hygiene Standards',
-        'Zero Added Sugar, Starch, or Preservatives'
+        'Pure Deseeded Pulp with Seeds & String Fibres Thoroughly Removed',
+        'Naturally Sour and Tangy with Rich Authentic Taste',
+        'Uniform Moisture Retained for Fast Dissolving & High Pulp Yield',
+        'Hygienically Handled Under Strict Quality & Food Safety Controls',
+        'Zero Added Sugar, Preservatives, Starch, or Artificial Flavours',
+        'Ready for Commercial Food Processing, Sauces, Curries & Exports'
       ],
-      packagingSizes: ['500g Pouch', '1kg Vacuum Brick', '10kg / 20kg Master Carton'],
-      storageInstruction: 'Keep sealed in airtight container or refrigerate for maximum aroma retention.',
+      specifications: [
+        { label: 'Product Name', value: 'Seedless Tamarind' },
+        { label: 'Product Type', value: 'Seedless Tamarind' },
+        { label: 'Colour', value: 'Natural Brown' },
+        { label: 'Taste', value: 'Naturally Sour and Tangy' },
+        { label: 'Form', value: 'Seedless Tamarind Cake / Compressed Block' },
+        { label: 'Processing', value: 'Seeds Removed & Fibres Cleaned' },
+        { label: 'Usage', value: 'Food Processing, Cooking, Sauces & Chutneys' },
+        { label: 'Packaging', value: 'As per Customer Requirement (Retail & Bulk Blocks)' },
+        { label: 'Storage', value: 'Store in a Cool, Dry Place' },
+        { label: 'Shelf Life', value: 'As per Product Packaging & Storage Conditions' },
+        { label: 'Market Scope', value: 'Domestic & Export' }
+      ],
+      packagingSizes: [
+        '500g / 1 kg Consumer Packs',
+        '10 kg Compressed Slabs / Master Cartons',
+        '30 kg Heavy-Duty Moisture-Proof Export Slab',
+        'Customized Bulk Packaging as per Customer Requirement'
+      ],
+      storageInstruction: 'Store in a cool, dry place away from moisture and direct sunlight. Keep sealed in airtight packaging for maximum aroma and freshness.',
       status: 'available'
     },
     {

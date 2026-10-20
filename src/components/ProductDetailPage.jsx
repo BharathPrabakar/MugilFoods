@@ -74,41 +74,6 @@ export default function ProductDetailPage({
                 ))}
               </div>
             )}
-
-            {/* Media Column Quick Trust Card (Balances desktop height & looks structured) */}
-            <div className="detail-media-trust-card">
-              <div className="trust-card-title">Direct Procurement & Assurance</div>
-              <div className="trust-card-grid">
-                <div className="trust-item">
-                  <div className="trust-icon">🌱</div>
-                  <div className="trust-text">
-                    <strong>100% Natural Harvest</strong>
-                    <span>Direct farm harvest, zero chemicals</span>
-                  </div>
-                </div>
-                <div className="trust-item">
-                  <div className="trust-icon">📦</div>
-                  <div className="trust-text">
-                    <strong>Export & Bulk Ready</strong>
-                    <span>Custom cartons, poly-liners & bags</span>
-                  </div>
-                </div>
-                <div className="trust-item">
-                  <div className="trust-icon">🔍</div>
-                  <div className="trust-text">
-                    <strong>Quality Graded</strong>
-                    <span>Rigorous cleaning & hygiene sorting</span>
-                  </div>
-                </div>
-                <div className="trust-item">
-                  <div className="trust-icon">⚡</div>
-                  <div className="trust-text">
-                    <strong>Reliable Supply</strong>
-                    <span>Consistent volume for food processors</span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Right Column: Title, Tagline, Description & Inquiries */}

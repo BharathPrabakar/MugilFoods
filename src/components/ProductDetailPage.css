@@ -69,13 +69,13 @@
 
 /* Main Detail Presentation */
 .detail-main-section {
-  padding: 3.5rem 0 4.5rem;
+  padding: 3rem 0 4.5rem;
 }
 
 .detail-main-grid {
   display: grid;
-  grid-template-columns: 1.1fr 1.3fr;
-  gap: 4rem;
+  grid-template-columns: 460px minmax(0, 1fr);
+  gap: 3.5rem;
   align-items: start;
 }
 
@@ -85,7 +85,7 @@
   flex-direction: column;
   gap: 1.25rem;
   position: sticky;
-  top: 6rem;
+  top: 5.5rem;
 }
 
 .main-image-display {
@@ -153,67 +153,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-}
-
-/* Detail Media Trust Card (Balances desktop height below image) */
-.detail-media-trust-card {
-  margin-top: 0.5rem;
-  background: #ffffff;
-  border: 1px solid #eedfd0;
-  border-radius: 20px;
-  padding: 1.25rem 1.35rem;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
-}
-
-.trust-card-title {
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  color: var(--color-primary);
-  margin-bottom: 0.9rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #f5eee8;
-}
-
-.trust-card-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem 1.15rem;
-}
-
-.trust-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.65rem;
-}
-
-.trust-icon {
-  font-size: 1.15rem;
-  line-height: 1.2;
-  flex-shrink: 0;
-}
-
-.trust-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.trust-text strong {
-  font-family: var(--font-heading);
-  font-size: 0.825rem;
-  font-weight: 700;
-  color: var(--color-text-main);
-  line-height: 1.25;
-}
-
-.trust-text span {
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-  line-height: 1.35;
-  margin-top: 0.15rem;
 }
 
 /* Detail Info Column */
@@ -724,17 +663,6 @@
 
   .storage-text {
     font-size: 0.825rem;
-  }
-
-  /* Media trust card mobile adjustments */
-  .detail-media-trust-card {
-    border-radius: 16px;
-    padding: 1rem 1.15rem;
-  }
-
-  .trust-card-grid {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
   }
 
   /* Action Buttons Mobile */
