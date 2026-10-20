@@ -21,6 +21,12 @@ import seedlessClose from '../assets/seedless_tamarind_close.jpg';
 import seedlessBags from '../assets/seedless_tamarind_bags.jpg';
 import seedlessBulk from '../assets/seedless_tamarind_bulk.jpg';
 
+// Client Seedless Round Tamarind High-Res Photos
+import roundTamSwirl from '../assets/round_tamarind_swirl.jpg';
+import roundTamDisc from '../assets/round_tamarind_disc.jpg';
+import roundTamStack from '../assets/round_tamarind_stack.jpg';
+import roundTamBaskets from '../assets/round_tamarind_woven_baskets.jpg';
+
 export const categoriesData = [
   {
     id: 'tamarind',
@@ -127,19 +133,38 @@ export const productsData = {
       id: 'round-seedless-tamarind',
       categoryId: 'tamarind',
       name: 'Round Seedless Tamarind',
-      tagline: 'Artisanal Ring-Packed Traditional Coil',
-      image: slide2Img,
-      gallery: [slide2Img, slide1Img],
+      tagline: 'Uniform Handcrafted Concentric Discs & Artisanal Rounds',
+      image: roundTamSwirl,
+      gallery: [roundTamSwirl, roundTamDisc, roundTamStack, roundTamBaskets],
       description:
-        'Spiraled into traditional concentric rings to seal in freshness, natural moisture, and age-old culinary aroma. This authentic South Indian ring-packing technique protects delicate pulp strands from breaking down during transit.',
+        'Quality tamarind is carefully selected, cleaned, and deseeded. The pulp is then shaped into uniform round portions using hygienic handling methods. The finished product is checked for quality, packed in suitable food-grade packaging, and stored under appropriate conditions to maintain its natural flavour, colour, and freshness. Perfect for traditional culinary use, retail gifting, wholesalers, and export shipments.',
       features: [
-        'Traditional Concentric Ring Layering',
-        'Aroma-Locked & Moisture Preserved Naturally',
-        'Ideal for Heritage Cooking & Gifting',
-        'Hygienically Packed under Stringent Quality Controls'
+        'Selected Premium Harvest, Thoroughly Cleaned & Deseeded',
+        'Artisanal Uniform Round Portions Formed with Hygienic Methods',
+        'Moisture-Sealed Concentric Discs Retaining Natural Tang & Aroma',
+        'Traditional Natural Packaging & Breathable Woven Basket Shipments',
+        '100% Pure Tamarind Pulp with Zero Added Sugar or Preservatives',
+        'Checked for Quality and Suitable for Domestic Wholesale & Export'
       ],
-      packagingSizes: ['250g Box', '500g Sealed Ring Pack', '1kg Round Tin / Pack'],
-      storageInstruction: 'Store in an airtight jar in a cool pantry.',
+      specifications: [
+        { label: 'Product Name', value: 'Seedless Round Tamarind' },
+        { label: 'Product Type', value: 'Seedless Tamarind' },
+        { label: 'Form / Shape', value: 'Uniform Round Portions / Concentric Discs' },
+        { label: 'Processing', value: 'Carefully Selected, Cleaned & Deseeded' },
+        { label: 'Taste', value: 'Naturally Sour and Tangy' },
+        { label: 'Colour', value: 'Natural Brown' },
+        { label: 'Packaging', value: 'Food-grade packaging, sealed rings & traditional woven baskets' },
+        { label: 'Storage', value: 'Store under cool, dry conditions to maintain flavour & freshness' },
+        { label: 'Quality Standard', value: 'Hygienically handled and checked for uniform quality' },
+        { label: 'Market Scope', value: 'Culinary, Retail, Wholesale & Export' }
+      ],
+      packagingSizes: [
+        '250g / 500g Sealed Ring Packs',
+        '1 kg Artisanal Round Tins / Boxes',
+        '10 kg / 20 kg Master Cartons',
+        'Traditional Handwoven Breathable Baskets (Bulk / Export)'
+      ],
+      storageInstruction: 'Store under cool, dry conditions away from moisture and direct sunlight to maintain natural flavour, colour, and freshness.',
       status: 'available'
     },
     {
