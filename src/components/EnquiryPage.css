@@ -105,7 +105,7 @@
 .reachout-desc {
   font-family: var(--font-sans);
   font-size: 1rem;
-  color: var(--color-text-muted);
+  color: #44403c;
   line-height: 1.6;
 }
 
@@ -186,7 +186,7 @@
 .form-card-sub {
   font-family: var(--font-sans);
   font-size: 0.95rem;
-  color: var(--color-text-muted);
+  color: #44403c;
   line-height: 1.6;
   margin-bottom: 2rem;
 }
