@@ -74,6 +74,23 @@ export default function ProductDetailPage({
                 ))}
               </div>
             )}
+
+            {/* Key Highlights & Quality (Placed under media for visual balance) */}
+            {product.features && (
+              <div className="detail-media-highlights-card">
+                <h3 className="media-highlights-heading">Key Highlights & Quality</h3>
+                <ul className="features-checklist">
+                  {product.features.map((feat, i) => (
+                    <li key={i}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
           {/* Right Column: Title, Tagline, Description & Inquiries */}
@@ -89,23 +106,6 @@ export default function ProductDetailPage({
               <h3 className="block-heading">Description</h3>
               <p className="detail-description-text">{product.description}</p>
             </div>
-
-            {/* Key Features */}
-            {product.features && (
-              <div className="detail-block">
-                <h3 className="block-heading">Key Highlights & Quality</h3>
-                <ul className="features-checklist">
-                  {product.features.map((feat, i) => (
-                    <li key={i}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
 
             {/* Product Specifications Table */}
             {product.specifications && product.specifications.length > 0 && (
