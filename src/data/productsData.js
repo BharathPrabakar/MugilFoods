@@ -9,6 +9,12 @@ import slide3Img from '../assets/slide3.webp'; // Raw Tamarind Pods
 import slide4Img from '../assets/slide4.webp'; // Tamarind Paste
 import karipuliImg from '../assets/prod_karipuli.webp'; // Karipuli
 
+// Client Raw Tamarind High-Res Photos
+import rawTamPods from '../assets/raw_tamarind_pods.jpg';
+import rawTamClean from '../assets/raw_tamarind_clean.jpg';
+import rawTamBag from '../assets/raw_tamarind_bag.jpg';
+import rawTamBulk from '../assets/raw_tamarind_bulk.jpg';
+
 export const categoriesData = [
   {
     id: 'tamarind',
@@ -38,19 +44,38 @@ export const productsData = {
       id: 'raw-tamarind',
       categoryId: 'tamarind',
       name: 'Raw Tamarind',
-      tagline: 'Whole Naturally Ripened & Sun-Cured Pods',
-      image: slide3Img,
-      gallery: [slide3Img, slide1Img],
+      tagline: 'Whole Naturally Ripened Pods & Sun-Cured Harvest',
+      image: rawTamPods,
+      gallery: [rawTamPods, rawTamClean, rawTamBag, rawTamBulk],
       description:
-        'Naturally ripened, sun-cured whole tamarind pods sourced straight from organic groves with rich, earthy zest. The outer shell is brittle and easy to deshell, revealing luscious aromatic pulp with dense natural nutrients.',
+        'Our Raw Tamarind is carefully sourced directly from fertile agricultural belts to guarantee authentic tangy taste, deep natural flavor, and consistent batch quality. Grown and harvested under optimal seasonal conditions, each pod is hygienically handled, sorted, and packed to preserve its natural freshness and shelf-life. Ideal for industrial food processing, culinary preparations, wholesale distribution, bulk manufacturing, and global export markets.',
       features: [
-        '100% Naturally Sun-Dried Pods',
-        'Direct Farm Harvest with Zero Chemical Curing',
-        'Traditional Taste and Natural Shelf Longevity',
-        'Rich in Dietary Fiber, Tartaric Acid & Antioxidants'
+        '100% Natural Harvest with Characteristic Sour & Tangy Taste',
+        'Whole Intact Pods & Clean Sorted Flesh',
+        'Hygienically Handled & Stored Under Strict Quality Control',
+        'Direct Farm Sourcing with Zero Artificial Ripening or Chemicals',
+        'High Natural Pulp Yield, Rich in Tartaric Acid & Antioxidants',
+        'Suited for Domestic Wholesalers, Food Processors & Global Exporters'
       ],
-      packagingSizes: ['1 kg Retail Pack', '10 kg Carton', '25 kg / 50 kg Jute Bag (Bulk)'],
-      storageInstruction: 'Store in a cool, dry place away from direct moisture.',
+      specifications: [
+        { label: 'Product Name', value: 'Raw Tamarind' },
+        { label: 'Product Type', value: 'Natural Tamarind' },
+        { label: 'Appearance', value: 'Natural brown to dark brown' },
+        { label: 'Taste', value: 'Characteristically sour and tangy' },
+        { label: 'Form', value: 'Whole tamarind pods' },
+        { label: 'Usage', value: 'Food preparation, cooking, and food processing' },
+        { label: 'Storage', value: 'Store in a cool, dry place away from direct sunlight and moisture' },
+        { label: 'Packaging', value: 'Available in bulk and customized packaging options (subject to availability)' },
+        { label: 'Supply Scope', value: 'Domestic and export markets' },
+        { label: 'Quality Standard', value: 'Selected and handled with a focus on quality and freshness' }
+      ],
+      packagingSizes: [
+        '1 kg / 5 kg Retail Packs',
+        '10 kg / 20 kg Master Cartons',
+        '25 kg / 50 kg Moisture-Proof Bulk Poly/Jute Bags',
+        'Customized Export Packaging on Request'
+      ],
+      storageInstruction: 'Store in a cool, dry place away from direct sunlight and moisture to maintain natural color and tanginess.',
       status: 'available'
     },
     {

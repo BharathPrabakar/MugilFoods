@@ -74,6 +74,41 @@ export default function ProductDetailPage({
                 ))}
               </div>
             )}
+
+            {/* Media Column Quick Trust Card (Balances desktop height & looks structured) */}
+            <div className="detail-media-trust-card">
+              <div className="trust-card-title">Direct Procurement & Assurance</div>
+              <div className="trust-card-grid">
+                <div className="trust-item">
+                  <div className="trust-icon">🌱</div>
+                  <div className="trust-text">
+                    <strong>100% Natural Harvest</strong>
+                    <span>Direct farm harvest, zero chemicals</span>
+                  </div>
+                </div>
+                <div className="trust-item">
+                  <div className="trust-icon">📦</div>
+                  <div className="trust-text">
+                    <strong>Export & Bulk Ready</strong>
+                    <span>Custom cartons, poly-liners & bags</span>
+                  </div>
+                </div>
+                <div className="trust-item">
+                  <div className="trust-icon">🔍</div>
+                  <div className="trust-text">
+                    <strong>Quality Graded</strong>
+                    <span>Rigorous cleaning & hygiene sorting</span>
+                  </div>
+                </div>
+                <div className="trust-item">
+                  <div className="trust-icon">⚡</div>
+                  <div className="trust-text">
+                    <strong>Reliable Supply</strong>
+                    <span>Consistent volume for food processors</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Right Column: Title, Tagline, Description & Inquiries */}
@@ -107,6 +142,25 @@ export default function ProductDetailPage({
               </div>
             )}
 
+            {/* Product Specifications Table */}
+            {product.specifications && product.specifications.length > 0 && (
+              <div className="detail-block">
+                <h3 className="block-heading">Product Specifications</h3>
+                <div className="specs-table-wrapper">
+                  <table className="specs-table">
+                    <tbody>
+                      {product.specifications.map((spec, sIdx) => (
+                        <tr key={sIdx}>
+                          <th scope="row" className="spec-label">{spec.label}</th>
+                          <td className="spec-value">{spec.value}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
             {/* Packaging Sizes */}
             {product.packagingSizes && (
               <div className="detail-block">
@@ -115,6 +169,19 @@ export default function ProductDetailPage({
                   {product.packagingSizes.map((size, idx) => (
                     <span key={idx} className="size-pill">{size}</span>
                   ))}
+                </div>
+              </div>
+            )}
+
+            {/* Storage Instruction */}
+            {product.storageInstruction && (
+              <div className="detail-block storage-note-box">
+                <div className="storage-note-content">
+                  <span className="storage-icon">📦</span>
+                  <div>
+                    <strong className="storage-title">Storage & Handling: </strong>
+                    <span className="storage-text">{product.storageInstruction}</span>
+                  </div>
                 </div>
               </div>
             )}
