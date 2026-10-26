@@ -62,19 +62,19 @@ const PRODUCT_IMAGES = [
   'prod_karipuli.webp',
 ];
 
-// Logo watermark size: ~18% of image width, placed 2% from bottom-right corner
-const WM_RATIO   = 0.18;   // logo width = 18% of image width
+// Logo watermark size: ~20% of image width, placed 2.5% from bottom-right corner
+const WM_RATIO   = 0.20;   // logo width = 20% of image width
 const MARGIN_PCT = 0.025;  // 2.5% margin from edges
 const OPACITY    = 0.55;   // 0=invisible 1=solid  (55% = subtle but visible)
 
 async function buildWatermark(imgWidth, imgHeight) {
-  const wmWidth  = Math.round(imgWidth  * WM_RATIO);
-  const marginX  = Math.round(imgWidth  * MARGIN_PCT);
-  const marginY  = Math.round(imgHeight * MARGIN_PCT);
+  const targetWidth = Math.round(imgWidth * WM_RATIO);
+  const marginX     = Math.round(imgWidth  * MARGIN_PCT);
+  const marginY     = Math.round(imgHeight * MARGIN_PCT);
 
   // 1. Resize logo, ensure it has an alpha channel
   const resized = await sharp(wmSrc)
-    .resize({ width: wmWidth, fit: 'inside' })
+    .resize({ width: targetWidth, fit: 'inside' })
     .ensureAlpha()
     .raw()
     .toBuffer({ resolveWithObject: true });
@@ -94,7 +94,7 @@ async function buildWatermark(imgWidth, imgHeight) {
 
   return {
     input: fadedWm,
-    left:  imgWidth  - wmWidth       - marginX,
+    left:  imgWidth  - wmMeta.width  - marginX,
     top:   imgHeight - wmMeta.height - marginY,
   };
 }
