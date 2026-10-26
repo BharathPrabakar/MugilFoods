@@ -53,6 +53,11 @@ const PRODUCT_IMAGES = [
   'tamarind_paste_batch.jpg',
   'tamarind_paste_closeup.jpg',
   'tamarind_paste_label.jpg',
+  // Seedless Tamarind Slab with White Layer
+  'tamarind_slab_white_pack.jpg',
+  'tamarind_slab_white_layer.jpg',
+  'tamarind_slab_white_bulk.jpg',
+  'tamarind_slab_white_detail.jpg',
   // Category card thumbnails
   'category_tamarind.webp',
   'category_oil.webp',

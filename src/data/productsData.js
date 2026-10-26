@@ -44,6 +44,12 @@ import roundTamDisc from '../assets/round_tamarind_disc.jpg';
 import roundTamStack from '../assets/round_tamarind_stack.jpg';
 import roundTamBaskets from '../assets/round_tamarind_woven_baskets.jpg';
 
+// Seedless Tamarind Slab with White Layer Photos
+import slabWhitePack from '../assets/tamarind_slab_white_pack.jpg';
+import slabWhiteLayer from '../assets/tamarind_slab_white_layer.jpg';
+import slabWhiteBulk from '../assets/tamarind_slab_white_bulk.jpg';
+import slabWhiteDetail from '../assets/tamarind_slab_white_detail.jpg';
+
 export const categoriesData = [
   {
     id: 'tamarind',
@@ -306,6 +312,39 @@ export const productsData = {
         'Custom Quantity on Request'
       ],
       storageInstruction: 'Store in a cool, dry, hygienic place following validated product storage requirements.',
+      status: 'available'
+    },
+    {
+      id: 'seedless-tamarind-slab-white-layer',
+      categoryId: 'tamarind',
+      name: 'Seedless Tamarind Slab with White Layer',
+      tagline: 'Pure Tamarind | Seedless | Convenient to Use',
+      image: slabWhitePack,
+      gallery: [slabWhitePack, slabWhiteLayer, slabWhiteBulk, slabWhiteDetail],
+      description:
+        'Our Seedless Tamarind Slab with White Layer is a traditional tamarind product made from carefully selected tamarind pulp, with the seeds removed for convenient use in everyday cooking. Formed into a compact slab, it is easy to store, handle, and portion according to your needs. The natural white layer on the surface may be associated with the tamarind\'s processing or storage conditions. Its appearance alone cannot confirm whether it is natural residue or mould, so the product should be checked for safety before use.',
+      features: [
+        'Seedless Tamarind: Convenient tamarind pulp without seeds.',
+        'Compact Slab Form: Easy to handle, portion, and store.',
+        'Traditional Ingredient: Suitable for a variety of traditional recipes.',
+        'Versatile Use: Ideal for preparing curries, gravies, chutneys, rasam, sambar, and tamarind-based sauces.',
+        'Kitchen Essential: A practical ingredient for home kitchens, restaurants, hotels, and food-service businesses.'
+      ],
+      specifications: [
+        { label: 'Product Name', value: 'Seedless Tamarind Slab' },
+        { label: 'Form', value: 'Compact slab' },
+        { label: 'Seeds', value: 'Removed' },
+        { label: 'Taste', value: 'Naturally sour and tangy' },
+        { label: 'Usage', value: 'Cooking and food preparation' },
+        { label: 'Storage', value: 'Cool, dry place' },
+        { label: 'Culinary Uses', value: 'Sambar, rasam, kuzhambu, puliyodarai, tamarind extract' }
+      ],
+      packagingSizes: [
+        'Compact Slab Packs',
+        'Bulk Master Cartons',
+        'Custom Packaging on Request'
+      ],
+      storageInstruction: 'Store in a clean, dry place away from direct sunlight and moisture. Keep the product in an airtight food-grade container after opening. Inspect the white surface layer before use; if there is fuzzy growth, an unusual smell, or any indication of mould, do not consume the product.',
       status: 'available'
     }
   ],
