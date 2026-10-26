@@ -110,5 +110,5 @@ p, span, label, input, select, textarea {
   .form-card-sub,
   .location-address {
     text-align: left; /* Keep left-aligned on very small screens to avoid awkward loose spacing gaps */
-  }
 }
+

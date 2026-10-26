@@ -1,7 +1,6 @@
 import React from 'react';
 import './AboutPage.css';
 import dharmapuriImg from '../assets/dharmapuri_origin.webp';
-import slide1Img from '../assets/slide1.webp';
 
 export default function AboutPage({ onNavigateToServices, onNavigateToContact }) {
   return (
