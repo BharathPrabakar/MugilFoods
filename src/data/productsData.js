@@ -9,6 +9,23 @@ import slide3Img from '../assets/slide3.webp'; // Raw Tamarind Pods
 import slide4Img from '../assets/slide4.webp'; // Tamarind Paste
 import karipuliImg from '../assets/prod_karipuli.webp'; // Karipuli
 
+// Karipuli Tamarind Cake Photos
+import karipuliCakeTop from '../assets/karipuli_cake_top.jpg';
+import karipuliCakeSide from '../assets/karipuli_cake_side.jpg';
+import karipuliCakeBulk from '../assets/karipuli_cake_bulk.jpg';
+
+// Loose Karipuli 30kg Box Photos
+import looseKaripuliOpen from '../assets/loose_karipuli_box_open.jpg';
+import looseKaripuliPacked from '../assets/loose_karipuli_box_packed.jpg';
+import looseKaripuliCloseup from '../assets/loose_karipuli_closeup.jpg';
+
+// Pure Tamarind Pulp Paste Photos
+import tPastePack from '../assets/tamarind_paste_pack.jpg';
+import tPasteJar from '../assets/tamarind_paste_jar.jpg';
+import tPasteBatch from '../assets/tamarind_paste_batch.jpg';
+import tPasteCloseup from '../assets/tamarind_paste_closeup.jpg';
+import tPasteLabel from '../assets/tamarind_paste_label.jpg';
+
 // Client Raw Tamarind High-Res Photos
 import rawTamPods from '../assets/raw_tamarind_pods.jpg';
 import rawTamClean from '../assets/raw_tamarind_clean.jpg';
@@ -93,7 +110,7 @@ export const productsData = {
     {
       id: 'seedless-tamarind',
       categoryId: 'tamarind',
-      name: 'Seedless Tamarind',
+      name: 'Seedless Flower Tamarind',
       tagline: 'Carefully Deseeded, Pure Tangy Pulp & Seedless Tamarind Cake',
       image: seedlessBlock,
       gallery: [seedlessBlock, seedlessClose, seedlessBags, seedlessBulk],
@@ -108,8 +125,8 @@ export const productsData = {
         'Ready for Commercial Food Processing, Sauces, Curries & Exports'
       ],
       specifications: [
-        { label: 'Product Name', value: 'Seedless Tamarind' },
-        { label: 'Product Type', value: 'Seedless Tamarind' },
+        { label: 'Product Name', value: 'Seedless Flower Tamarind' },
+        { label: 'Product Type', value: 'Seedless Flower Tamarind' },
         { label: 'Colour', value: 'Natural Brown' },
         { label: 'Taste', value: 'Naturally Sour and Tangy' },
         { label: 'Form', value: 'Seedless Tamarind Cake / Compressed Block' },
@@ -167,80 +184,128 @@ export const productsData = {
       storageInstruction: 'Store under cool, dry conditions away from moisture and direct sunlight to maintain natural flavour, colour, and freshness.',
       status: 'available'
     },
-    {
-      id: 'seedless-bar-tamarind',
-      categoryId: 'tamarind',
-      name: 'Seedless Bar Tamarind',
-      tagline: 'Hydraulically Compacted Rectangular Slabs',
-      image: slide1Img,
-      gallery: [slide1Img, slide3Img],
-      description:
-        'Hydraulically pressed into dense, easy-to-store rectangular bars. Specially engineered for easy slicing, retail shelf efficiency, and long international transit durability without loss of flavor.',
-      features: [
-        'Compacted Vacuum-Sealed Slab Format',
-        'Space-Saving & Tamper-Evident Packaging',
-        'High Concentration of Natural Sourness',
-        'Preferred by Commercial Kitchens & Food Processors'
-      ],
-      packagingSizes: ['500g Bar', '1kg Slab', '10kg Commercial Slab'],
-      storageInstruction: 'Store at room temperature; keep dry.',
-      status: 'available'
-    },
-    {
-      id: 'seedless-flower-tamarind',
-      categoryId: 'tamarind',
-      name: 'Seedless Flower Tamarind',
-      tagline: 'Hand-Bloomed Blossom Presentation',
-      image: slide2Img,
-      gallery: [slide2Img, slide3Img],
-      description:
-        'Hand-picked flower-grade tamarind carefully layered into delicate blossom patterns, showcasing premium clarity, golden-brown hue, and pristine clean flesh. Revered as the pinnacle of table presentation.',
-      features: [
-        'Finest Flower-Grade Selection',
-        'Exquisite Hand-Spread Aesthetic',
-        'Delicate Pulp with Balanced Sweet-Tart Balance',
-        'Premium Gift Packaging Available'
-      ],
-      packagingSizes: ['500g Gift Box', '1kg Premium Pack'],
-      storageInstruction: 'Store in a cool dry place.',
-      status: 'available'
-    },
+
+
     {
       id: 'tamarind-paste',
       categoryId: 'tamarind',
-      name: 'Tamarind Paste',
-      tagline: 'Smooth, Ready-to-Blend Pure Concentrate',
-      image: slide4Img,
-      gallery: [slide4Img, slide1Img],
+      name: 'Tamarind Pulp Paste',
+      tagline: 'Rich Tamarind Flavour. Smooth Pulp. Consistent Quality.',
+      image: tPastePack,
+      gallery: [tPastePack, tPasteJar, tPasteBatch, tPasteCloseup, tPasteLabel],
       description:
-        'Silky, thick, ready-to-use pure tamarind concentrate with zero added starch or artificial souring agents. Saves time in professional restaurants and home kitchens with instant spoonable consistency.',
+        'Mugil Tamarind Pure Tamarind Pulp Paste is made for customers who value authentic tamarind flavour and convenient food preparation. With its rich, tangy taste and pulp-like consistency, it is suitable for a wide range of culinary and food processing applications. Available in convenient 1 kg packets, our tamarind paste is ideal for restaurants, hotels, catering businesses, pickle manufacturers, food processing industries, and wholesale distributors.',
       features: [
-        'Zero Added Starch or Gums',
-        'Smooth Strained Texture without Seeds or Fiber',
-        'Instant Spoonable Acidic Tang for Sambar, Rasam & Curries',
-        'Available in Retail Jars and Food Service Tubs'
+        'Authentic Rich Tamarind Flavour with Natural Tangy Taste',
+        'Smooth Pulp-Like Consistency — Ready for Direct Use',
+        'Suitable for Culinary & Food Processing Applications',
+        '1 kg Convenient Packet Format for Easy Portioning & Storage',
+        'Ideal for Restaurants, Hotels, Catering & Pickle Manufacturers',
+        'Manufactured by Mugil Tamarind, Dharmapuri, Tamil Nadu'
       ],
-      packagingSizes: ['200g Jar', '400g Glass Bottle', '5kg / 20kg Foodservice Bucket'],
-      storageInstruction: 'Refrigerate after opening.',
+      specifications: [
+        { label: 'Brand', value: 'Mugil Tamarind' },
+        { label: 'Product Name', value: 'Tamarind Pulp Paste' },
+        { label: 'Product Category', value: 'Tamarind' },
+        { label: 'Product Form', value: 'Pulp paste' },
+        { label: 'Net Weight', value: '1 kg per pack' },
+        { label: 'Taste Profile', value: 'Rich, naturally tangy' },
+        { label: 'Consistency', value: 'Smooth, pulp-like' },
+        { label: 'Usage', value: 'Culinary preparations, food processing, sauces, chutneys, curries' },
+        { label: 'Intended Customers', value: 'Restaurants, hotels, catering businesses, pickle manufacturers, food processing industries, wholesale distributors' },
+        { label: 'Packaging', value: '1 kg packet' },
+        { label: 'Storage', value: 'Store in a cool, dry place; refrigerate after opening' },
+        { label: 'Origin', value: 'Dharmapuri, Tamil Nadu, India' }
+      ],
+      packagingSizes: [
+        '1 kg Packet',
+        'Bulk / Custom Quantity on Request'
+      ],
+      storageInstruction: 'Store in a cool, dry place. Refrigerate after opening to maintain freshness.',
+      status: 'available'
+    },
+
+    {
+      id: 'karipuli-tamarind-cake',
+      categoryId: 'tamarind',
+      name: 'Karipuli Tamarind Cake',
+      tagline: 'Compressed 1 kg Cakes — Seed-Removed, Bulk-Ready',
+      image: karipuliCakeTop,
+      gallery: [karipuliCakeTop, karipuliCakeSide, karipuliCakeBulk],
+      description:
+        'Mugil Tamarind presents premium-quality Karipuli Tamarind Cake, processed with a focus on quality, cleanliness, and consistency. Each 1 kg cake is prepared for convenient handling, storage, and bulk distribution. With seeds removed and fibrous material carefully minimized, our tamarind cake is suitable for businesses that require convenient, ready-to-process tamarind for their food production needs. Manufactured and supplied by Mugil Tamarind, based in Dharmapuri district, Tamil Nadu, we aim to provide reliable tamarind products for commercial and wholesale customers.',
+      features: [
+        'Seeds Removed & Fiber Minimized — Ready-to-Process Convenience',
+        'First Quality Grade — Processed with Focus on Cleanliness & Consistency',
+        'Compressed 1 kg Cake Format — Easy Handling, Storage & Distribution',
+        '40 Cakes per Box (40 kg Net) — Ideal for Bulk & Wholesale Orders',
+        'Origin: Dharmapuri District, Tamil Nadu, India',
+        'Suited for Wholesalers, Distributors & Food Processing Industries'
+      ],
+      specifications: [
+        { label: 'Brand', value: 'Mugil Tamarind' },
+        { label: 'Product Name', value: 'Karipuli Tamarind Cake' },
+        { label: 'Product Category', value: 'Tamarind Products' },
+        { label: 'Individual Cake Weight', value: '1 kg' },
+        { label: 'Total Box Weight', value: '40 kg net product weight, if confirmed' },
+        { label: 'Pieces per Box', value: '40 cakes' },
+        { label: 'Seed Content', value: 'Seeds removed' },
+        { label: 'Fiber Content', value: 'Low fiber / fiber minimized' },
+        { label: 'Quality Grade', value: 'First Quality' },
+        { label: 'Product Form', value: 'Compressed tamarind cake' },
+        { label: 'Origin', value: 'Dharmapuri, Tamil Nadu, India' },
+        { label: 'Packaging Type', value: 'Bulk carton box' },
+        { label: 'Target Customers', value: 'Wholesalers, distributors, food processing industries' },
+        { label: 'Storage', value: 'Store in a cool, dry, hygienic place' },
+        { label: 'Shelf Life', value: 'As specified on the approved product label' }
+      ],
+      packagingSizes: [
+        '1 kg Individual Cake',
+        '40 kg Bulk Carton Box (40 Cakes per Box)',
+        'Custom Packaging on Request'
+      ],
+      storageInstruction: 'Store in a cool, dry, hygienic place away from moisture and direct sunlight.',
       status: 'available'
     },
     {
-      id: 'karipuli',
+      id: 'loose-karipuli-30kg',
       categoryId: 'tamarind',
-      name: 'Karipuli',
-      tagline: 'Smoked Sun-Cured Malabar Tamarind (Kudampuli)',
-      image: karipuliImg,
-      gallery: [karipuliImg, slide3Img],
+      name: 'Loose Karipuli 30kg Box',
+      tagline: 'Bulk 30 kg Carton — Fully Seedless, Fiberless Kari Puli',
+      image: looseKaripuliPacked,
+      gallery: [looseKaripuliPacked, looseKaripuliOpen, looseKaripuliCloseup],
       description:
-        'Smoked, sun-dried authentic black Malabar tamarind (Garcinia cambogia/Kudampuli) revered for traditional coastal fish curries, rasams, and natural digestive support. Imparts a signature smoky tartness.',
+        'Mugil Tamarind Kari Puli is a premium-quality tamarind product processed for convenient commercial use. With seeds and fibrous materials removed, it offers easier handling, portioning, and preparation for food-processing applications. Available in bulk 30 kg carton packaging, Kari Puli is suitable for wholesale distribution, food manufacturers, commercial kitchens, and other businesses requiring quality tamarind in larger quantities.',
       features: [
-        'Traditional Smoke-Cured Process',
-        'Authentic Malabar / Kudampuli Flavor',
-        'Rich in Hydroxycitric Acid (HCA)',
-        'Essential for Coastal Fish & Vegetarian Curries'
+        'Fully Seedless & Fiberless — As Specified, Ready for Commercial Use',
+        'First Quality Grade — Consistent Quality with Natural Tangy Taste',
+        'Loose Bulk Format for Easy Portioning & Food-Processing Applications',
+        '30 kg Per Carton Box — Suited for Wholesale & Bulk Distribution',
+        'Intended for Wholesalers & Food-Processing Businesses',
+        'Manufactured & Supplied by Mugil Tamarind, Dharmapuri, Tamil Nadu'
       ],
-      packagingSizes: ['250g Pouch', '500g Kraft Pouch', '5kg Commercial Bag'],
-      storageInstruction: 'Keep tightly sealed in a dry container.',
+      specifications: [
+        { label: 'Brand', value: 'Mugil Tamarind' },
+        { label: 'Product Name', value: 'Kari Puli' },
+        { label: 'Product Category', value: 'Tamarind' },
+        { label: 'Quality Grade', value: 'First quality' },
+        { label: 'Seed Content', value: 'Fully seedless, as specified' },
+        { label: 'Fiber Content', value: 'Fiberless, as specified' },
+        { label: 'Product Form', value: 'Tamarind cake/block, subject to actual product format' },
+        { label: 'Packing Type', value: 'Carton box' },
+        { label: 'Net Weight', value: '30 kg per box' },
+        { label: 'Taste Profile', value: 'Naturally tangy' },
+        { label: 'Intended Customers', value: 'Wholesalers and food-processing businesses' },
+        { label: 'Storage', value: 'Store in a cool, dry, hygienic place, following validated product storage requirements' },
+        { label: 'Availability', value: 'Subject to order quantity and stock' },
+        { label: 'Country of Origin', value: 'India, if applicable to the supplied batch' },
+        { label: 'Shelf Life', value: 'To be confirmed from validated product testing and packaging details' }
+      ],
+      packagingSizes: [
+        '30 kg Bulk Carton Box',
+        'Custom Quantity on Request'
+      ],
+      storageInstruction: 'Store in a cool, dry, hygienic place following validated product storage requirements.',
       status: 'available'
     }
   ],

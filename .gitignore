@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Scripts temp / backup image directories
+scripts/originals_logo/
+scripts/watermarked_logo/
