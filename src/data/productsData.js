@@ -13,6 +13,8 @@ import karipuliImg from '../assets/prod_karipuli.webp'; // Karipuli
 import karipuliCakeTop from '../assets/karipuli_cake_top.jpg';
 import karipuliCakeSide from '../assets/karipuli_cake_side.jpg';
 import karipuliCakeBulk from '../assets/karipuli_cake_bulk.jpg';
+import karipuliCakePack from '../assets/karipuli_cake_pack.jpg';
+import karipuliCakeStack from '../assets/karipuli_cake_stack.jpg';
 
 // Loose Karipuli 30kg Box Photos
 import looseKaripuliOpen from '../assets/loose_karipuli_box_open.jpg';
@@ -243,7 +245,7 @@ export const productsData = {
       name: 'Karipuli Tamarind Cake',
       tagline: 'Compressed 1 kg Cakes — Seed-Removed, Bulk-Ready',
       image: karipuliCakeTop,
-      gallery: [karipuliCakeTop, karipuliCakeSide, karipuliCakeBulk],
+      gallery: [karipuliCakeTop, karipuliCakeSide, karipuliCakePack, karipuliCakeStack, karipuliCakeBulk],
       description:
         'Mugil Tamarind presents premium-quality Karipuli Tamarind Cake, processed with a focus on quality, cleanliness, and consistency. Each 1 kg cake is prepared for convenient handling, storage, and bulk distribution. With seeds removed and fibrous material carefully minimized, our tamarind cake is suitable for businesses that require convenient, ready-to-process tamarind for their food production needs. Manufactured and supplied by Mugil Tamarind, based in Dharmapuri district, Tamil Nadu, we aim to provide reliable tamarind products for commercial and wholesale customers.',
       features: [

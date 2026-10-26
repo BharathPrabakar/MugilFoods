@@ -43,6 +43,8 @@ const PRODUCT_IMAGES = [
   'karipuli_cake_top.jpg',
   'karipuli_cake_side.jpg',
   'karipuli_cake_bulk.jpg',
+  'karipuli_cake_pack.jpg',
+  'karipuli_cake_stack.jpg',
   // Loose Karipuli 30kg Box
   'loose_karipuli_box_open.jpg',
   'loose_karipuli_box_packed.jpg',
