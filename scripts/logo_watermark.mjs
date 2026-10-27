@@ -43,6 +43,8 @@ const PRODUCT_IMAGES = [
   'karipuli_cake_top.jpg',
   'karipuli_cake_side.jpg',
   'karipuli_cake_bulk.jpg',
+  'karipuli_cake_pack.jpg',
+  'karipuli_cake_stack.jpg',
   // Loose Karipuli 30kg Box
   'loose_karipuli_box_open.jpg',
   'loose_karipuli_box_packed.jpg',
@@ -53,6 +55,16 @@ const PRODUCT_IMAGES = [
   'tamarind_paste_batch.jpg',
   'tamarind_paste_closeup.jpg',
   'tamarind_paste_label.jpg',
+  // Seedless Tamarind Slab with White Layer
+  'tamarind_slab_white_pack.jpg',
+  'tamarind_slab_white_layer.jpg',
+  'tamarind_slab_white_bulk.jpg',
+  'tamarind_slab_white_detail.jpg',
+  // Seedless Tamarind Slab without White Layer
+  'tamarind_slab_clean_pack.jpg',
+  'tamarind_slab_clean_stack.jpg',
+  'tamarind_slab_clean_block.jpg',
+  'tamarind_slab_clean_closeup.jpg',
   // Category card thumbnails
   'category_tamarind.webp',
   'category_oil.webp',
@@ -62,19 +74,19 @@ const PRODUCT_IMAGES = [
   'prod_karipuli.webp',
 ];
 
-// Logo watermark size: ~18% of image width, placed 2% from bottom-right corner
-const WM_RATIO   = 0.18;   // logo width = 18% of image width
+// Logo watermark size: ~20% of image width, placed 2.5% from bottom-right corner
+const WM_RATIO   = 0.20;   // logo width = 20% of image width
 const MARGIN_PCT = 0.025;  // 2.5% margin from edges
 const OPACITY    = 0.55;   // 0=invisible 1=solid  (55% = subtle but visible)
 
 async function buildWatermark(imgWidth, imgHeight) {
-  const wmWidth  = Math.round(imgWidth  * WM_RATIO);
-  const marginX  = Math.round(imgWidth  * MARGIN_PCT);
-  const marginY  = Math.round(imgHeight * MARGIN_PCT);
+  const targetWidth = Math.round(imgWidth * WM_RATIO);
+  const marginX     = Math.round(imgWidth  * MARGIN_PCT);
+  const marginY     = Math.round(imgHeight * MARGIN_PCT);
 
   // 1. Resize logo, ensure it has an alpha channel
   const resized = await sharp(wmSrc)
-    .resize({ width: wmWidth, fit: 'inside' })
+    .resize({ width: targetWidth, fit: 'inside' })
     .ensureAlpha()
     .raw()
     .toBuffer({ resolveWithObject: true });
@@ -94,7 +106,7 @@ async function buildWatermark(imgWidth, imgHeight) {
 
   return {
     input: fadedWm,
-    left:  imgWidth  - wmWidth       - marginX,
+    left:  imgWidth  - wmMeta.width  - marginX,
     top:   imgHeight - wmMeta.height - marginY,
   };
 }

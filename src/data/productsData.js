@@ -13,6 +13,8 @@ import karipuliImg from '../assets/prod_karipuli.webp'; // Karipuli
 import karipuliCakeTop from '../assets/karipuli_cake_top.jpg';
 import karipuliCakeSide from '../assets/karipuli_cake_side.jpg';
 import karipuliCakeBulk from '../assets/karipuli_cake_bulk.jpg';
+import karipuliCakePack from '../assets/karipuli_cake_pack.jpg';
+import karipuliCakeStack from '../assets/karipuli_cake_stack.jpg';
 
 // Loose Karipuli 30kg Box Photos
 import looseKaripuliOpen from '../assets/loose_karipuli_box_open.jpg';
@@ -43,6 +45,18 @@ import roundTamSwirl from '../assets/round_tamarind_swirl.jpg';
 import roundTamDisc from '../assets/round_tamarind_disc.jpg';
 import roundTamStack from '../assets/round_tamarind_stack.jpg';
 import roundTamBaskets from '../assets/round_tamarind_woven_baskets.jpg';
+
+// Seedless Tamarind Slab with White Layer Photos
+import slabWhitePack from '../assets/tamarind_slab_white_pack.jpg';
+import slabWhiteLayer from '../assets/tamarind_slab_white_layer.jpg';
+import slabWhiteBulk from '../assets/tamarind_slab_white_bulk.jpg';
+import slabWhiteDetail from '../assets/tamarind_slab_white_detail.jpg';
+
+// Seedless Tamarind Slab without White Layer Photos
+import slabCleanPack from '../assets/tamarind_slab_clean_pack.jpg';
+import slabCleanStack from '../assets/tamarind_slab_clean_stack.jpg';
+import slabCleanBlock from '../assets/tamarind_slab_clean_block.jpg';
+import slabCleanCloseup from '../assets/tamarind_slab_clean_closeup.jpg';
 
 export const categoriesData = [
   {
@@ -231,7 +245,7 @@ export const productsData = {
       name: 'Karipuli Tamarind Cake',
       tagline: 'Compressed 1 kg Cakes — Seed-Removed, Bulk-Ready',
       image: karipuliCakeTop,
-      gallery: [karipuliCakeTop, karipuliCakeSide, karipuliCakeBulk],
+      gallery: [karipuliCakeTop, karipuliCakeSide, karipuliCakePack, karipuliCakeStack, karipuliCakeBulk],
       description:
         'Mugil Tamarind presents premium-quality Karipuli Tamarind Cake, processed with a focus on quality, cleanliness, and consistency. Each 1 kg cake is prepared for convenient handling, storage, and bulk distribution. With seeds removed and fibrous material carefully minimized, our tamarind cake is suitable for businesses that require convenient, ready-to-process tamarind for their food production needs. Manufactured and supplied by Mugil Tamarind, based in Dharmapuri district, Tamil Nadu, we aim to provide reliable tamarind products for commercial and wholesale customers.',
       features: [
@@ -306,6 +320,72 @@ export const productsData = {
         'Custom Quantity on Request'
       ],
       storageInstruction: 'Store in a cool, dry, hygienic place following validated product storage requirements.',
+      status: 'available'
+    },
+    {
+      id: 'seedless-tamarind-slab-white-layer',
+      categoryId: 'tamarind',
+      name: 'Seedless Tamarind Slab with White Layer',
+      tagline: 'Pure Tamarind | Seedless | Convenient to Use',
+      image: slabWhitePack,
+      gallery: [slabWhitePack, slabWhiteLayer, slabWhiteBulk, slabWhiteDetail],
+      description:
+        'Our Seedless Tamarind Slab with White Layer is a traditional tamarind product made from carefully selected tamarind pulp, with the seeds removed for convenient use in everyday cooking. Formed into a compact slab, it is easy to store, handle, and portion according to your needs. The natural white layer on the surface may be associated with the tamarind\'s processing or storage conditions. Its appearance alone cannot confirm whether it is natural residue or mould, so the product should be checked for safety before use.',
+      features: [
+        'Seedless Tamarind: Convenient tamarind pulp without seeds.',
+        'Compact Slab Form: Easy to handle, portion, and store.',
+        'Traditional Ingredient: Suitable for a variety of traditional recipes.',
+        'Versatile Use: Ideal for preparing curries, gravies, chutneys, rasam, sambar, and tamarind-based sauces.',
+        'Kitchen Essential: A practical ingredient for home kitchens, restaurants, hotels, and food-service businesses.'
+      ],
+      specifications: [
+        { label: 'Product Name', value: 'Seedless Tamarind Slab' },
+        { label: 'Form', value: 'Compact slab' },
+        { label: 'Seeds', value: 'Removed' },
+        { label: 'Taste', value: 'Naturally sour and tangy' },
+        { label: 'Usage', value: 'Cooking and food preparation' },
+        { label: 'Storage', value: 'Cool, dry place' },
+        { label: 'Culinary Uses', value: 'Sambar, rasam, kuzhambu, puliyodarai, tamarind extract' }
+      ],
+      packagingSizes: [
+        'Compact Slab Packs',
+        'Bulk Master Cartons',
+        'Custom Packaging on Request'
+      ],
+      storageInstruction: 'Store in a clean, dry place away from direct sunlight and moisture. Keep the product in an airtight food-grade container after opening. Inspect the white surface layer before use; if there is fuzzy growth, an unusual smell, or any indication of mould, do not consume the product.',
+      status: 'available'
+    },
+    {
+      id: 'seedless-tamarind-slab-without-white-layer',
+      categoryId: 'tamarind',
+      name: 'Seedless Tamarind Slab without White Layer',
+      tagline: 'Pure Tamarind | Seedless | Convenient to Use',
+      image: slabCleanPack,
+      gallery: [slabCleanPack, slabCleanStack, slabCleanBlock, slabCleanCloseup],
+      description:
+        'Our Seedless Tamarind Slab without White Layer is a traditional tamarind product made from carefully selected tamarind pulp, with the seeds removed for convenient use in everyday cooking. Formed into a compact slab, it is easy to store, handle, and portion according to your needs. Naturally dark, clean, and tender, it provides authentic tanginess and rich pulp consistency.',
+      features: [
+        'Seedless Tamarind: Convenient tamarind pulp without seeds.',
+        'Compact Slab Form: Easy to handle, portion, and store.',
+        'Traditional Ingredient: Suitable for a variety of traditional recipes.',
+        'Versatile Use: Ideal for preparing curries, gravies, chutneys, rasam, sambar, and tamarind-based sauces.',
+        'Kitchen Essential: A practical ingredient for home kitchens, restaurants, hotels, and food-service businesses.'
+      ],
+      specifications: [
+        { label: 'Product Name', value: 'Seedless Tamarind Slab' },
+        { label: 'Form', value: 'Compact slab' },
+        { label: 'Seeds', value: 'Removed' },
+        { label: 'Taste', value: 'Naturally sour and tangy' },
+        { label: 'Usage', value: 'Cooking and food preparation' },
+        { label: 'Storage', value: 'Cool, dry place' },
+        { label: 'Culinary Uses', value: 'Sambar, rasam, kuzhambu, puliyodarai, tamarind extract' }
+      ],
+      packagingSizes: [
+        'Compact Slab Packs',
+        'Bulk Master Cartons',
+        'Custom Packaging on Request'
+      ],
+      storageInstruction: 'Store in a clean, dry place away from direct sunlight and moisture. Keep the product in an airtight food-grade container after opening.',
       status: 'available'
     }
   ],
