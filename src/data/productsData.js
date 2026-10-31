@@ -1,11 +1,6 @@
 import tamarindImg from '../assets/category_tamarind.webp';
 import honeyImg from '../assets/category_honey.webp';
 
-import slide1Img from '../assets/slide1.webp'; // Slab Tamarind
-import slide2Img from '../assets/slide2.webp'; // Round Swirl Tamarind
-import slide3Img from '../assets/slide3.webp'; // Raw Tamarind Pods
-import slide4Img from '../assets/slide4.webp'; // Tamarind Paste
-import karipuliImg from '../assets/prod_karipuli.webp'; // Karipuli
 
 // Karipuli Tamarind Cake Photos
 import karipuliCakeTop from '../assets/karipuli_cake_top.jpg';

@@ -95,8 +95,10 @@ p, span, label, input, select, textarea {
 .reachout-desc,
 .form-card-sub,
 .location-address {
-  text-align: justify;
-  text-justify: inter-word;
+  text-align: left;
+  text-wrap: pretty;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 /* On small screens, keep text justification clean with hyphens prevention */
