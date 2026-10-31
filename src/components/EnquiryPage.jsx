@@ -266,7 +266,7 @@ export default function EnquiryPage() {
                     id="productsNeeded"
                     name="productsNeeded"
                     required
-                    placeholder="e.g. Seedless Bar Tamarind (5 Tonnes), Round Tamarind, Pure Ghee..."
+                    placeholder="e.g. Seedless Bar Tamarind (5 Tonnes), Round Tamarind, Karipuli 30kg Box..."
                     value={formData.productsNeeded}
                     onChange={handleChange}
                     className="form-input"

@@ -2,8 +2,6 @@ import React from 'react';
 import './CategoryCards.css';
 
 import tamarindImg from '../assets/category_tamarind.webp';
-import oilImg from '../assets/category_oil.webp';
-import gheeImg from '../assets/category_ghee.webp';
 import honeyImg from '../assets/category_honey.webp';
 
 const categories = [
@@ -11,19 +9,7 @@ const categories = [
     id: 'tamarind',
     name: 'Tamarind',
     image: tamarindImg,
-    alt: 'Premium Tamarind Slabs and Pods'
-  },
-  {
-    id: 'cold-pressed-oil',
-    name: 'Cold-pressed Oil',
-    image: oilImg,
-    alt: 'Pure Cold-pressed Edible Oil'
-  },
-  {
-    id: 'pure-ghee',
-    name: 'Pure Ghee',
-    image: gheeImg,
-    alt: 'Traditional Pure Desi Ghee'
+    alt: 'Premium Tamarind Slabs, Rounds & Cakes'
   },
   {
     id: 'natural-honey-comb',

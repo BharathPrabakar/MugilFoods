@@ -1,6 +1,4 @@
 import tamarindImg from '../assets/category_tamarind.webp';
-import oilImg from '../assets/category_oil.webp';
-import gheeImg from '../assets/category_ghee.webp';
 import honeyImg from '../assets/category_honey.webp';
 
 import slide1Img from '../assets/slide1.webp'; // Slab Tamarind
@@ -65,16 +63,6 @@ export const categoriesData = [
     image: tamarindImg,
   },
   {
-    id: 'cold-pressed-oil',
-    name: 'Cold-pressed Oil',
-    image: oilImg,
-  },
-  {
-    id: 'pure-ghee',
-    name: 'Pure Ghee',
-    image: gheeImg,
-  },
-  {
     id: 'natural-honey-comb',
     name: 'Natural Honey / Comb',
     image: honeyImg,
@@ -121,8 +109,8 @@ export const productsData = {
       categoryId: 'tamarind',
       name: 'Seedless Tamarind Slab without White Layer',
       tagline: 'Pure Tamarind | Seedless | Convenient to Use',
-      image: slabCleanCloseup,
-      gallery: [slabCleanCloseup, slabCleanBlock, slabCleanPack, slabCleanStack],
+      image: slabCleanBlock,
+      gallery: [slabCleanBlock, slabCleanCloseup, slabCleanPack, slabCleanStack],
       description:
         'Our Seedless Tamarind Slab without White Layer is a traditional tamarind product made from carefully selected tamarind pulp, with the seeds removed for convenient use in everyday cooking. Formed into a compact slab, it is easy to store, handle, and portion according to your needs. Naturally dark, clean, and tender, it provides authentic tanginess and rich pulp consistency.',
       features: [
@@ -384,46 +372,6 @@ export const productsData = {
       ],
       storageInstruction: 'Store in a cool, dry place. Refrigerate after opening to maintain freshness.',
       status: 'available'
-    }
-  ],
-  'cold-pressed-oil': [
-    {
-      id: 'groundnut-oil',
-      categoryId: 'cold-pressed-oil',
-      name: 'Cold-Pressed Groundnut Oil',
-      tagline: 'Traditional Wood-Pressed Peanut Oil',
-      image: oilImg,
-      gallery: [oilImg],
-      description: 'Extracted from hand-selected groundnuts using traditional wood press (mara chekku), preserving natural aroma and plant phytosterols.',
-      features: ['Wood Pressed', 'Unrefined & Pure', 'Zero Hexane Processing'],
-      packagingSizes: ['1 Liter Bottle', '5 Liter Tin'],
-      status: 'coming-soon'
-    },
-    {
-      id: 'sesame-oil',
-      categoryId: 'cold-pressed-oil',
-      name: 'Cold-Pressed Sesame Oil',
-      tagline: 'Traditional Gingelly Oil',
-      image: oilImg,
-      gallery: [oilImg],
-      description: 'Cold-pressed black sesame oil prepared with natural palm jaggery in traditional stone mortars.',
-      features: ['Cold Extracted', 'Rich Antioxidants', 'Authentic Flavor'],
-      packagingSizes: ['500ml Glass Bottle', '1 Liter Bottle'],
-      status: 'coming-soon'
-    }
-  ],
-  'pure-ghee': [
-    {
-      id: 'bilona-cow-ghee',
-      categoryId: 'pure-ghee',
-      name: 'Traditional Bilona Cow Ghee',
-      tagline: 'Curd-Churned Golden Granular Ghee',
-      image: gheeImg,
-      gallery: [gheeImg],
-      description: 'Slow-simmered artisanal cow ghee prepared following the age-old Vedic bilona method.',
-      features: ['Bilona Churned', 'Granular Texture', 'Unmatched Aroma'],
-      packagingSizes: ['500ml Jar', '1 Liter Jar'],
-      status: 'coming-soon'
     }
   ],
   'natural-honey-comb': [

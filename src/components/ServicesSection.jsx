@@ -12,7 +12,7 @@ const services = [
     subtitle: 'Bulk Quantities & Institutional Supply',
     image: wholesaleImg,
     description:
-      'Direct farm-to-industry bulk shipments of seedless tamarind slabs and concentrates, with cold-pressed oils and pure ghee launching soon.',
+      'Direct farm-to-industry bulk shipments of seedless tamarind slabs, rounds, karipuli cakes, and tamarind concentrates, processed naturally in Dharmapuri.',
     highlights: ['Export Grade Quality', 'Container & Tonne Volumes', 'Standardized Pallet Logistics'],
     ctaLabel: 'Request Wholesale Quote',
     href: '#enquiry'

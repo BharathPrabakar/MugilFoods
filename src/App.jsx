@@ -171,7 +171,7 @@ function App() {
           {/* Master Full-Screen Auto-Carousel */}
           <HeroCarousel onNavigate={handleNavigation} />
 
-          {/* Product Categories Cards (Tamarind, Cold-pressed Oil, Pure Ghee, Natural Honey/comb) */}
+          {/* Product Categories Cards (Tamarind, Natural Honey/comb) */}
           <CategoryCards onSelectCategory={handleCategorySelectFromHome} />
 
           {/* We Offer (Services) Section -> Wholesale, Retail, Custom Label */}
