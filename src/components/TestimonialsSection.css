@@ -1,6 +1,6 @@
 .testimonials-section {
   width: 100%;
-  padding: 5.5rem 1.5rem 6rem;
+  padding: 3.5rem 1.5rem 4.5rem;
   background-color: var(--color-warm-bg);
   border-top: 1px solid #f1f1f4;
   position: relative;
@@ -18,7 +18,7 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 2rem;
-  margin-bottom: 2.75rem;
+  margin-bottom: 2rem;
 }
 
 .testimonials-title-group {
