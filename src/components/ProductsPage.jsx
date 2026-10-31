@@ -53,7 +53,7 @@ export default function ProductsPage({
                   aria-label={`Select ${cat.name}`}
                 >
                   <div className="compact-cat-img-box">
-                    <img src={cat.image} alt={cat.name} className="compact-cat-img" />
+                    <img src={cat.image} alt={cat.name} className="compact-cat-img" width="110" height="110" loading="lazy" />
                   </div>
                   <span className="compact-cat-title">{cat.name}</span>
                 </button>
@@ -111,7 +111,7 @@ export default function ProductsPage({
                 >
                   {/* Photo with zoom & hover overlay */}
                   <div className="clean-prod-img-wrap">
-                    <img src={prod.image} alt={prod.name} className="clean-prod-img" loading="lazy" />
+                    <img src={prod.image} alt={prod.name} className="clean-prod-img" width="500" height="400" loading="lazy" />
                     
                     {isComingSoon && (
                       <div className="clean-coming-overlay">

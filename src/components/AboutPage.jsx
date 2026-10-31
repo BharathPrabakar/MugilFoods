@@ -22,7 +22,7 @@ export default function AboutPage({ onNavigateToServices, onNavigateToContact })
         <section className="about-story-section">
           <div className="about-story-grid">
             <div className="story-media-box">
-              <img src={dharmapuriImg} alt="Dharmapuri Tamarind Processing Plant" className="story-featured-img" />
+              <img src={dharmapuriImg} alt="Dharmapuri Tamarind Processing Plant" className="story-featured-img" width="800" height="600" loading="lazy" />
               <div className="story-img-badge">
                 <span>Dharmapuri Processing Plant</span>
               </div>

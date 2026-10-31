@@ -147,7 +147,7 @@ export default function ServicesPage() {
           {/* Card Top Row: Image & High-level overview */}
           <div className="service-overview-grid">
             <div className="service-media-frame">
-              <img src={selectedService.image} alt={selectedService.name} className="service-featured-img" />
+              <img src={selectedService.image} alt={selectedService.name} className="service-featured-img" width="800" height="500" loading="lazy" />
               <div className="service-media-badge">
                 <span>{selectedService.id.toUpperCase()}</span>
               </div>

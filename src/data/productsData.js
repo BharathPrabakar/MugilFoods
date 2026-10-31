@@ -3,53 +3,53 @@ import honeyImg from '../assets/category_honey.webp';
 
 
 // Karipuli Tamarind Cake Photos
-import karipuliCakeTop from '../assets/karipuli_cake_top.jpg';
-import karipuliCakeSide from '../assets/karipuli_cake_side.jpg';
-import karipuliCakeBulk from '../assets/karipuli_cake_bulk.jpg';
-import karipuliCakePack from '../assets/karipuli_cake_pack.jpg';
-import karipuliCakeStack from '../assets/karipuli_cake_stack.jpg';
+import karipuliCakeTop from '../assets/karipuli_cake_top.webp';
+import karipuliCakeSide from '../assets/karipuli_cake_side.webp';
+import karipuliCakeBulk from '../assets/karipuli_cake_bulk.webp';
+import karipuliCakePack from '../assets/karipuli_cake_pack.webp';
+import karipuliCakeStack from '../assets/karipuli_cake_stack.webp';
 
 // Loose Karipuli 30kg Box Photos
-import looseKaripuliOpen from '../assets/loose_karipuli_box_open.jpg';
-import looseKaripuliPacked from '../assets/loose_karipuli_box_packed.jpg';
-import looseKaripuliCloseup from '../assets/loose_karipuli_closeup.jpg';
+import looseKaripuliOpen from '../assets/loose_karipuli_box_open.webp';
+import looseKaripuliPacked from '../assets/loose_karipuli_box_packed.webp';
+import looseKaripuliCloseup from '../assets/loose_karipuli_closeup.webp';
 
 // Pure Tamarind Pulp Paste Photos
-import tPastePack from '../assets/tamarind_paste_pack.jpg';
-import tPasteJar from '../assets/tamarind_paste_jar.jpg';
-import tPasteBatch from '../assets/tamarind_paste_batch.jpg';
-import tPasteCloseup from '../assets/tamarind_paste_closeup.jpg';
-import tPasteLabel from '../assets/tamarind_paste_label.jpg';
+import tPastePack from '../assets/tamarind_paste_pack.webp';
+import tPasteJar from '../assets/tamarind_paste_jar.webp';
+import tPasteBatch from '../assets/tamarind_paste_batch.webp';
+import tPasteCloseup from '../assets/tamarind_paste_closeup.webp';
+import tPasteLabel from '../assets/tamarind_paste_label.webp';
 
 // Client Raw Tamarind High-Res Photos
-import rawTamPods from '../assets/raw_tamarind_pods.jpg';
-import rawTamClean from '../assets/raw_tamarind_clean.jpg';
-import rawTamBag from '../assets/raw_tamarind_bag.jpg';
-import rawTamBulk from '../assets/raw_tamarind_bulk.jpg';
+import rawTamPods from '../assets/raw_tamarind_pods.webp';
+import rawTamClean from '../assets/raw_tamarind_clean.webp';
+import rawTamBag from '../assets/raw_tamarind_bag.webp';
+import rawTamBulk from '../assets/raw_tamarind_bulk.webp';
 
 // Client Seedless Tamarind High-Res Photos
-import seedlessBlock from '../assets/seedless_tamarind_block.jpg';
-import seedlessClose from '../assets/seedless_tamarind_close.jpg';
-import seedlessBags from '../assets/seedless_tamarind_bags.jpg';
-import seedlessBulk from '../assets/seedless_tamarind_bulk.jpg';
+import seedlessBlock from '../assets/seedless_tamarind_block.webp';
+import seedlessClose from '../assets/seedless_tamarind_close.webp';
+import seedlessBags from '../assets/seedless_tamarind_bags.webp';
+import seedlessBulk from '../assets/seedless_tamarind_bulk.webp';
 
 // Client Seedless Round Tamarind High-Res Photos
-import roundTamSwirl from '../assets/round_tamarind_swirl.jpg';
-import roundTamDisc from '../assets/round_tamarind_disc.jpg';
-import roundTamStack from '../assets/round_tamarind_stack.jpg';
-import roundTamBaskets from '../assets/round_tamarind_woven_baskets.jpg';
+import roundTamSwirl from '../assets/round_tamarind_swirl.webp';
+import roundTamDisc from '../assets/round_tamarind_disc.webp';
+import roundTamStack from '../assets/round_tamarind_stack.webp';
+import roundTamBaskets from '../assets/round_tamarind_woven_baskets.webp';
 
 // Seedless Tamarind Slab with White Layer Photos
-import slabWhitePack from '../assets/tamarind_slab_white_pack.jpg';
-import slabWhiteLayer from '../assets/tamarind_slab_white_layer.jpg';
-import slabWhiteBulk from '../assets/tamarind_slab_white_bulk.jpg';
-import slabWhiteDetail from '../assets/tamarind_slab_white_detail.jpg';
+import slabWhitePack from '../assets/tamarind_slab_white_pack.webp';
+import slabWhiteLayer from '../assets/tamarind_slab_white_layer.webp';
+import slabWhiteBulk from '../assets/tamarind_slab_white_bulk.webp';
+import slabWhiteDetail from '../assets/tamarind_slab_white_detail.webp';
 
 // Seedless Tamarind Slab without White Layer Photos
-import slabCleanPack from '../assets/tamarind_slab_clean_pack.jpg';
-import slabCleanStack from '../assets/tamarind_slab_clean_stack.jpg';
-import slabCleanBlock from '../assets/tamarind_slab_clean_block.jpg';
-import slabCleanCloseup from '../assets/tamarind_slab_clean_closeup.jpg';
+import slabCleanPack from '../assets/tamarind_slab_clean_pack.webp';
+import slabCleanStack from '../assets/tamarind_slab_clean_stack.webp';
+import slabCleanBlock from '../assets/tamarind_slab_clean_block.webp';
+import slabCleanCloseup from '../assets/tamarind_slab_clean_closeup.webp';
 
 export const categoriesData = [
   {

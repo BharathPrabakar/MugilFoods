@@ -53,7 +53,7 @@ export default function ProductDetailPage({
           {/* Left Column: Image Gallery & Previews */}
           <div className="detail-media-col">
             <div className="main-image-display">
-              <img src={selectedImage} alt={product.name} className="product-primary-img" />
+              <img src={selectedImage} alt={product.name} className="product-primary-img" width="800" height="600" fetchPriority="high" />
               <div className="detail-badge-pill">
                 <span>{product.status === 'coming-soon' ? 'Launching Soon' : 'Pure & Cured'}</span>
               </div>
@@ -69,7 +69,7 @@ export default function ProductDetailPage({
                     onClick={() => setSelectedImage(imgUrl)}
                     aria-label={`View photo ${idx + 1}`}
                   >
-                    <img src={imgUrl} alt={`${product.name} thumbnail ${idx + 1}`} />
+                    <img src={imgUrl} alt={`${product.name} thumbnail ${idx + 1}`} width="100" height="100" loading="lazy" />
                   </button>
                 ))}
               </div>
@@ -170,7 +170,7 @@ export default function ProductDetailPage({
                 }}
               >
                 <div className="explore-img-wrap">
-                  <img src={item.image} alt={item.name} className="explore-img" />
+                  <img src={item.image} alt={item.name} className="explore-img" width="400" height="300" loading="lazy" />
                 </div>
                 <h3 className="explore-item-name">{item.name}</h3>
                 <div className="explore-view-arrow">
