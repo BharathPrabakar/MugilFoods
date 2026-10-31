@@ -7,16 +7,15 @@ import AboutSnippet from './components/AboutSnippet'
 import WhyChooseUs from './components/WhyChooseUs'
 import TestimonialsSection from './components/TestimonialsSection'
 import Footer from './components/Footer'
-import FloatingWhatsApp from './components/FloatingWhatsApp'
-import { productsData } from './data/productsData'
 import './App.css'
 
-// Lazy-load standalone pages not needed on initial landing page load
+// Lazy-load standalone pages and widgets not needed on initial landing page load
 const ProductsPage = lazy(() => import('./components/ProductsPage'))
 const ProductDetailPage = lazy(() => import('./components/ProductDetailPage'))
 const ServicesPage = lazy(() => import('./components/ServicesPage'))
 const AboutPage = lazy(() => import('./components/AboutPage'))
 const EnquiryPage = lazy(() => import('./components/EnquiryPage'))
+const FloatingWhatsApp = lazy(() => import('./components/FloatingWhatsApp'))
 
 // Lightweight page loading fallback
 function PageFallback() {
@@ -50,11 +49,12 @@ function App() {
 
   // Listen to hash changes (deep-linking & browser back/forward buttons)
   useEffect(() => {
-    const handleHash = () => {
+    const handleHash = async () => {
       const hash = window.location.hash.replace('#', '');
       
       if (hash.startsWith('product-')) {
         const prodId = hash.replace('product-', '');
+        const { productsData } = await import('./data/productsData');
         const allProds = Object.values(productsData).flat();
         const found = allProds.find((p) => p.id === prodId);
         if (found) {
@@ -217,7 +217,9 @@ function App() {
       <Footer onNavigate={handleNavigation} />
 
       {/* Subtle Floating WhatsApp Button */}
-      <FloatingWhatsApp />
+      <Suspense fallback={null}>
+        <FloatingWhatsApp />
+      </Suspense>
     </div>
   );
 }
