@@ -63,7 +63,9 @@ export default function ServicesSection({ onExploreServices }) {
                 <img 
                   src={item.image} 
                   alt={item.name} 
-                  className="service-img" 
+                  className="service-img"
+                  width="600"
+                  height="360"
                   loading="lazy"
                 />
                 <div className="service-img-overlay" />

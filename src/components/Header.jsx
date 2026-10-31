@@ -85,6 +85,8 @@ export default function Header({ currentPage = 'home', onNavigate, isScrolled = 
             <button
               className={`mobile-toggle-btn ${mobileMenuOpen ? 'open' : ''}`}
               aria-label="Toggle navigation menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav-drawer"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <span className="bar"></span>
@@ -96,7 +98,7 @@ export default function Header({ currentPage = 'home', onNavigate, isScrolled = 
       </div>
 
       {/* Mobile Menu Dropdown */}
-      <div className={`mobile-nav-drawer ${mobileMenuOpen ? 'open' : ''}`}>
+      <div id="mobile-nav-drawer" className={`mobile-nav-drawer ${mobileMenuOpen ? 'open' : ''}`}>
         <ul className="mobile-nav-list">
           {navLinks.map((item) => {
             const isActive = currentPage === item.page;
