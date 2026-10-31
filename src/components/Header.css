@@ -276,7 +276,7 @@
 }
 
 /* Responsive Breakpoint */
-@media (max-width: 960px) {
+@media (max-width: 800px) {
   .desktop-nav {
     display: none;
   }
