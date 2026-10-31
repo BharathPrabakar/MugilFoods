@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, lazy, Suspense } from 'react'
 import Header from './components/Header'
 import HeroCarousel from './components/HeroCarousel'
 import CategoryCards from './components/CategoryCards'
@@ -6,15 +6,26 @@ import ServicesSection from './components/ServicesSection'
 import AboutSnippet from './components/AboutSnippet'
 import WhyChooseUs from './components/WhyChooseUs'
 import TestimonialsSection from './components/TestimonialsSection'
-import ProductsPage from './components/ProductsPage'
-import ProductDetailPage from './components/ProductDetailPage'
-import ServicesPage from './components/ServicesPage'
-import AboutPage from './components/AboutPage'
-import EnquiryPage from './components/EnquiryPage'
 import Footer from './components/Footer'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
 import { productsData } from './data/productsData'
 import './App.css'
+
+// Lazy-load standalone pages not needed on initial landing page load
+const ProductsPage = lazy(() => import('./components/ProductsPage'))
+const ProductDetailPage = lazy(() => import('./components/ProductDetailPage'))
+const ServicesPage = lazy(() => import('./components/ServicesPage'))
+const AboutPage = lazy(() => import('./components/AboutPage'))
+const EnquiryPage = lazy(() => import('./components/EnquiryPage'))
+
+// Lightweight page loading fallback
+function PageFallback() {
+  return (
+    <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ width: '36px', height: '36px', borderRadius: '50%', border: '3px solid #f3f3f3', borderTop: '3px solid #d9232d', animation: 'spin 0.8s linear infinite' }} />
+    </div>
+  );
+}
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'products' | 'product-detail' | 'services' | 'about' | 'enquiry'
@@ -23,10 +34,17 @@ function App() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -74,31 +92,34 @@ function App() {
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
 
-  const handleNavigation = (pageId, hash) => {
+  const handleNavigation = (page, targetId) => {
     setActiveProduct(null);
-    if (pageId === 'products') {
+
+    if (page === 'products') {
       setCurrentPage('products');
       window.location.hash = 'products';
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (pageId === 'services') {
+    } else if (page === 'services') {
       setCurrentPage('services');
       window.location.hash = 'services';
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (pageId === 'about') {
+    } else if (page === 'about') {
       setCurrentPage('about');
       window.location.hash = 'about';
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (pageId === 'enquiry') {
+    } else if (page === 'enquiry') {
       setCurrentPage('enquiry');
       window.location.hash = 'enquiry';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       setCurrentPage('home');
-      window.location.hash = hash || 'home';
-      if (hash && hash !== '#home') {
+      window.location.hash = targetId || 'home';
+      if (targetId && targetId !== '#home') {
         setTimeout(() => {
-          const el = document.querySelector(hash);
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
+          const el = document.querySelector(targetId);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }
         }, 80);
       } else {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -121,84 +142,84 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleBackToProducts = () => {
-    setActiveProduct(null);
-    setCurrentPage('products');
-    window.location.hash = 'products';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <div className="app-container">
-      {/* Dynamic Header with Active Route Awareness */}
+      {/* Sticky Header with navigation */}
       <Header 
         currentPage={currentPage === 'product-detail' ? 'products' : currentPage} 
-        onNavigate={handleNavigation}
-        isScrolled={isScrolled}
+        onNavigate={handleNavigation} 
+        isScrolled={isScrolled} 
       />
 
-      {/* Route Views: Home | Products Catalog | Dedicated Product Detail | Detailed Services | Detailed About | Dedicated Enquiry */}
-      {currentPage === 'product-detail' && activeProduct ? (
-        <main>
-          <ProductDetailPage 
-            key={activeProduct.id}
-            product={activeProduct}
-            onBackToProducts={handleBackToProducts}
-            onSelectProduct={handleProductSelect}
-          />
-        </main>
-      ) : currentPage === 'products' ? (
-        <main>
-          <ProductsPage 
-            initialCategory={selectedCategory} 
-            onSelectProduct={handleProductSelect}
-          />
-        </main>
-      ) : currentPage === 'services' ? (
-        <main>
-          <ServicesPage />
-        </main>
-      ) : currentPage === 'about' ? (
-        <main>
-          <AboutPage />
-        </main>
-      ) : currentPage === 'enquiry' ? (
-        <main>
-          <EnquiryPage />
-        </main>
-      ) : (
-        <main>
-          {/* Master Full-Screen Auto-Carousel */}
-          <HeroCarousel onNavigate={handleNavigation} />
+      {/* Main Content Router */}
+      <Suspense fallback={<PageFallback />}>
+        {currentPage === 'product-detail' && activeProduct ? (
+          <main>
+            <ProductDetailPage 
+              key={activeProduct.id}
+              product={activeProduct} 
+              onBackToProducts={() => {
+                setActiveProduct(null);
+                setCurrentPage('products');
+                window.location.hash = 'products';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              onSelectProduct={handleProductSelect}
+            />
+          </main>
+        ) : currentPage === 'products' ? (
+          <main>
+            <ProductsPage 
+              initialCategory={selectedCategory} 
+              onSelectProduct={handleProductSelect}
+            />
+          </main>
+        ) : currentPage === 'services' ? (
+          <main>
+            <ServicesPage />
+          </main>
+        ) : currentPage === 'about' ? (
+          <main>
+            <AboutPage />
+          </main>
+        ) : currentPage === 'enquiry' ? (
+          <main>
+            <EnquiryPage />
+          </main>
+        ) : (
+          <main>
+            {/* Master Full-Screen Auto-Carousel */}
+            <HeroCarousel onNavigate={handleNavigation} />
 
-          {/* Product Categories Cards (Tamarind, Natural Honey/comb) */}
-          <CategoryCards onSelectCategory={handleCategorySelectFromHome} />
+            {/* Product Categories Cards (Tamarind, Natural Honey/comb) */}
+            <CategoryCards onSelectCategory={handleCategorySelectFromHome} />
 
-          {/* We Offer (Services) Section -> Wholesale, Retail, Custom Label */}
-          <div id="services-preview">
-            <ServicesSection onExploreServices={() => handleNavigation('services', '#services')} />
-          </div>
+            {/* We Offer (Services) Section -> Wholesale, Retail, Custom Label */}
+            <div id="services-preview">
+              <ServicesSection onExploreServices={() => handleNavigation('services', '#services')} />
+            </div>
 
-          {/* Concise, non-over-explained About section on Home */}
-          <AboutSnippet onExploreAbout={() => handleNavigation('about', '#about')} />
+            {/* Concise, non-over-explained About section on Home */}
+            <AboutSnippet onExploreAbout={() => handleNavigation('about', '#about')} />
 
-          {/* Why Choose Us Section -> Pure, Fresh, Traditional, Built With Trust */}
-          <WhyChooseUs />
+            {/* Why Choose Us Section -> Pure, Fresh, Traditional, Built With Trust */}
+            <WhyChooseUs />
 
-          {/* Testimonials Section -> Sideways Scrollable Customer & Partner Reviews */}
-          <div id="testimonials">
-            <TestimonialsSection />
-          </div>
-        </main>
-      )}
+            {/* Testimonials Section -> Sideways Scrollable Customer & Partner Reviews */}
+            <div id="testimonials">
+              <TestimonialsSection />
+            </div>
+          </main>
+        )}
+      </Suspense>
 
-      {/* Comprehensive Brand Footer */}
+      {/* Master Compact Multi-column Footer */}
       <Footer onNavigate={handleNavigation} />
 
-      {/* Persistent Floating WhatsApp Icon */}
+      {/* Subtle Floating WhatsApp Button */}
       <FloatingWhatsApp />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
