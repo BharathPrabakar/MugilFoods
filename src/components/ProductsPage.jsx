@@ -91,7 +91,7 @@ export default function ProductsPage({
 
           {/* Minimal Products Grid: JUST PHOTO AND NAME */}
           <div className="clean-minimal-products-grid">
-            {currentProducts.map((prod) => {
+            {currentProducts.map((prod, idx) => {
               const isComingSoon = prod.status === 'coming-soon';
 
               return (
@@ -111,7 +111,15 @@ export default function ProductsPage({
                 >
                   {/* Photo with zoom & hover overlay */}
                   <div className="clean-prod-img-wrap">
-                    <img src={prod.image} alt={prod.name} className="clean-prod-img" width="500" height="400" loading="lazy" />
+                    <img 
+                      src={prod.image} 
+                      alt={prod.name} 
+                      className="clean-prod-img" 
+                      width="400" 
+                      height="300" 
+                      loading={idx < 4 ? "eager" : "lazy"} 
+                      fetchPriority={idx < 2 ? "high" : "auto"}
+                    />
                     
                     {isComingSoon && (
                       <div className="clean-coming-overlay">
