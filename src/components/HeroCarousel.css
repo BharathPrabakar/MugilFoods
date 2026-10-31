@@ -111,7 +111,7 @@
 }
 
 /* Mobile & Tablet Adjustments */
-@media (max-width: 960px) {
+@media (max-width: 800px) {
   .hero-carousel-container {
     height: 250px;
     min-height: 200px;
