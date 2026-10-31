@@ -19,12 +19,12 @@ export default function Footer({ onNavigate }) {
           {/* Brand Info */}
           <div className="footer-brand-pane">
             <div className="footer-logo-wrapper">
-              <img src={logoImg} alt="Mugil Foods Logo" className="footer-logo-img" width="52" height="52" loading="lazy" />
+              <img src={logoImg} alt="Mugil Foods - Mugil Tamarind Logo" className="footer-logo-img" width="52" height="52" loading="lazy" />
             </div>
             <p className="footer-tagline">
-              Premium seedless tamarind & agro-commodities from Dharmapuri since 2006.
+              Mugil Tamarind by Mugil Foods — Premium wholesale tamarind processed naturally in Dharmapuri, Tamil Nadu.
             </p>
-            <span className="footer-origin-badge">Dharmapuri, Tamil Nadu • Global Exports</span>
+            <span className="footer-origin-badge">Dharmapuri, Tamil Nadu • Custom Packaging Available</span>
           </div>
 
           {/* Quick Links */}
@@ -54,23 +54,24 @@ export default function Footer({ onNavigate }) {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                 </svg>
-                <a href="tel:+919442177026">+91 9442177026</a>
+                <a href="tel:+919442177026">+91 94421 77026</a>
               </li>
               <li>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                 </svg>
-                <a href="mailto:mugiltamarind26@gmail.com">mugiltamarind26@gmail.com</a>
+                <a href="mailto:mugiltamarind@gmail.com">mugiltamarind@gmail.com</a>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Concise Bottom Bar */}
-        <div className="footer-compact-bottom">
-          <p>© {new Date().getFullYear()} Mugil Foods. All rights reserved.</p>
-          <p className="footer-credit">Authenticity & Quality Guaranteed</p>
+        {/* Bottom Bar */}
+        <div className="footer-bottom-bar">
+          <p className="footer-copyright">
+            © {new Date().getFullYear()} Mugil Tamarind • Mugil Foods. All rights reserved. Wholesale Tamarind Dharmapuri, Tamil Nadu.
+          </p>
         </div>
       </div>
     </footer>

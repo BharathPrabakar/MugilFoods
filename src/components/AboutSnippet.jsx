@@ -3,16 +3,16 @@ import './AboutSnippet.css';
 
 export default function AboutSnippet({ onExploreAbout }) {
   return (
-    <section id="about" className="about-snippet-section" aria-label="About Mugil Foods">
+    <section id="about" className="about-snippet-section" aria-label="About Mugil Tamarind">
       <div className="about-snippet-container">
         <div className="about-snippet-card">
           <div className="about-snippet-left">
-            <span className="about-tag">Est. 2006 • Dharmapuri</span>
+            <span className="about-tag">Mugil Tamarind • Dharmapuri, Tamil Nadu</span>
             <h2 className="about-snippet-title">
-              Pioneering Pure Agro-Processing Since 2006
+              Best Tamarind in Tamil Nadu, Processed in Dharmapuri
             </h2>
             <p className="about-snippet-lead">
-              Founded by <strong>Kermugil Venthen</strong> in Dharmapuri, Tamil Nadu, Mugil Foods supplies premium seedless tamarind and cold-pressed staples across all of South India and exports to America with 20+ completed international consignments.
+              At <strong>Mugil Tamarind</strong> (by <strong>Mugil Foods</strong>), we operate a dedicated processing plant in <strong>Dharmapuri, Tamil Nadu</strong>, sourcing high-grade raw tamarind directly from farmers across Indian states. In our modern facility, we wash, clean, deshell, deseed, and carefully sort every batch before drying under ideal hygienic conditions — making us the trusted hub for <strong>wholesale tamarind in Dharmapuri</strong> with versatile <strong>custom packaging</strong> for every scale.
             </p>
             <div className="about-snippet-action">
               <a 
@@ -25,7 +25,7 @@ export default function AboutSnippet({ onExploreAbout }) {
                   }
                 }}
               >
-                <span>Read Our Story</span>
+                <span>Read More About Our Processing</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
@@ -36,20 +36,20 @@ export default function AboutSnippet({ onExploreAbout }) {
 
           <div className="about-snippet-stats">
             <div className="stat-box">
-              <span className="stat-number">2006</span>
-              <span className="stat-label">Founded in Dharmapuri</span>
+              <span className="stat-number">Direct Sourcing</span>
+              <span className="stat-label">From Farmers Across India</span>
             </div>
             <div className="stat-box">
-              <span className="stat-number">20+</span>
-              <span className="stat-label">Completed Export Orders</span>
+              <span className="stat-number">Dharmapuri Unit</span>
+              <span className="stat-label">Hygienic Washing & Curing</span>
             </div>
             <div className="stat-box">
-              <span className="stat-number">South India</span>
-              <span className="stat-label">Retail & Supply Footprint</span>
+              <span className="stat-number">100% Pure</span>
+              <span className="stat-label">Zero Additives & No Chemicals</span>
             </div>
             <div className="stat-box">
-              <span className="stat-number">America</span>
-              <span className="stat-label">Direct Retail Units Placed</span>
+              <span className="stat-number">Custom Packing</span>
+              <span className="stat-label">Retail Slabs & Bulk Cartons</span>
             </div>
           </div>
         </div>

@@ -5,77 +5,60 @@ import dharmapuriImg from '../assets/dharmapuri_origin.webp';
 export default function AboutPage({ onNavigateToServices, onNavigateToContact }) {
   return (
     <div className="about-page">
-      {/* Top Banner with rich gradient for transparent navbar blend */}
+      {/* Top Banner */}
       <section className="about-hero-banner">
         <div className="about-hero-inner">
-          <span className="about-top-badge">Since 2006</span>
-          <h1 className="about-page-title">Rooted in Tradition</h1>
+          <span className="about-top-badge">Dharmapuri, Tamil Nadu</span>
+          <h1 className="about-page-title">Mugil Tamarind</h1>
           <p className="about-page-desc">
-            Agricultural processing excellence from Dharmapuri, Tamil Nadu.
+            Premium wholesale tamarind in Dharmapuri, Tamil Nadu — natural, hygienic, and built with trust by Mugil Foods.
           </p>
         </div>
       </section>
 
       {/* Main Content Area */}
       <div className="about-content-wrapper">
-        {/* Story Section */}
+        {/* Story & Processing Facility Section */}
         <section className="about-story-section">
           <div className="about-story-grid">
             <div className="story-media-box">
-              <img src={dharmapuriImg} alt="Dharmapuri agricultural origins" className="story-featured-img" />
+              <img src={dharmapuriImg} alt="Dharmapuri Tamarind Processing Plant" className="story-featured-img" />
               <div className="story-img-badge">
-                <span>Dharmapuri, Tamil Nadu</span>
+                <span>Dharmapuri Processing Plant</span>
               </div>
             </div>
 
             <div className="story-text-col">
-              <span className="section-mini-tag">Our Journey</span>
-              <h2 className="story-headline">Crafting Purity Since 2006</h2>
+              <span className="section-mini-tag">Our Sourcing & Facility</span>
+              <h2 className="story-headline">Crafting the Best Tamarind in Tamil Nadu</h2>
               <p className="story-paragraph">
-                Mugil Foods began in 2006 under the visionary leadership of <strong>Kermugil Venthen</strong> in the fertile agricultural heartland of <strong>Dharmapuri, Tamil Nadu</strong>. Renowned for yielding some of India's finest tamarind groves, Dharmapuri provided the ideal ground to pioneer natural, hygienic curing and grading methods.
+                <strong>Mugil Tamarind</strong> by <strong>Mugil Foods</strong> is centered in the agro-processing belt of <strong>Dharmapuri, Tamil Nadu</strong>. We partner directly with farmers across prime Indian agricultural states to procure only top-grade, naturally ripened raw tamarind.
               </p>
               <p className="story-paragraph">
-                What began as a focused processing unit has grown into an internationally respected enterprise. Today, we supply retail and wholesale networks <strong>across all of South India</strong> and export to discerning partners in <strong>America</strong> and international markets, backed by over <strong>20+ major completed export consignments</strong>.
+                Every batch brought into our Dharmapuri plant undergoes a methodical, natural refinement process: thorough washing, hygienic cleaning, manual and mechanized shell removal, careful deseeding, and meticulous fiber separation. The purified tamarind pulp is then sorted and dried under ideal, controlled weather conditions without any artificial chemicals or preservatives.
+              </p>
+              <p className="story-paragraph">
+                Whether you need wholesale seedless tamarind slabs, artisanal concentric rounds, karipuli cakes, or tailored <strong>custom packaging</strong> for private brands, our Dharmapuri facility ensures unmatched consistency, natural acidity, and supreme flavor yield.
               </p>
 
               <div className="founder-quote-box">
                 <p className="quote-text">
-                  “Our philosophy has never deviated: produce food with uncompromised integrity, honor traditional curing, and let trust be the cornerstone of every relationship.”
+                  “From washing and deseeding to drying in ideal conditions, our Dharmapuri plant is committed to delivering pure, unadulterated tamarind that businesses and households can trust completely.”
                 </p>
                 <div className="founder-signature">
-                  <span className="founder-name">Kermugil Venthen</span>
-                  <span className="founder-title">Founder, Mugil Foods</span>
+                  <span className="founder-name">Mugil Tamarind</span>
+                  <span className="founder-title">Mugil Foods • Dharmapuri, Tamil Nadu</span>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Key Milestone Metrics Ribbon */}
-        <section className="about-metrics-strip">
-          <div className="milestone-col">
-            <span className="milestone-number">2006</span>
-            <span className="milestone-label">Year Founded in Dharmapuri</span>
-          </div>
-          <div className="milestone-col">
-            <span className="milestone-number">20+</span>
-            <span className="milestone-label">Successful Global Export Consignments</span>
-          </div>
-          <div className="milestone-col">
-            <span className="milestone-number">100%</span>
-            <span className="milestone-label">Pan South India Supply Footprint</span>
-          </div>
-          <div className="milestone-col">
-            <span className="milestone-number">USA & India</span>
-            <span className="milestone-label">Active Retail & Wholesale Presence</span>
-          </div>
-        </section>
-
-        {/* Global & Domestic Presence Grid */}
+        {/* Reach & Capability Grid */}
         <section className="about-presence-section">
           <div className="presence-header">
-            <span className="section-mini-tag">Our Reach</span>
-            <h2 className="presence-headline">From Local Groves to Global Kitchens</h2>
+            <span className="section-mini-tag">Our Infrastructure</span>
+            <h2 className="presence-headline">Wholesale Tamarind in Dharmapuri with Nationwide Reach</h2>
           </div>
 
           <div className="presence-grid">
@@ -86,36 +69,37 @@ export default function AboutPage({ onNavigateToServices, onNavigateToContact })
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
               </div>
-              <h3 className="presence-title">Dharmapuri Processing Hub</h3>
+              <h3 className="presence-title">Dharmapuri Processing Plant</h3>
               <p className="presence-desc">
-                Our main processing and warehousing facilities in Dharmapuri, Tamil Nadu, ensure direct access to prime harvests, sun-curing yards, and clean hygienic sorting.
+                Our advanced central processing and warehousing unit in Dharmapuri, Tamil Nadu features systematic cleaning, deshelling, grading, and controlled drying infrastructure.
               </p>
             </div>
 
             <div className="presence-card">
               <div className="presence-card-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect width="18" height="18" x="3" y="3" rx="2"></rect>
-                  <path d="m9 8 6 4-6 4Z"></path>
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                 </svg>
               </div>
-              <h3 className="presence-title">South India Retail & Supply</h3>
+              <h3 className="presence-title">Direct Farmer Procurement</h3>
               <p className="presence-desc">
-                Comprehensive distribution spanning Tamil Nadu, Karnataka, Kerala, Andhra Pradesh, and Telangana supplying supermarkets, grocery chains, and commercial institutions.
+                We work directly with agricultural growers across multiple Indian states, securing prime seasonal harvests with authentic tartness, rich pulp yield, and no middlemen compromise.
               </p>
             </div>
 
             <div className="presence-card">
               <div className="presence-card-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="2" y1="12" x2="22" y2="12"></line>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
                 </svg>
               </div>
-              <h3 className="presence-title">International & America Exports</h3>
+              <h3 className="presence-title">Custom Packaging & Bulk Supply</h3>
               <p className="presence-desc">
-                Placing retail units and container consignments directly into the United States of America and diaspora markets, compliant with strict international food regulations.
+                Comprehensive packaging flexibility from 250g/500g retail branded packs to 10kg, 30kg, and 40kg master carton boxes, along with OEM white-labeling solutions.
               </p>
             </div>
           </div>
@@ -125,21 +109,19 @@ export default function AboutPage({ onNavigateToServices, onNavigateToContact })
         <section className="about-values-section">
           <div className="values-grid">
             <div className="value-item">
-              <h4 className="value-title">Pure & Natural</h4>
-              <p className="value-desc">No additives, no artificial acidulants, and no chemical preservation. Only honest harvest.</p>
+              <h4 className="value-title">100% Pure & Chemical Free</h4>
+              <p className="value-desc">Zero artificial coloring, zero added sugar, and zero preservatives. Retaining natural tartaric acid and authentic flavor.</p>
             </div>
             <div className="value-item">
-              <h4 className="value-title">Farmer Partnerships</h4>
-              <p className="value-desc">Ethical sourcing directly supporting generational farming families across Dharmapuri.</p>
+              <h4 className="value-title">Hygienic De-seeding & Sorting</h4>
+              <p className="value-desc">Washed, deshelled, and deseeded with minimal fiber content under rigorous food safety and hygiene protocols.</p>
             </div>
             <div className="value-item">
-              <h4 className="value-title">Global Quality Standard</h4>
-              <p className="value-desc">Standardized moisture levels, vacuum sealed packs, and phytosanitary clearance for seamless export.</p>
+              <h4 className="value-title">Dependable Wholesale Supply</h4>
+              <p className="value-desc">Prompt freight dispatch across Tamil Nadu and India for supermarkets, food processing industries, restaurants, and wholesalers.</p>
             </div>
           </div>
         </section>
-
-
       </div>
     </div>
   );

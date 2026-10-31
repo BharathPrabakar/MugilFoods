@@ -51,12 +51,6 @@ const features = [
   }
 ];
 
-const metrics = [
-  { value: 'Since 2006', label: 'Rooted in Dharmapuri' },
-  { value: '20+', label: 'Global Export Orders' },
-  { value: 'South India', label: 'Pan-Regional Supply' },
-  { value: 'America', label: 'Retail & Wholesale Units' }
-];
 
 export default function WhyChooseUs() {
   return (
@@ -86,16 +80,6 @@ export default function WhyChooseUs() {
               </div>
               <h3 className="feature-title">{item.title}</h3>
               <p className="feature-desc">{item.description}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Trust Metrics Ribbon */}
-        <div className="trust-metrics-ribbon">
-          {metrics.map((metric, idx) => (
-            <div key={idx} className="metric-item">
-              <span className="metric-value">{metric.value}</span>
-              <span className="metric-label">{metric.label}</span>
             </div>
           ))}
         </div>
