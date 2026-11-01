@@ -526,6 +526,12 @@ for (const route of routes) {
   // Canonical
   pageHtml = pageHtml.replace(/<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${canonicalUrl}" />`);
 
+  // Robots Meta Tag
+  const robotsDirective = route.path === '/404.html'
+    ? 'noindex, nofollow'
+    : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+  pageHtml = pageHtml.replace(/<meta name="robots"[^>]*>/, `<meta name="robots" content="${robotsDirective}" />`);
+
   // Description
   pageHtml = pageHtml.replace(/<meta name="description"[^>]*>/, `<meta name="description" content="${pageDesc}" />`);
 

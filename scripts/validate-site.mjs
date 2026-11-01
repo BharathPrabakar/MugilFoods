@@ -168,6 +168,17 @@ for (const p of allPages) {
   const canonicalMatch = content.match(/<link rel="canonical" href="(.*?)"/);
   assert(canonicalMatch && canonicalMatch[1].startsWith('https://bharathprabakar.github.io/MugilFoods'), `${p.name} has absolute canonical link`);
 
+  // Robots meta tag
+  const robotsMatch = content.match(/<meta name="robots" content="(.*?)"/);
+  assert(robotsMatch !== null, `${p.name} contains meta robots tag`);
+  if (robotsMatch) {
+    if (p.path === '404.html') {
+      assert(robotsMatch[1].includes('noindex'), `${p.name} specifies noindex directive`);
+    } else {
+      assert(robotsMatch[1].includes('index') && robotsMatch[1].includes('follow'), `${p.name} specifies index, follow directives`);
+    }
+  }
+
   // H1 tag
   const h1Match = content.match(/<h1[^>]*>(.*?)<\/h1>/);
   assert(h1Match && h1Match[1].length > 0, `${p.name} contains H1 tag`);
