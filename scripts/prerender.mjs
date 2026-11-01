@@ -245,7 +245,7 @@ const routes = [
     path: '/contact/',
     canonicalPath: '/contact/',
     title: 'Contact Us & Wholesale Enquiries - Dharmapuri Unit | Mugil Foods',
-    description: 'Get in touch with founder Kermugil Venthen and the Mugil Foods team in Dharmapuri, Tamil Nadu. Fast quotes on wholesale tamarind, specs, samples, and logistics via phone, email, and WhatsApp.',
+    description: 'Get in touch with founder Karmugil Vendhan and the Mugil Foods team in Dharmapuri, Tamil Nadu. Fast quotes on wholesale tamarind, specs, samples, and logistics via phone, email, and WhatsApp.',
     keywords: 'contact mugil foods, wholesale tamarind enquiry, dharmapuri tamarind factory contact, mugil tamarind phone number, tamarind price quotation',
     changefreq: 'monthly',
     priority: '0.85',

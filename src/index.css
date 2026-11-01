@@ -130,16 +130,15 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
-/* Ensure accessible touch target sizes on touch devices */
+/* Ensure accessible touch target sizes on touch devices (excluding small slider pagination dots) */
 @media (pointer: coarse) {
-  button,
+  button:not(.pagination-dot),
   .nav-link,
   .enquiry-btn,
   .mobile-toggle-btn,
   .service-tab-btn,
   .compact-cat-card,
-  .clean-prod-card,
-  .pagination-dot {
+  .clean-prod-card {
     min-height: 44px;
     min-width: 44px;
   }

@@ -57,7 +57,7 @@ export default function AboutPage() {
                   “From careful cleaning and deseeding to controlled drying in clean conditions, our Dharmapuri plant is committed to delivering pure, unadulterated tamarind that businesses and households can trust completely.”
                 </p>
                 <div className="founder-signature">
-                  <span className="founder-name">Kermugil Venthen</span>
+                  <span className="founder-name">Karmugil Vendhan</span>
                   <span className="founder-title">Founder • {SITE_NAME}, Dharmapuri, Tamil Nadu</span>
                 </div>
               </div>

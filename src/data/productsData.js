@@ -59,7 +59,7 @@ export const categoriesData = [
   },
   {
     id: 'natural-honey-comb',
-    name: 'Natural Honey / Comb',
+    name: 'Honey',
     image: honeyImg,
   }
 ];

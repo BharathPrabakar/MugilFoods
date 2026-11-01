@@ -36,12 +36,11 @@ export default function Footer() {
             <span className="footer-pane-heading">Quick Links</span>
             <div className="footer-nav-links">
               <a href={toAppPath('/')} onClick={(e) => onNavClick(e, '/')}>Home</a>
-              <a href={toAppPath('/products/')} onClick={(e) => onNavClick(e, '/products/')}>All Products</a>
+              <a href={toAppPath('/products/')} onClick={(e) => onNavClick(e, '/products/')}>Products</a>
               <a href={toAppPath('/services/')} onClick={(e) => onNavClick(e, '/services/')}>Services</a>
               <a href={toAppPath('/about/')} onClick={(e) => onNavClick(e, '/about/')}>About Us</a>
-              <a href={toAppPath('/resources/')} onClick={(e) => onNavClick(e, '/resources/')}>Tamarind Buyer's Guide</a>
-              <a href={toAppPath('/privacy-policy/')} onClick={(e) => onNavClick(e, '/privacy-policy/')}>Privacy Policy</a>
-              <a href={toAppPath('/contact/')} onClick={(e) => onNavClick(e, '/contact/')}>Make an Enquiry</a>
+              <a href={toAppPath('/resources/')} onClick={(e) => onNavClick(e, '/resources/')}>Resources</a>
+              <a href={toAppPath('/contact/')} onClick={(e) => onNavClick(e, '/contact/')}>Contact Us</a>
             </div>
           </div>
 
@@ -78,6 +77,9 @@ export default function Footer() {
           <p className="footer-copyright">
             © {new Date().getFullYear()} {BRAND_NAME} • {SITE_NAME}. All rights reserved. Wholesale Tamarind Supplier in Dharmapuri, Tamil Nadu.
           </p>
+          <div className="footer-bottom-links">
+            <a href={toAppPath('/privacy-policy/')} onClick={(e) => onNavClick(e, '/privacy-policy/')}>Privacy Policy</a>
+          </div>
         </div>
       </div>
     </footer>

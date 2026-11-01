@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './ProductsPage.css';
 import { categoriesData, productsData } from '../data/productsData';
 import { toAppPath, handleLinkClick } from '../utils/navigation';
-import { BRAND_NAME } from '../data/routesData';
+import { BRAND_NAME, SITE_NAME } from '../data/routesData';
 
 export default function ProductsPage({ 
   initialCategory = 'tamarind',
@@ -34,7 +34,7 @@ export default function ProductsPage({
       {/* Top Banner */}
       <section className="products-top-banner">
         <div className="products-banner-inner">
-          <span className="products-banner-badge">{BRAND_NAME} Catalog</span>
+          <span className="products-banner-badge">{SITE_NAME} Catalog</span>
           <h1 className="products-clean-title">Commercial & Wholesale Tamarind Products</h1>
           <p className="products-clean-subtitle">Direct from our Dharmapuri processing unit to commercial kitchens and retail shelves</p>
         </div>

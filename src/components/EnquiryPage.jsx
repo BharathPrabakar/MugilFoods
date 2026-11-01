@@ -176,7 +176,7 @@ export default function EnquiryPage({ initialProduct = '', initialService = '' }
           <span className="enquiry-top-badge">Direct Commercial Communication</span>
           <h1 className="enquiry-page-title">Wholesale & Business Enquiries</h1>
           <p className="enquiry-page-desc">
-            Connect directly with founder Kermugil Venthen and the {BRAND_NAME} agro-processing facility in Dharmapuri, Tamil Nadu.
+            Connect directly with founder Karmugil Vendhan and the {BRAND_NAME} agro-processing facility in Dharmapuri, Tamil Nadu.
           </p>
         </div>
       </section>
@@ -230,7 +230,7 @@ export default function EnquiryPage({ initialProduct = '', initialService = '' }
                 </div>
                 <h3 className="thankyou-title">Thank You, {formData.name || 'Partner'}!</h3>
                 <p className="thankyou-desc">
-                  {statusMessage || 'Your enquiry has been received. Founder Kermugil Venthen and our Dharmapuri team will review your requirement and follow up promptly.'}
+                  {statusMessage || 'Your enquiry has been received. Founder Karmugil Vendhan and our Dharmapuri team will review your requirement and follow up promptly.'}
                 </p>
                 <div className="thankyou-actions">
                   <button type="button" onClick={handleResetForm} className="btn-send-another">

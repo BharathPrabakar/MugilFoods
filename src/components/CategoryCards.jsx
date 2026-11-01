@@ -14,10 +14,10 @@ const categories = [
   },
   {
     id: 'natural-honey-comb',
-    name: 'Natural Honey / Comb',
+    name: 'Honey',
     path: '/products/wildflower-honey/',
     image: honeyImg,
-    alt: 'Raw Natural Honey with Honeycomb - Direct Forest Harvest'
+    alt: 'Pure Natural Honey - Direct Harvest'
   }
 ];
 
