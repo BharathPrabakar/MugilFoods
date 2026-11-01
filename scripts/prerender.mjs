@@ -20,7 +20,7 @@ const ORIGIN = 'https://bharathprabakar.github.io';
 const SITE_NAME = 'Mugil Foods';
 const BRAND_NAME = 'Mugil Tamarind';
 const COMPANY_PHONE = '+919442177026';
-const COMPANY_EMAIL = 'mugiltamarind@gmail.com';
+const COMPANY_EMAIL = 'mugiltamarind26@gmail.com';
 const TODAY = new Date().toISOString().split('T')[0];
 
 const resolveAbsoluteUrl = (img) => {

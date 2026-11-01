@@ -110,7 +110,7 @@ export default function EnquiryPage({ initialProduct = '', initialService = '' }
       // Create mail draft fallback without claiming false server-side receipt
       triggerMailto();
       setFormStatus('draft-opened');
-      setStatusMessage('A pre-filled email draft has been opened in your default email client addressed to mugiltamarind@gmail.com. Please click Send in your email client to transmit your enquiry.');
+      setStatusMessage(`A pre-filled email draft has been opened in your default email client addressed to ${COMPANY_EMAIL}. Please click Send in your email client to transmit your enquiry.`);
       return;
     }
 

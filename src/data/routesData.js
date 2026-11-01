@@ -8,7 +8,7 @@ export const SITE_NAME = 'Mugil Foods';
 export const BRAND_NAME = 'Mugil Tamarind';
 export const COMPANY_PHONE = '+919442177026';
 export const COMPANY_PHONE_DISPLAY = '+91 94421 77026';
-export const COMPANY_EMAIL = 'mugiltamarind@gmail.com';
+export const COMPANY_EMAIL = 'mugiltamarind26@gmail.com';
 export const WHATSAPP_URL = 'https://wa.me/919442177026?text=' + encodeURIComponent('Hello Mugil Foods, I would like to enquire about your wholesale tamarind products and services.');
 export const GOOGLE_MAPS_URL = 'https://maps.app.goo.gl/ipBBQmJx93ar5S9x5?g_st=aw';
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
