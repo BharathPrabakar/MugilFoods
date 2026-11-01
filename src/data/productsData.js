@@ -71,8 +71,8 @@ export const productsData = {
       categoryId: 'tamarind',
       name: 'Seedless Tamarind Slab with White Layer',
       tagline: 'Pure Tamarind | Seedless | Convenient to Use',
-      image: slabWhiteDetail,
-      gallery: [slabWhiteDetail, slabWhitePack, slabWhiteBulk, slabWhiteLayer],
+      image: slabWhiteLayer,
+      gallery: [slabWhiteLayer, slabWhiteDetail, slabWhiteBulk, slabWhitePack],
       description:
         'Our Seedless Tamarind Slab with White Layer is a traditional tamarind product made from carefully selected tamarind pulp, with the seeds removed for convenient use in everyday cooking. Formed into a compact slab, it is easy to store, handle, and portion according to your needs. The natural white layer on the surface may be associated with the tamarind\'s processing or storage conditions. Its appearance alone cannot confirm whether it is natural residue or mould, so the product should be checked for safety before use.',
       features: [
