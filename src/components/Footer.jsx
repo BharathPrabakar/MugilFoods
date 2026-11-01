@@ -1,41 +1,47 @@
 import React from 'react';
 import './Footer.css';
 import logoImg from '../assets/logo.png';
+import { toAppPath, handleLinkClick } from '../utils/navigation';
+import { COMPANY_EMAIL, COMPANY_PHONE, COMPANY_PHONE_DISPLAY, BRAND_NAME, SITE_NAME } from '../data/routesData';
 
-export default function Footer({ onNavigate }) {
-  const handleLinkClick = (pageId, href, e) => {
-    e.preventDefault();
-    if (onNavigate) {
-      onNavigate(pageId, href);
-    } else {
-      window.location.hash = pageId;
-    }
+export default function Footer() {
+  const onNavClick = (e, path) => {
+    handleLinkClick(e, path);
   };
 
   return (
-    <footer className="footer">
+    <footer className="footer" aria-label="Site Footer">
       <div className="footer-container">
         <div className="footer-compact-grid">
           {/* Brand Info */}
           <div className="footer-brand-pane">
             <div className="footer-logo-wrapper">
-              <img src={logoImg} alt="Mugil Foods - Mugil Tamarind Logo" className="footer-logo-img" width="52" height="52" loading="lazy" />
+              <img 
+                src={logoImg} 
+                alt={`${SITE_NAME} - ${BRAND_NAME} Logo`} 
+                className="footer-logo-img" 
+                width="52" 
+                height="52" 
+                loading="lazy" 
+              />
             </div>
             <p className="footer-tagline">
-              Mugil Tamarind by Mugil Foods — Premium wholesale tamarind processed naturally in Dharmapuri, Tamil Nadu.
+              {BRAND_NAME} by {SITE_NAME} — Leading wholesale tamarind manufacturer and processor in Dharmapuri, Tamil Nadu.
             </p>
-            <span className="footer-origin-badge">Dharmapuri, Tamil Nadu • Custom Packaging Available</span>
+            <span className="footer-origin-badge">Dharmapuri, Tamil Nadu • Custom & Bulk Packaging Available</span>
           </div>
 
           {/* Quick Links */}
           <div className="footer-nav-pane">
             <span className="footer-pane-heading">Quick Links</span>
             <div className="footer-nav-links">
-              <a href="#home" onClick={(e) => handleLinkClick('home', '#home', e)}>Home</a>
-              <a href="#products" onClick={(e) => handleLinkClick('products', '#products', e)}>Products</a>
-              <a href="#services" onClick={(e) => handleLinkClick('services', '#services', e)}>Services</a>
-              <a href="#about" onClick={(e) => handleLinkClick('about', '#about', e)}>About Us</a>
-              <a href="#enquiry" onClick={(e) => handleLinkClick('enquiry', '#enquiry', e)}>Make an Enquiry</a>
+              <a href={toAppPath('/')} onClick={(e) => onNavClick(e, '/')}>Home</a>
+              <a href={toAppPath('/products/')} onClick={(e) => onNavClick(e, '/products/')}>All Products</a>
+              <a href={toAppPath('/services/')} onClick={(e) => onNavClick(e, '/services/')}>Services</a>
+              <a href={toAppPath('/about/')} onClick={(e) => onNavClick(e, '/about/')}>About Us</a>
+              <a href={toAppPath('/resources/')} onClick={(e) => onNavClick(e, '/resources/')}>Tamarind Buyer's Guide</a>
+              <a href={toAppPath('/privacy-policy/')} onClick={(e) => onNavClick(e, '/privacy-policy/')}>Privacy Policy</a>
+              <a href={toAppPath('/contact/')} onClick={(e) => onNavClick(e, '/contact/')}>Make an Enquiry</a>
             </div>
           </div>
 
@@ -44,24 +50,24 @@ export default function Footer({ onNavigate }) {
             <span className="footer-pane-heading">Contact Us</span>
             <ul className="footer-contact-items">
               <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
-                <span>Dharmapuri, Tamil Nadu, India</span>
+                <span>Dharmapuri, Tamil Nadu, 636701, India</span>
               </li>
               <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                 </svg>
-                <a href="tel:+919442177026">+91 94421 77026</a>
+                <a href={`tel:${COMPANY_PHONE}`} aria-label={`Call ${SITE_NAME} at ${COMPANY_PHONE_DISPLAY}`}>{COMPANY_PHONE_DISPLAY}</a>
               </li>
               <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                 </svg>
-                <a href="mailto:mugiltamarind@gmail.com">mugiltamarind@gmail.com</a>
+                <a href={`mailto:${COMPANY_EMAIL}`} aria-label={`Email ${SITE_NAME} at ${COMPANY_EMAIL}`}>{COMPANY_EMAIL}</a>
               </li>
             </ul>
           </div>
@@ -70,7 +76,7 @@ export default function Footer({ onNavigate }) {
         {/* Bottom Bar */}
         <div className="footer-bottom-bar">
           <p className="footer-copyright">
-            © {new Date().getFullYear()} Mugil Tamarind • Mugil Foods. All rights reserved. Wholesale Tamarind Dharmapuri, Tamil Nadu.
+            © {new Date().getFullYear()} {BRAND_NAME} • {SITE_NAME}. All rights reserved. Wholesale Tamarind Supplier in Dharmapuri, Tamil Nadu.
           </p>
         </div>
       </div>

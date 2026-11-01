@@ -1,53 +1,42 @@
 import React from 'react';
 import './CategoryCards.css';
-
 import tamarindImg from '../assets/category_tamarind.webp';
 import honeyImg from '../assets/category_honey.webp';
+import { toAppPath, handleLinkClick } from '../utils/navigation';
 
 const categories = [
   {
     id: 'tamarind',
-    name: 'Tamarind',
+    name: 'Tamarind Products',
+    path: '/products/',
     image: tamarindImg,
-    alt: 'Premium Tamarind Slabs, Rounds & Cakes'
+    alt: 'Premium Tamarind Slabs, Rounds & Karipuli Wholesale'
   },
   {
     id: 'natural-honey-comb',
-    name: 'Natural Honey/comb',
+    name: 'Natural Honey / Comb',
+    path: '/products/wildflower-honey/',
     image: honeyImg,
-    alt: 'Raw Natural Honey with Honeycomb'
+    alt: 'Raw Natural Honey with Honeycomb - Direct Forest Harvest'
   }
 ];
 
-export default function CategoryCards({ onSelectCategory }) {
-  const handleClick = (catId) => {
-    if (onSelectCategory) {
-      onSelectCategory(catId);
-    }
-  };
-
+export default function CategoryCards() {
   return (
     <section className="categories-section" aria-label="Product Categories">
       <div className="categories-header">
-        <span className="categories-badge">Categories</span>
-        <h2 className="categories-title">Explore Our Categories</h2>
+        <span className="categories-badge">Product Range</span>
+        <h2 className="categories-title">Explore Our Core Categories</h2>
       </div>
 
       <div className="categories-grid">
         {categories.map((item) => (
-          <div 
+          <a 
             key={item.id} 
+            href={toAppPath(item.path)}
             className="category-card"
-            tabIndex={0}
-            role="button"
-            aria-label={`View ${item.name} products`}
-            onClick={() => handleClick(item.id)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                handleClick(item.id);
-              }
-            }}
+            onClick={(e) => handleLinkClick(e, item.path)}
+            aria-label={`Explore ${item.name}`}
           >
             {/* Image Container with Zoom effect */}
             <div className="category-image-wrap">
@@ -55,7 +44,10 @@ export default function CategoryCards({ onSelectCategory }) {
                 src={item.image} 
                 alt={item.alt} 
                 className="category-image" 
+                width="600"
+                height="400"
                 loading="lazy" 
+                decoding="async"
               />
               <div className="category-image-overlay" />
             </div>
@@ -79,7 +71,7 @@ export default function CategoryCards({ onSelectCategory }) {
                 </svg>
               </div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </section>

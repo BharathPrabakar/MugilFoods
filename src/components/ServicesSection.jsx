@@ -1,56 +1,56 @@
 import React from 'react';
 import './ServicesSection.css';
-
 import wholesaleImg from '../assets/service_wholesale.webp';
 import retailImg from '../assets/service_retail.webp';
 import customLabelImg from '../assets/service_custom_label.webp';
+import { toAppPath, handleLinkClick } from '../utils/navigation';
 
 const services = [
   {
     id: 'wholesale',
-    name: 'Wholesale Supply',
+    name: 'Wholesale Tamarind Supply',
     subtitle: 'Bulk Quantities & Institutional Supply',
     image: wholesaleImg,
+    path: '/wholesale-tamarind-supply/',
     description:
-      'Direct farm-to-industry bulk shipments of seedless tamarind slabs, rounds, karipuli cakes, and tamarind concentrates, processed naturally in Dharmapuri.',
+      'Direct farm-to-industry bulk shipments of seedless tamarind slabs, rounds, karipuli cakes, and tamarind concentrates, processed naturally in Dharmapuri, Tamil Nadu.',
     highlights: ['Export Grade Quality', 'Container & Tonne Volumes', 'Standardized Pallet Logistics'],
-    ctaLabel: 'Request Wholesale Quote',
-    href: '#enquiry'
+    ctaLabel: 'Wholesale Capabilities'
   },
   {
     id: 'retail',
     name: 'Retail Distribution',
     subtitle: 'Store-Ready Consumer Packs',
     image: retailImg,
+    path: '/retail-distribution/',
     description:
-      'Hygienically packaged consumer-ready products crafted for retail shelves, supermarkets, and specialty grocery stores with clear barcodes, tamper-proof seals, and appealing shelf presence.',
+      'Hygienically packaged consumer-ready products crafted for retail shelves, supermarkets, and grocery networks with barcodes, tamper-proof seals, and superior shelf stability.',
     highlights: ['Compact Consumer Sizing', 'Aroma-Locked Packaging', 'High Shelf Appeal'],
-    ctaLabel: 'Enquire for Retail Shelf',
-    href: '#enquiry'
+    ctaLabel: 'Retail Shelf Details'
   },
   {
     id: 'custom-label',
-    name: 'Custom Label & OEM',
+    name: 'Custom Label & OEM Packaging',
     subtitle: 'White Label & Private Branding',
     image: customLabelImg,
+    path: '/custom-packaging/',
     description:
-      'End-to-end contract packaging and customized private labelling for brands, restaurants, and exporters. We handle processing, custom packaging formats, and compliant labelling with your brand identity.',
+      'End-to-end contract packaging and customized private labelling for food brands, restaurants, and exporters. We handle processing, custom packaging formats, and compliant labelling.',
     highlights: ['Your Brand, Our Quality', 'Custom Jars, Pouches & Boxes', 'Food Grade Compliance'],
-    ctaLabel: 'Discuss Custom Branding',
-    href: '#enquiry'
+    ctaLabel: 'Custom Packaging Options'
   }
 ];
 
-export default function ServicesSection({ onExploreServices }) {
+export default function ServicesSection() {
   return (
-    <section id="services" className="services-section" aria-label="We Offer - Our Services">
+    <section id="services" className="services-section" aria-label="Our Supply and Packaging Services">
       <div className="services-container">
         {/* Section Header */}
         <div className="services-header">
-          <span className="services-badge">We Offer</span>
-          <h2 className="services-title">Tailored Services for Every Scale</h2>
+          <span className="services-badge">B2B & Commercial Supply</span>
+          <h2 className="services-title">Tailored Processing Services for Every Scale</h2>
           <p className="services-subtitle">
-            Whether you are sourcing bulk agricultural commodities, stocking retail aisles, or launching your own private food label, Mugil Foods delivers unwavering trust and quality.
+            Whether you are sourcing bulk agricultural commodities, stocking supermarket aisles, or launching your own private food brand, Mugil Foods delivers unwavering quality from Dharmapuri.
           </p>
         </div>
 
@@ -67,6 +67,7 @@ export default function ServicesSection({ onExploreServices }) {
                   width="600"
                   height="360"
                   loading="lazy"
+                  decoding="async"
                 />
                 <div className="service-img-overlay" />
                 <span className="service-badge-pill">{item.subtitle}</span>
@@ -81,7 +82,7 @@ export default function ServicesSection({ onExploreServices }) {
                 <div className="service-highlights">
                   {item.highlights.map((tag, idx) => (
                     <span key={idx} className="highlight-tag">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                       {tag}
@@ -92,16 +93,12 @@ export default function ServicesSection({ onExploreServices }) {
                 {/* Action CTA link */}
                 <div className="service-footer">
                   <a 
-                    href="#services" 
+                    href={toAppPath(item.path)} 
                     className="service-cta-link"
-                    onClick={(e) => {
-                      if (onExploreServices) {
-                        e.preventDefault();
-                        onExploreServices();
-                      }
-                    }}
+                    onClick={(e) => handleLinkClick(e, item.path)}
+                    aria-label={`View detailed capabilities for ${item.name}`}
                   >
-                    <span>View Detailed Capabilities</span>
+                    <span>{item.ctaLabel}</span>
                     <svg 
                       className="cta-arrow" 
                       width="16" 
@@ -112,6 +109,7 @@ export default function ServicesSection({ onExploreServices }) {
                       strokeWidth="2.5" 
                       strokeLinecap="round" 
                       strokeLinejoin="round"
+                      aria-hidden="true"
                     >
                       <line x1="5" y1="12" x2="19" y2="12"></line>
                       <polyline points="12 5 19 12 12 19"></polyline>

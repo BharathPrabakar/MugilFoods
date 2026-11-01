@@ -324,3 +324,9 @@
     display: none !important;
   }
 }
+
+@media (max-width: 380px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}

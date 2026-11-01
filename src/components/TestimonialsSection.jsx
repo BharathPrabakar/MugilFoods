@@ -5,35 +5,35 @@ const testimonials = [
   {
     id: 1,
     name: 'R. Senthil Kumar',
-    role: 'Director, Annapoorna Spice & Condiments',
+    role: 'Procurement Partner, Spice & Condiments Unit',
     location: 'Madurai, Tamil Nadu',
     rating: 5,
     avatar: 'SK',
-    product: 'Wholesale Tamarind Slabs',
+    product: 'Wholesale Seedless Tamarind Slabs',
     quote:
-      'We have been procuring export-grade seedless tamarind slabs from Mugil Foods for over 4 years. The moisture control, hygiene, and tanginess consistency batch after batch are unmatched in the southern market.'
+      'Procuring seedless tamarind slabs from the Mugil Foods Dharmapuri facility provides reliable moisture control and batch-after-batch sourness balance for our culinary processing needs.'
   },
   {
     id: 2,
-    name: 'David MacLeod',
-    role: 'Procurement Head, Eastern Spices Import LLC',
-    location: 'Dubai, UAE',
+    name: 'D. MacLeod',
+    role: 'Commercial Import Consultant',
+    location: 'Export Channel',
     rating: 5,
     avatar: 'DM',
-    product: 'Export Container Consignments',
+    product: 'Bulk Moisture-Proof Consignments',
     quote:
-      'Timely documentation, vacuum-sealed tamper-proof packaging, and zero foreign matter. Mugil Foods meets international phytosanitary and food safety standards with flying colors.'
+      'Timely documentation, vacuum-sealed tamper-proof packaging, and minimal fiber content. The Dharmapuri processing team adheres strictly to promised dispatch timelines.'
   },
   {
     id: 3,
-    name: 'Meenakshi Raman',
-    role: 'Head of Kitchen, Traditional Feast Catering',
+    name: 'M. Raman',
+    role: 'Head Chef & Commercial Kitchen Lead',
     location: 'Coimbatore, Tamil Nadu',
     rating: 5,
     avatar: 'MR',
-    product: 'Tamarind Paste & Concentrates',
+    product: 'Tamarind Pulp Paste & Concentrates',
     quote:
-      'When preparing feasts for thousands of guests, pulp consistency is critical. Mugil Foods tamarind paste saves us hours of manual extraction while delivering that authentic, rich sour note every single time.'
+      'When preparing dishes for large catering events, pulp yield and smooth consistency save significant manual kitchen extraction time while retaining authentic tartness.'
   }
 ];
 
@@ -70,15 +70,15 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className="testimonials-section" aria-label="Customer Testimonials">
+    <section className="testimonials-section" aria-label="Customer & Partner Feedback">
       <div className="testimonials-container">
         {/* Header & Horizontal Controls */}
         <div className="testimonials-header-row">
           <div className="testimonials-title-group">
-            <span className="testimonials-badge">Voices of Trust</span>
-            <h2 className="testimonials-title">What Our Partners & Customers Say</h2>
+            <span className="testimonials-badge">Partner Feedback</span>
+            <h2 className="testimonials-title">What Commercial Buyers & Kitchens Say</h2>
             <p className="testimonials-subtitle">
-              Real feedback from households, retail networks, and commercial partners who trust Mugil Foods.
+              Feedback from food processors, catering leads, and distribution partners working with Mugil Foods.
             </p>
           </div>
 
@@ -90,7 +90,7 @@ export default function TestimonialsSection() {
               disabled={!canScrollLeft}
               aria-label="Scroll testimonials left"
             >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <polyline points="15 18 9 12 15 6"></polyline>
               </svg>
             </button>
@@ -100,7 +100,7 @@ export default function TestimonialsSection() {
               disabled={!canScrollRight}
               aria-label="Scroll testimonials right"
             >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <polyline points="9 18 15 12 9 6"></polyline>
               </svg>
             </button>
@@ -129,11 +129,11 @@ export default function TestimonialsSection() {
                   }
                 }}
                 aria-expanded={isExpanded}
-                aria-label={`Testimonial from ${item.name}`}
-                title="Click or tap to elaborate"
+                aria-label={`Feedback from ${item.name}`}
+                title="Click to toggle full text"
               >
                 <div className="card-top-row">
-                  <div className="star-rating" aria-label={`${item.rating} out of 5 stars`}>
+                  <div className="star-rating" aria-label={`${item.rating} out of 5 rating`}>
                     {[...Array(item.rating)].map((_, i) => (
                       <svg
                         key={i}
@@ -142,12 +142,12 @@ export default function TestimonialsSection() {
                         height="17"
                         viewBox="0 0 24 24"
                         fill="currentColor"
+                        aria-hidden="true"
                       >
                         <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                       </svg>
                     ))}
                   </div>
-                  {/* Subtle expand / collapse indicator */}
                   <span className="card-expand-hint" aria-hidden="true">
                     {isExpanded ? 'Show less' : 'Read more...'}
                   </span>
@@ -165,17 +165,17 @@ export default function TestimonialsSection() {
                     <h3 className="author-name">{item.name}</h3>
                     <p className="author-role">{item.role}</p>
                     <span className="author-location">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                      <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
-                    {item.location}
-                  </span>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg>
+                      {item.location}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
         </div>
       </div>
     </section>

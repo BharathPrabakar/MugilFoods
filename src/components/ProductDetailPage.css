@@ -678,6 +678,18 @@
     padding: 0.85rem 1.5rem;
     font-size: var(--btn-mobile-font, 0.925rem);
     text-align: center;
+    box-sizing: border-box;
+    min-height: 44px;
+  }
+
+  .btn-detail-wa {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem 1.5rem;
+    font-size: var(--btn-mobile-font, 0.925rem);
+    text-align: center;
+    box-sizing: border-box;
+    min-height: 44px;
   }
 
   .btn-detail-secondary {
@@ -686,6 +698,8 @@
     padding: 0.75rem 1.25rem;
     font-size: var(--btn-mobile-font, 0.9rem);
     text-align: center;
+    box-sizing: border-box;
+    min-height: 44px;
   }
 }
 
@@ -738,4 +752,53 @@
   .explore-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Features List */
+.product-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.product-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: #27272a;
+  line-height: 1.5;
+}
+
+.product-feature-item svg {
+  color: #16a34a;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+/* WhatsApp Detail Button */
+.btn-detail-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #25D366;
+  color: #ffffff !important;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.95rem 1.75rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+  transition: all 0.25s ease;
+}
+
+.btn-detail-wa:hover {
+  background: #1eb857;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
 }

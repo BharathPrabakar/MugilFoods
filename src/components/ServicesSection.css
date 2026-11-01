@@ -259,6 +259,9 @@
 
   .service-cta-link {
     font-size: var(--btn-mobile-font);
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
   }
 }
 
@@ -305,5 +308,8 @@
 
   .service-cta-link {
     font-size: var(--btn-mobile-font);
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
   }
 }

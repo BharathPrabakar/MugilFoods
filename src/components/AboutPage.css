@@ -550,3 +550,108 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* About CTA Strip */
+.about-cta-strip {
+  background: linear-gradient(135deg, #18181b 0%, #27272a 100%);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.about-cta-content h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.about-cta-content p {
+  max-width: 650px;
+  margin: 0 auto 2rem;
+  font-size: 1.05rem;
+  color: #d4d4d8;
+  line-height: 1.6;
+}
+
+.about-cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-about-enquire {
+  background: var(--color-primary);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  padding: 0.85rem 1.75rem;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.btn-about-enquire:hover {
+  opacity: 0.9;
+}
+
+.btn-about-catalog {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  padding: 0.85rem 1.75rem;
+  border-radius: 12px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background 0.15s ease;
+}
+
+.btn-about-catalog:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 640px) {
+  .about-cta-strip {
+    padding: 1.75rem 1.15rem;
+    border-radius: 18px;
+    margin-top: 2rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .about-cta-content h3 {
+    font-size: 1.35rem;
+    line-height: 1.25;
+  }
+
+  .about-cta-content p {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-cta-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .btn-about-enquire,
+  .btn-about-catalog {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+    padding: 0.85rem 1.25rem;
+  }
+}

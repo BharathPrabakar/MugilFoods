@@ -9,24 +9,24 @@ const slidesData = [
   {
     id: 1,
     image: slideMugilFoods,
-    alt: "Mugil Foods - Pure, Fresh, Traditional",
+    alt: "Mugil Foods - Pure, Fresh, Traditional Wholesale Tamarind Dharmapuri",
     bgClass: "slide-bg-red"
   },
   {
     id: 2,
     image: slideMugilTamarind,
-    alt: "Mugil Tamarind - Built With Trust",
+    alt: "Mugil Tamarind - Built With Trust, Seedless Tamarind Slabs and Rounds",
     bgClass: "slide-bg-white"
   },
   {
     id: 3,
     image: slideMugilHoney,
-    alt: "Mugil Honey - Pure & Natural",
+    alt: "Mugil Honey - Pure & Natural Forest Honey Coming Soon",
     bgClass: "slide-bg-white"
   }
 ];
 
-export default function HeroCarousel({ onNavigate }) {
+export default function HeroCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const timerRef = useRef(null);
@@ -69,9 +69,9 @@ export default function HeroCarousel({ onNavigate }) {
     // Only trigger slide if horizontal swipe exceeds vertical scroll and distance > 40px
     if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 40) {
       if (deltaX < 0) {
-        nextSlide(); // Swiped left -> next slide
+        nextSlide();
       } else {
-        prevSlide(); // Swiped right -> previous slide
+        prevSlide();
       }
     }
 
@@ -114,7 +114,7 @@ export default function HeroCarousel({ onNavigate }) {
     if (isPlaying) {
       timerRef.current = setInterval(() => {
         nextSlide();
-      }, 5000); // 5 seconds per slide
+      }, 5000);
     }
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
@@ -132,7 +132,11 @@ export default function HeroCarousel({ onNavigate }) {
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       aria-label="Mugil Foods Showcase (Swipe left or right)"
+      aria-roledescription="carousel"
     >
+      <h1 className="hero-sr-heading">
+        Mugil Tamarind — Wholesale Tamarind Supplier & Processing Plant in Dharmapuri, Tamil Nadu
+      </h1>
       {slidesData.map((slide, index) => {
         const isActive = index === currentIndex;
         return (
@@ -140,13 +144,21 @@ export default function HeroCarousel({ onNavigate }) {
             key={slide.id}
             className={`carousel-slide ${slide.bgClass} ${isActive ? 'active' : ''}`}
             aria-hidden={!isActive}
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`${index + 1} of ${totalSlides}`}
           >
             {/* Full length master slide image */}
             <div className="carousel-slide-inner">
               <img 
                 src={slide.image} 
                 alt={slide.alt} 
-                className="carousel-img-full" 
+                className="carousel-img-full"
+                width="1600"
+                height="700"
+                fetchPriority={index === 0 ? "high" : "auto"}
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
               />
             </div>
           </div>
@@ -154,13 +166,15 @@ export default function HeroCarousel({ onNavigate }) {
       })}
 
       {/* Modern Indicators & Progress Bar */}
-      <div className="carousel-pagination">
+      <div className="carousel-pagination" role="tablist" aria-label="Choose slide to display">
         {slidesData.map((_, idx) => (
           <button
             key={idx}
             className={`pagination-dot ${idx === currentIndex ? 'active' : ''}`}
             onClick={() => goToSlide(idx)}
             aria-label={`Go to slide ${idx + 1}`}
+            role="tab"
+            aria-selected={idx === currentIndex}
           >
             <span className="dot-fill" />
           </button>

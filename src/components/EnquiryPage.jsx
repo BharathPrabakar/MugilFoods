@@ -1,50 +1,131 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './EnquiryPage.css';
+import { 
+  COMPANY_EMAIL, 
+  COMPANY_PHONE, 
+  COMPANY_PHONE_DISPLAY, 
+  GOOGLE_MAPS_URL, 
+  BRAND_NAME, 
+  SITE_NAME 
+} from '../data/routesData';
 
-export default function EnquiryPage() {
+export default function EnquiryPage({ initialProduct = '', initialService = '' }) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
-    serviceType: 'Wholesale & Institutional Supply',
-    productsNeeded: '',
+    serviceType: initialService || 'Wholesale & Institutional Supply',
+    productsNeeded: initialProduct || '',
     message: '',
     botcheck: '' // Honeypot spam trap
   });
 
   const [formStatus, setFormStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
-  const [errorMessage, setErrorMessage] = useState('');
+  const [statusMessage, setStatusMessage] = useState('');
+  const [formErrors, setFormErrors] = useState({});
+
+  useEffect(() => {
+    if (initialProduct) {
+      setFormData((prev) => ({
+        ...prev,
+        productsNeeded: prev.productsNeeded || initialProduct
+      }));
+    }
+    if (initialService) {
+      setFormData((prev) => ({
+        ...prev,
+        serviceType: initialService
+      }));
+    }
+  }, [initialProduct, initialService]);
+
+  const validate = () => {
+    const errors = {};
+    if (!formData.name.trim() || formData.name.trim().length < 2) {
+      errors.name = 'Please enter your full name.';
+    }
+
+    const cleanPhone = formData.phone.replace(/[\s-]/g, '');
+    if (!cleanPhone || cleanPhone.length < 8) {
+      errors.phone = 'Please enter a valid phone number (minimum 8 digits).';
+    }
+
+    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      errors.email = 'Please enter a valid email address.';
+    }
+
+    if (!formData.productsNeeded.trim()) {
+      errors.productsNeeded = 'Please specify the products or quantities required.';
+    }
+
+    return errors;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (formErrors[name]) {
+      setFormErrors((prev) => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  const triggerMailto = () => {
+    const subject = encodeURIComponent(`Wholesale Enquiry: ${formData.name || 'Client'} - ${formData.serviceType}`);
+    const bodyLines = [
+      `Name: ${formData.name}`,
+      `Phone: ${formData.phone}`,
+      formData.email ? `Email: ${formData.email}` : '',
+      `Service Type: ${formData.serviceType}`,
+      `Products / Quantities Needed: ${formData.productsNeeded}`,
+      ``,
+      `Message & Delivery Location:`,
+      `${formData.message || 'N/A'}`
+    ].filter(Boolean);
+    const body = encodeURIComponent(bodyLines.join('\n'));
+    window.location.href = `mailto:${COMPANY_EMAIL}?subject=${subject}&body=${body}`;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Spam honeypot trap
+    // Honeypot spam check
     if (formData.botcheck) {
-      console.warn('Bot submission blocked');
+      console.warn('Spam submission suppressed');
+      return;
+    }
+
+    const errors = validate();
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
       return;
     }
 
     setFormStatus('submitting');
-    setErrorMessage('');
+    setStatusMessage('');
+
+    const web3FormsKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+    const isRealKey = web3FormsKey && web3FormsKey !== 'YOUR_ACCESS_KEY_HERE' && web3FormsKey.trim().length > 10;
+
+    if (!isRealKey) {
+      // Graceful fallback to client email client and WhatsApp without deceptive "success" claims
+      triggerMailto();
+      setFormStatus('success');
+      setStatusMessage('Your enquiry has been prepared in your email client. You can also message us directly on WhatsApp below.');
+      return;
+    }
 
     try {
-      // Use Web3Forms public access API
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json'
         },
         body: JSON.stringify({
-          access_key: 'YOUR_ACCESS_KEY_HERE', // Replaced with user's access key or falls back gracefully
+          access_key: web3FormsKey,
           from_name: 'Mugil Foods Website Enquiry',
-          subject: `Enquiry from ${formData.name || 'Website Visitor'} - ${formData.serviceType}`,
-          to_email: 'mugiltamarind26@gmail.com',
+          subject: `Enquiry from ${formData.name} - ${formData.serviceType}`,
+          to_email: COMPANY_EMAIL,
           name: formData.name,
           phone: formData.phone,
           email: formData.email || 'Not provided',
@@ -55,36 +136,18 @@ export default function EnquiryPage() {
         })
       });
 
-      const json = await res.json();
-      if (res.status === 200 && json.success) {
+      const result = await response.json();
+      if (response.ok && result.success) {
         setFormStatus('success');
+        setStatusMessage('Your requirement has been transmitted to Mugil Foods. Our team will review specifications and respond promptly.');
       } else {
-        // Fallback: If Web3Forms key is not configured, fall back seamlessly to mailto
-        triggerMailtoFallback();
-        setFormStatus('success');
+        setFormStatus('error');
+        setStatusMessage(result.message || 'Service temporarily unavailable. Please use the direct email or WhatsApp options below.');
       }
     } catch {
-      // If offline or network blocks Web3Forms, trigger mailto fallback directly
-      triggerMailtoFallback();
-      setFormStatus('success');
+      setFormStatus('error');
+      setStatusMessage('Network connectivity issue. Please click below to send via your email client or WhatsApp.');
     }
-  };
-
-  const triggerMailtoFallback = () => {
-    const recipient = 'mugiltamarind26@gmail.com';
-    const subject = encodeURIComponent(`Enquiry from ${formData.name || 'Mugil Foods Visitor'}`);
-    const bodyLines = [
-      `Name: ${formData.name}`,
-      `Phone Number: ${formData.phone}`,
-      formData.email ? `Email: ${formData.email}` : '',
-      `Type of Service: ${formData.serviceType}`,
-      `Products Needed: ${formData.productsNeeded}`,
-      ``,
-      `Message:`,
-      `${formData.message}`
-    ].filter(Boolean);
-    const body = encodeURIComponent(bodyLines.join('\n'));
-    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
   };
 
   const handleResetForm = () => {
@@ -97,67 +160,65 @@ export default function EnquiryPage() {
       message: '',
       botcheck: ''
     });
+    setFormErrors({});
     setFormStatus('idle');
+    setStatusMessage('');
   };
 
-  // WhatsApp chat link (+91 9442177026)
-  const whatsappUrl = 'https://wa.me/919442177026?text=' + encodeURIComponent('Hello Mugil Foods, I would like to enquire about your products and services.');
-
-  // Google Maps link provided by user
-  const googleMapsUrl = 'https://maps.app.goo.gl/ipBBQmJx93ar5S9x5?g_st=aw';
+  const dynamicWhatsAppMessage = `Hello Mugil Foods, my name is ${formData.name || 'Visitor'}. I am interested in: ${formData.productsNeeded || 'Wholesale Tamarind'}. Service: ${formData.serviceType}.`;
+  const dynamicWhatsAppUrl = `https://wa.me/919442177026?text=${encodeURIComponent(dynamicWhatsAppMessage)}`;
 
   return (
     <div className="enquiry-page">
-      {/* Hero Banner with rich gradient for transparent navbar blend */}
+      {/* Hero Banner */}
       <section className="enquiry-hero-banner">
         <div className="enquiry-hero-inner">
-          <span className="enquiry-top-badge">Direct Communication</span>
-          <h1 className="enquiry-page-title">Make an Enquiry</h1>
+          <span className="enquiry-top-badge">Direct Commercial Communication</span>
+          <h1 className="enquiry-page-title">Wholesale & Business Enquiries</h1>
           <p className="enquiry-page-desc">
-            Connect directly with founder Kermugil Venthen and our agro-processing team in Dharmapuri.
+            Connect directly with founder Kermugil Venthen and the {BRAND_NAME} agro-processing facility in Dharmapuri, Tamil Nadu.
           </p>
         </div>
       </section>
 
       {/* Main Content Area */}
       <div className="enquiry-content-container">
-        {/* Reach Out / Let's Talk & WhatsApp Bar */}
-        <section className="reachout-header-bar">
+        {/* Instant WhatsApp Connect Bar */}
+        <section className="reachout-header-bar" aria-label="Direct Communication Channels">
           <div className="reachout-left">
             <span className="reachout-tag">Instant Connect</span>
-            <h2 className="reachout-title">Reach Out / Let's Talk</h2>
+            <h2 className="reachout-title">Fast-Track Orders & Specifications</h2>
             <p className="reachout-desc">
-              Have immediate product specifications, urgent orders, or bulk inquiries? Message us directly on WhatsApp for prompt assistance.
+              Require immediate moisture reports, container freight quotes, or customized packaging samples? Message our Dharmapuri unit directly on WhatsApp.
             </p>
           </div>
 
           <div className="reachout-action">
-            {/* Rounded rectangle WhatsApp Button */}
             <a 
-              href={whatsappUrl} 
+              href={dynamicWhatsAppUrl} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="whatsapp-rounded-btn"
-              aria-label="Chat on WhatsApp with Mugil Foods at +91 9442177026"
+              aria-label={`Chat on WhatsApp with ${SITE_NAME} at ${COMPANY_PHONE_DISPLAY}`}
             >
               <svg className="whatsapp-icon" width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.27-2.42 5.82a8.188 8.188 0 0 1-5.82 2.42c-1.47 0-2.91-.39-4.18-1.14l-.3-.18-3.11.82.83-3.03-.2-.31a8.216 8.216 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.22-8.24zm4.5 11.66c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.75.59.26 1.05.41 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.23-.19-.48-.31z" />
               </svg>
               <div className="whatsapp-btn-text">
                 <span className="wa-title">Chat on WhatsApp</span>
-                <span className="wa-number">+91 9442177026</span>
+                <span className="wa-number">{COMPANY_PHONE_DISPLAY}</span>
               </div>
             </a>
           </div>
         </section>
 
-        {/* Form and Map Dual Column Section */}
+        {/* Form and Map Grid */}
         <section className="enquiry-main-grid">
-          {/* Left / Form Column */}
+          {/* Form Column */}
           <div className="enquiry-form-card">
-            <h2 className="form-card-title">Send Us Your Requirement</h2>
+            <h2 className="form-card-title">Send Us Your Product Requirement</h2>
             <p className="form-card-sub">
-              Fill in your specifications below. Upon clicking submit, it will automatically prepare your direct email to <strong>mugiltamarind26@gmail.com</strong>.
+              Specify your quantities, packaging formats, and delivery schedule. We dispatch across Tamil Nadu, all Indian states, and export harbors.
             </p>
 
             {formStatus === 'success' ? (
@@ -169,13 +230,13 @@ export default function EnquiryPage() {
                 </div>
                 <h3 className="thankyou-title">Thank You, {formData.name || 'Partner'}!</h3>
                 <p className="thankyou-desc">
-                  Your enquiry has been received. Founder Kermugil Venthen and our Dharmapuri facility team will review your requirement and get back to you promptly.
+                  {statusMessage || 'Your enquiry has been received. Founder Kermugil Venthen and our Dharmapuri team will review your requirement and follow up promptly.'}
                 </p>
                 <div className="thankyou-actions">
                   <button type="button" onClick={handleResetForm} className="btn-send-another">
-                    Submit Another Enquiry
+                    Submit Another Requirement
                   </button>
-                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-thankyou-wa">
+                  <a href={dynamicWhatsAppUrl} target="_blank" rel="noopener noreferrer" className="btn-thankyou-wa">
                     <span>Chat on WhatsApp Directly</span>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z" />
@@ -184,8 +245,8 @@ export default function EnquiryPage() {
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="enquiry-form">
-                {/* Honeypot Spam Protection Field - Invisible to humans */}
+              <form onSubmit={handleSubmit} className="enquiry-form" noValidate>
+                {/* Honeypot field */}
                 <input
                   type="text"
                   name="botcheck"
@@ -197,48 +258,71 @@ export default function EnquiryPage() {
                   aria-hidden="true"
                 />
 
+                {formStatus === 'error' && (
+                  <div className="form-error-banner" role="alert">
+                    <p>{statusMessage}</p>
+                    <div className="error-banner-actions">
+                      <button type="button" onClick={triggerMailto} className="btn-error-fallback">
+                        Open in Email Client
+                      </button>
+                      <a href={dynamicWhatsAppUrl} target="_blank" rel="noopener noreferrer" className="btn-error-wa">
+                        Open WhatsApp
+                      </a>
+                    </div>
+                  </div>
+                )}
+
                 <div className="form-row">
                   <div className="form-group">
-                    <label htmlFor="name" className="form-label">Full Name *</label>
+                    <label htmlFor="name" className="form-label">Full Name / Contact Person *</label>
                     <input
                       type="text"
                       id="name"
                       name="name"
                       required
-                      placeholder="Enter your name"
+                      placeholder="e.g. Anand Sharma"
                       value={formData.name}
                       onChange={handleChange}
-                      className="form-input"
+                      className={`form-input ${formErrors.name ? 'input-error' : ''}`}
+                      aria-invalid={!!formErrors.name}
+                      aria-describedby={formErrors.name ? 'name-error' : undefined}
                     />
+                    {formErrors.name && <span id="name-error" className="field-error-text">{formErrors.name}</span>}
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="phone" className="form-label">Phone Number *</label>
+                    <label htmlFor="phone" className="form-label">Phone / WhatsApp Number *</label>
                     <input
                       type="tel"
                       id="phone"
                       name="phone"
                       required
-                      placeholder="e.g. +91 98765 43210"
+                      placeholder="e.g. +91 94421 77026"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="form-input"
+                      className={`form-input ${formErrors.phone ? 'input-error' : ''}`}
+                      aria-invalid={!!formErrors.phone}
+                      aria-describedby={formErrors.phone ? 'phone-error' : undefined}
                     />
+                    {formErrors.phone && <span id="phone-error" className="field-error-text">{formErrors.phone}</span>}
                   </div>
                 </div>
 
                 <div className="form-row">
                   <div className="form-group">
-                    <label htmlFor="email" className="form-label">Email Address (Optional)</label>
+                    <label htmlFor="email" className="form-label">Business Email Address (Optional)</label>
                     <input
                       type="email"
                       id="email"
                       name="email"
-                      placeholder="e.g. buyer@company.com"
+                      placeholder="e.g. procurement@company.com"
                       value={formData.email}
                       onChange={handleChange}
-                      className="form-input"
+                      className={`form-input ${formErrors.email ? 'input-error' : ''}`}
+                      aria-invalid={!!formErrors.email}
+                      aria-describedby={formErrors.email ? 'email-error' : undefined}
                     />
+                    {formErrors.email && <span id="email-error" className="field-error-text">{formErrors.email}</span>}
                   </div>
 
                   <div className="form-group">
@@ -250,36 +334,39 @@ export default function EnquiryPage() {
                       onChange={handleChange}
                       className="form-select"
                     >
-                      <option value="Wholesale & Institutional Supply">Wholesale & Institutional Supply</option>
-                      <option value="Retail Distribution / Supermarket Supply">Retail Distribution / Supermarket Supply</option>
-                      <option value="Custom Private Label / OEM Packaging">Custom Private Label / OEM Packaging</option>
+                      <option value="Wholesale & Institutional Supply">Wholesale & Institutional Bulk Supply</option>
+                      <option value="Retail Distribution / Supermarket Supply">Retail Distribution / Store-Ready Packs</option>
+                      <option value="Custom Private Label / OEM Packaging">Custom Private Label / Contract Packaging</option>
                       <option value="Bulk International Export Order">Bulk International Export Order</option>
-                      <option value="General Product Sample Request">General Product Sample Request</option>
+                      <option value="Sample Request">Product Sample Request</option>
                     </select>
                   </div>
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="productsNeeded" className="form-label">Enter All Products You Need *</label>
+                  <label htmlFor="productsNeeded" className="form-label">Products & Estimated Quantity *</label>
                   <input
                     type="text"
                     id="productsNeeded"
                     name="productsNeeded"
                     required
-                    placeholder="e.g. Seedless Bar Tamarind (5 Tonnes), Round Tamarind, Karipuli 30kg Box..."
+                    placeholder="e.g. Seedless Tamarind Slab (5 Tonnes), Round Tamarind (200 Baskets)"
                     value={formData.productsNeeded}
                     onChange={handleChange}
-                    className="form-input"
+                    className={`form-input ${formErrors.productsNeeded ? 'input-error' : ''}`}
+                    aria-invalid={!!formErrors.productsNeeded}
+                    aria-describedby={formErrors.productsNeeded ? 'products-error' : undefined}
                   />
+                  {formErrors.productsNeeded && <span id="products-error" className="field-error-text">{formErrors.productsNeeded}</span>}
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="message" className="form-label">Your Message / Specifications</label>
+                  <label htmlFor="message" className="form-label">Additional Specifications / Delivery Destination</label>
                   <textarea
                     id="message"
                     name="message"
                     rows="4"
-                    placeholder="Specify quantities, target delivery location, packaging preferences, or any custom requirements..."
+                    placeholder="Specify target delivery location, packaging preferences (cartons, slabs, sacks), moisture limits, or custom private labeling details..."
                     value={formData.message}
                     onChange={handleChange}
                     className="form-textarea"
@@ -292,7 +379,7 @@ export default function EnquiryPage() {
                   disabled={formStatus === 'submitting'}
                 >
                   {formStatus === 'submitting' ? (
-                    <span>Sending Enquiry...</span>
+                    <span>Processing Requirement...</span>
                   ) : (
                     <>
                       <span>Submit Requirement</span>
@@ -307,28 +394,28 @@ export default function EnquiryPage() {
             )}
           </div>
 
-          {/* Right / Map & Location Column */}
+          {/* Location & Contact Info Column */}
           <div className="enquiry-location-card">
             <div className="location-info-top">
-              <span className="location-badge">Our Facility</span>
-              <h3 className="location-title">Mugil Foods Dharmapuri</h3>
+              <span className="location-badge">Our Processing Facility</span>
+              <h3 className="location-title">Mugil Tamarind Processing Plant</h3>
               <p className="location-address">
-                Dharmapuri, Tamil Nadu, India — Situated amidst prime agricultural tamarind groves with direct highway freight connectivity across South India and export ports.
+                Dharmapuri, Tamil Nadu, 636701, India. Centrally located in South India's premier tamarind growing corridor with direct freight connectivity across national highways.
               </p>
               
               <div className="location-contact-points">
                 <div className="point-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                   </svg>
-                  <span>mugiltamarind26@gmail.com</span>
+                  <a href={`mailto:${COMPANY_EMAIL}`}>{COMPANY_EMAIL}</a>
                 </div>
                 <div className="point-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                   </svg>
-                  <span>+91 9442177026</span>
+                  <a href={`tel:${COMPANY_PHONE}`}>{COMPANY_PHONE_DISPLAY}</a>
                 </div>
               </div>
             </div>
@@ -336,12 +423,11 @@ export default function EnquiryPage() {
             {/* Embedded Google Map */}
             <div className="map-frame-box">
               <iframe
-                title="Mugil Foods Dharmapuri Location"
+                title="Mugil Tamarind Dharmapuri Facility Map"
                 src="https://maps.google.com/maps?q=Dharmapuri,%20Tamil%20Nadu&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="260"
                 style={{ border: 0 }}
-                allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
@@ -349,10 +435,11 @@ export default function EnquiryPage() {
 
             <div className="map-direct-action">
               <a 
-                href={googleMapsUrl} 
+                href={GOOGLE_MAPS_URL} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="btn-open-google-maps"
+                aria-label="Open Mugil Tamarind Dharmapuri location in Google Maps"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>

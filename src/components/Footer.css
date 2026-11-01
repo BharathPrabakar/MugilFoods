@@ -186,14 +186,26 @@
     padding: 2rem 1rem calc(88px + env(safe-area-inset-bottom, 0px));
   }
   .footer-compact-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem 0.85rem;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
   }
   .footer-pane-heading {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
   }
-  .footer-nav-links a,
+  .footer-nav-links a {
+    font-size: 0.875rem;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+  }
   .footer-contact-items li {
-    font-size: 0.825rem;
+    font-size: 0.85rem;
+    line-height: 1.45;
+  }
+  .footer-compact-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.65rem;
   }
 }

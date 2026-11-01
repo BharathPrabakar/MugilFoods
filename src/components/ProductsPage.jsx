@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './ProductsPage.css';
 import { categoriesData, productsData } from '../data/productsData';
+import { toAppPath, handleLinkClick } from '../utils/navigation';
+import { BRAND_NAME } from '../data/routesData';
 
 export default function ProductsPage({ 
   initialCategory = 'tamarind',
@@ -29,19 +31,20 @@ export default function ProductsPage({
 
   return (
     <div className="products-page">
-      {/* Top Banner with Rich Backdrop so transparent header blends nicely */}
+      {/* Top Banner */}
       <section className="products-top-banner">
         <div className="products-banner-inner">
-          <h1 className="products-clean-title">Our Products</h1>
-          <p className="products-clean-subtitle">Direct from Dharmapuri groves to your kitchen</p>
+          <span className="products-banner-badge">{BRAND_NAME} Catalog</span>
+          <h1 className="products-clean-title">Commercial & Wholesale Tamarind Products</h1>
+          <p className="products-clean-subtitle">Direct from our Dharmapuri processing unit to commercial kitchens and retail shelves</p>
         </div>
       </section>
 
       {/* Main Content Area */}
       <div className="products-content-container">
-        {/* Compact Everest-Spices style category selector */}
+        {/* Category selector */}
         <section className="compact-category-bar" aria-label="Product Categories">
-          <div className="compact-category-row">
+          <div className="compact-category-row" role="tablist">
             {categoriesData.map((cat) => {
               const isSelected = cat.id === selectedCategoryId;
               return (
@@ -49,11 +52,20 @@ export default function ProductsPage({
                   key={cat.id}
                   className={`compact-cat-card ${isSelected ? 'selected' : 'faded'}`}
                   onClick={() => handleCategoryClick(cat.id)}
-                  aria-pressed={isSelected}
-                  aria-label={`Select ${cat.name}`}
+                  aria-selected={isSelected}
+                  role="tab"
+                  aria-label={`Show ${cat.name} products`}
                 >
                   <div className="compact-cat-img-box">
-                    <img src={cat.image} alt={cat.name} className="compact-cat-img" width="110" height="110" loading="lazy" />
+                    <img 
+                      src={cat.image} 
+                      alt={cat.name} 
+                      className="compact-cat-img" 
+                      width="110" 
+                      height="110" 
+                      loading="lazy" 
+                      decoding="async"
+                    />
                   </div>
                   <span className="compact-cat-title">{cat.name}</span>
                 </button>
@@ -72,40 +84,41 @@ export default function ProductsPage({
           <div className="compact-section-header">
             <div className="compact-title-group">
               <span className="compact-cat-badge">{selectedCategory.name} Collection</span>
-              <h2 className="compact-section-headline">{selectedCategory.name} Products</h2>
+              <h2 className="compact-section-headline">{selectedCategory.name} Catalog</h2>
             </div>
             
             {/* Status Indicator */}
             {selectedCategoryId === 'tamarind' ? (
               <div className="active-catalog-pill">
                 <span className="live-dot" />
-                <span>{currentProducts.length} Products Available</span>
+                <span>{currentProducts.length} Products Available for Dispatch</span>
               </div>
             ) : (
               <div className="coming-soon-pill">
                 <span className="pulse-dot" />
-                <span>Launching Soon</span>
+                <span>Harvest Coming Soon</span>
               </div>
             )}
           </div>
 
-          {/* Minimal Products Grid: JUST PHOTO AND NAME */}
+          {/* Minimal Products Grid with REAL CRAWLABLE ANCHOR TAGS */}
           <div className="clean-minimal-products-grid">
             {currentProducts.map((prod, idx) => {
               const isComingSoon = prod.status === 'coming-soon';
+              const productUrl = `/products/${prod.id}/`;
 
               return (
-                <div
+                <a
                   key={prod.id}
+                  href={toAppPath(productUrl)}
                   className="clean-prod-card"
-                  tabIndex={0}
-                  role="button"
-                  aria-label={`View details of ${prod.name}`}
-                  onClick={() => onSelectProduct && onSelectProduct(prod)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      onSelectProduct && onSelectProduct(prod);
+                  aria-label={`View full specifications and bulk inquiry for ${prod.name}`}
+                  onClick={(e) => {
+                    if (onSelectProduct) {
+                      handleLinkClick(e, productUrl);
+                      onSelectProduct(prod);
+                    } else {
+                      handleLinkClick(e, productUrl);
                     }
                   }}
                 >
@@ -113,12 +126,13 @@ export default function ProductsPage({
                   <div className="clean-prod-img-wrap">
                     <img 
                       src={prod.image} 
-                      alt={prod.name} 
+                      alt={`${prod.name} - ${BRAND_NAME}`} 
                       className="clean-prod-img" 
                       width="400" 
                       height="300" 
                       loading={idx < 4 ? "eager" : "lazy"} 
                       fetchPriority={idx < 2 ? "high" : "auto"}
+                      decoding="async"
                     />
                     
                     {isComingSoon && (
@@ -128,15 +142,15 @@ export default function ProductsPage({
                     )}
 
                     <div className="clean-prod-hover-hint">
-                      <span>View Details</span>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <span>View Specifications</span>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
                       </svg>
                     </div>
                   </div>
 
-                  {/* Just Product Name & Arrow */}
+                  {/* Product Name & Arrow */}
                   <div className="clean-prod-footer">
                     <h3 className="clean-prod-name">{prod.name}</h3>
                     <div className="clean-prod-arrow" aria-hidden="true">
@@ -146,7 +160,7 @@ export default function ProductsPage({
                       </svg>
                     </div>
                   </div>
-                </div>
+                </a>
               );
             })}
           </div>

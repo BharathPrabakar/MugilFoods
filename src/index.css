@@ -114,3 +114,33 @@ p, span, label, input, select, textarea {
     text-align: left; /* Keep left-aligned on very small screens to avoid awkward loose spacing gaps */
 }
 }
+
+/* WCAG 2.2 AA Accessible Focus Indicators & Target Size */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Ensure accessible touch target sizes on touch devices */
+@media (pointer: coarse) {
+  button,
+  .nav-link,
+  .enquiry-btn,
+  .mobile-toggle-btn,
+  .service-tab-btn,
+  .compact-cat-card,
+  .clean-prod-card,
+  .pagination-dot {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
