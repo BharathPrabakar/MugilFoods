@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/MugilFoods/',
+  base: '/',
   build: {
     rollupOptions: {
       output: {
@@ -17,4 +17,3 @@ export default defineConfig({
     }
   }
 })
-
