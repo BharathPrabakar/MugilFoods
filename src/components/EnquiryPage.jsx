@@ -107,10 +107,10 @@ export default function EnquiryPage({ initialProduct = '', initialService = '' }
     const isRealKey = web3FormsKey && web3FormsKey !== 'YOUR_ACCESS_KEY_HERE' && web3FormsKey.trim().length > 10;
 
     if (!isRealKey) {
-      // Graceful fallback to client email client and WhatsApp without deceptive "success" claims
+      // Create mail draft fallback without claiming false server-side receipt
       triggerMailto();
-      setFormStatus('success');
-      setStatusMessage('Your enquiry has been prepared in your email client. You can also message us directly on WhatsApp below.');
+      setFormStatus('draft-opened');
+      setStatusMessage('A pre-filled email draft has been opened in your default email client addressed to mugiltamarind@gmail.com. Please click Send in your email client to transmit your enquiry.');
       return;
     }
 
@@ -242,6 +242,33 @@ export default function EnquiryPage({ initialProduct = '', initialService = '' }
                       <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z" />
                     </svg>
                   </a>
+                </div>
+              </div>
+            ) : formStatus === 'draft-opened' ? (
+              <div className="enquiry-thankyou-card draft-state">
+                <div className="thankyou-icon-circle">
+                  <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <h3 className="thankyou-title">Email Draft Opened in Mail Client</h3>
+                <p className="thankyou-desc">
+                  {statusMessage}
+                </p>
+                <div className="thankyou-actions">
+                  <button type="button" onClick={triggerMailto} className="btn-send-another">
+                    Re-open Email Draft
+                  </button>
+                  <a href={dynamicWhatsAppUrl} target="_blank" rel="noopener noreferrer" className="btn-thankyou-wa">
+                    <span>Message Directly on WhatsApp</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z" />
+                    </svg>
+                  </a>
+                  <button type="button" onClick={handleResetForm} className="btn-secondary-link">
+                    Return to Form
+                  </button>
                 </div>
               </div>
             ) : (

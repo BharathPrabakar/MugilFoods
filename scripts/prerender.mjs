@@ -16,11 +16,19 @@ const distDir = path.resolve(rootDir, 'dist');
 const distSsrDir = path.resolve(rootDir, 'dist-ssr');
 
 const SITE_URL = 'https://bharathprabakar.github.io/MugilFoods';
+const ORIGIN = 'https://bharathprabakar.github.io';
 const SITE_NAME = 'Mugil Foods';
 const BRAND_NAME = 'Mugil Tamarind';
 const COMPANY_PHONE = '+919442177026';
 const COMPANY_EMAIL = 'mugiltamarind@gmail.com';
 const TODAY = new Date().toISOString().split('T')[0];
+
+const resolveAbsoluteUrl = (img) => {
+  if (!img) return `${SITE_URL}/og-image.jpg`;
+  if (img.startsWith('http://') || img.startsWith('https://')) return img;
+  if (img.startsWith('/')) return `${ORIGIN}${img}`;
+  return `${SITE_URL}/${img}`;
+};
 
 console.log('🚀 Step 1: Compiling SSR bundle with Vite...');
 execSync('npx vite build --ssr src/entry-server.jsx --outDir dist-ssr', {
@@ -360,17 +368,31 @@ for (const route of routes) {
   if (route.productId) {
     const product = allProductsList.find(p => p.id === route.productId);
     if (product) {
-      pageTitle = `${product.name} - Wholesale Tamarind in Dharmapuri | ${BRAND_NAME}`;
-      pageDesc = `${product.name}: ${product.tagline || ''} Processed in Dharmapuri, Tamil Nadu by Mugil Foods. Available in bulk cartons & custom packaging for commercial buyers.`.slice(0, 160);
-      pageKeywords = `${product.name.toLowerCase()}, wholesale tamarind dharmapuri, bulk ${product.name.toLowerCase()}, mugil tamarind, tamil nadu tamarind supplier`;
-      
+      const isTamarind = product.categoryId === 'tamarind';
+      pageTitle = isTamarind
+        ? `${product.name} - Wholesale Tamarind in Dharmapuri | ${BRAND_NAME}`
+        : `${product.name} - Pure Harvest Honey | ${SITE_NAME}`;
+      pageDesc = isTamarind
+        ? `${product.name}: ${product.tagline || ''} Processed in Dharmapuri, Tamil Nadu by Mugil Foods. Available in bulk cartons & custom packaging for commercial buyers.`.slice(0, 160)
+        : `${product.name}: ${product.tagline || ''} Pure unprocessed raw forest honey procured and supplied by Mugil Foods for commercial and retail orders.`.slice(0, 160);
+      pageKeywords = isTamarind
+        ? `${product.name.toLowerCase()}, wholesale tamarind dharmapuri, bulk ${product.name.toLowerCase()}, mugil tamarind, tamil nadu tamarind supplier`
+        : `${product.name.toLowerCase()}, natural honey dharmapuri, pure forest honey, bulk honey supplier, mugil foods`;
+
+      const primaryImgUrl = resolveAbsoluteUrl(product.image);
+      const galleryImgUrls = Array.isArray(product.gallery) && product.gallery.length > 0
+        ? product.gallery.map(resolveAbsoluteUrl)
+        : [primaryImgUrl];
+
+      pageOgImage = primaryImgUrl;
+
       productSchemaJson = {
         '@type': 'Product',
         '@id': `${SITE_URL}${route.canonicalPath}#product`,
         name: product.name,
         description: product.description,
-        image: `${SITE_URL}/og-image.jpg`,
-        category: product.categoryId === 'tamarind' ? 'Tamarind' : 'Honey',
+        image: galleryImgUrls.length > 1 ? galleryImgUrls : primaryImgUrl,
+        category: isTamarind ? 'Tamarind' : 'Honey',
         brand: {
           '@type': 'Brand',
           name: BRAND_NAME
@@ -519,6 +541,7 @@ for (const route of routes) {
   // Twitter
   pageHtml = pageHtml.replace(/<meta name="twitter:title"[^>]*>/, `<meta name="twitter:title" content="${pageTitle}" />`);
   pageHtml = pageHtml.replace(/<meta name="twitter:description"[^>]*>/, `<meta name="twitter:description" content="${pageDesc}" />`);
+  pageHtml = pageHtml.replace(/<meta name="twitter:image"[^>]*>/, `<meta name="twitter:image" content="${pageOgImage}" />`);
 
   // Add LCP Hero preload tag on homepage
   if (route.path === '/' && heroPreloadTag) {
@@ -529,8 +552,8 @@ for (const route of routes) {
   const structuredDataScript = `<script type="application/ld+json">\n${JSON.stringify({ '@context': 'https://schema.org', '@graph': jsonLdGraph }, null, 2)}\n    </script>`;
   pageHtml = pageHtml.replace(/<script type="application\/ld\+json">.*?<\/script>/s, structuredDataScript);
 
-  // Injected HTML into #root
-  pageHtml = pageHtml.replace(/<div id="root">.*?<\/div>/s, `<div id="root">${appHtml}</div>`);
+  // Injected HTML into #root without duplicating or leaving unmatched closing tags
+  pageHtml = pageHtml.replace(/<div id="root">[\s\S]*?<\/div>\s*<\/div>/, `<div id="root">${appHtml}</div>`);
 
   // Output file location
   let outputPath = '';

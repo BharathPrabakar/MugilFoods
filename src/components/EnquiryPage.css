@@ -308,6 +308,20 @@
   animation: fadeIn 0.4s ease;
 }
 
+.enquiry-thankyou-card.draft-state {
+  border-color: #3b82f6;
+  background: #f8fafc;
+}
+
+.enquiry-thankyou-card.draft-state .thankyou-icon-circle {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.enquiry-thankyou-card.draft-state .thankyou-title {
+  color: #1d4ed8;
+}
+
 .thankyou-icon-circle {
   width: 72px;
   height: 72px;
@@ -360,6 +374,25 @@
 .btn-send-another:hover {
   background: #f3f4f6;
   border-color: #9ca3af;
+}
+
+.btn-secondary-link {
+  background: transparent;
+  color: #6b7280;
+  border: 1.5px solid #e5e7eb;
+  padding: 0.85rem 1.6rem;
+  border-radius: 9999px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary-link:hover {
+  background: #f3f4f6;
+  color: var(--color-text-main);
+  border-color: #d1d5db;
 }
 
 .btn-thankyou-wa {

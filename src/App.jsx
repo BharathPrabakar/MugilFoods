@@ -24,12 +24,18 @@ import { SITE_NAME, BRAND_NAME } from './data/routesData';
 import './App.css';
 
 function App({ initialUrl = '/' }) {
-  const [route, setRoute] = useState(() => parseRoute(initialUrl));
+  const [route, setRoute] = useState(() => parseRoute(typeof window !== 'undefined' ? window.location.pathname : initialUrl));
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     // Sync initial client route from window location if on client
-    setRoute(parseRoute());
+    const currentRoute = parseRoute();
+    setRoute(currentRoute);
+
+    // If client arrived with legacy hash, seamlessly normalize address to clean canonical path
+    if (typeof window !== 'undefined' && window.location.hash && currentRoute.canonicalPath) {
+      window.history.replaceState({}, '', toAppPath(currentRoute.canonicalPath));
+    }
 
     let ticking = false;
     const handleScroll = () => {
@@ -72,7 +78,10 @@ function App({ initialUrl = '/' }) {
   useEffect(() => {
     if (typeof document === 'undefined') return;
     if (route.page === 'product-detail' && activeProduct) {
-      document.title = `${activeProduct.name} - Wholesale Tamarind | ${BRAND_NAME}`;
+      const isTamarind = activeProduct.categoryId === 'tamarind';
+      document.title = isTamarind
+        ? `${activeProduct.name} - Wholesale Tamarind | ${BRAND_NAME}`
+        : `${activeProduct.name} - Pure Harvest Honey | ${SITE_NAME}`;
     } else if (route.page === 'products') {
       document.title = `Wholesale Tamarind Products - Slabs, Rounds & Karipuli | ${SITE_NAME}`;
     } else if (route.page === 'about') {

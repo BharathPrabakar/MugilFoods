@@ -1,7 +1,7 @@
 /**
  * Comprehensive Automated Verification Script for Mugil Foods
- * Validates prerendered HTML files, SEO metadata, JSON-LD schemas,
- * internal links, images, sitemap, and robots.txt.
+ * Validates prerendered HTML files, tag structure balance, SEO metadata,
+ * product structured data images, internal links, sitemap, and robots.txt.
  */
 
 import fs from 'node:fs';
@@ -26,6 +26,47 @@ function assert(condition, message) {
     console.error(`  ❌ FAIL: ${message}`);
     failCount++;
   }
+}
+
+// Helper: Check HTML tag balance
+function checkHtmlBalance(html, filename) {
+  const stack = [];
+  const selfClosing = new Set([
+    'area', 'base', 'br', 'col', 'embed', 'hr', 'img',
+    'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'
+  ]);
+  const regex = /<\/?([a-zA-Z0-9]+)(\s[^>]*)?\/?>/g;
+  let match;
+  const errors = [];
+
+  while ((match = regex.exec(html)) !== null) {
+    const fullTag = match[0];
+    const tagName = match[1].toLowerCase();
+    const isClosing = fullTag.startsWith('</');
+    const isSelfClosing = fullTag.endsWith('/>') || selfClosing.has(tagName);
+
+    if (isSelfClosing && !isClosing) continue;
+
+    if (!isClosing) {
+      stack.push({ tag: tagName, index: match.index });
+    } else {
+      if (stack.length === 0) {
+        errors.push(`Extra closing tag </${tagName}> at pos ${match.index}`);
+      } else {
+        const top = stack.pop();
+        if (top.tag !== tagName) {
+          errors.push(`Mismatched tag: expected </${top.tag}>, found </${tagName}> at pos ${match.index}`);
+        }
+      }
+    }
+  }
+
+  while (stack.length > 0) {
+    const top = stack.pop();
+    errors.push(`Unclosed tag <${top.tag}> at pos ${top.index}`);
+  }
+
+  return errors;
 }
 
 // 1. Verify robots.txt
@@ -66,30 +107,37 @@ if (fs.existsSync(sitemapPath)) {
   assert(allExist, 'Every URL listed in sitemap.xml maps to an existing HTML file in dist/');
 }
 
-// 3. Verify All Expected HTML Pages
-console.log('\n3. Verifying Key Static Pages & Metadata:');
-const samplePages = [
+// 3. Verify All 23 Prerendered HTML Pages
+console.log('\n3. Verifying All Prerendered Static Pages, Metadata & HTML Structure:');
+const allPages = [
   { path: 'index.html', name: 'Homepage' },
   { path: 'about/index.html', name: 'About Page' },
   { path: 'products/index.html', name: 'Products Overview' },
-  { path: 'products/seedless-tamarind/index.html', name: 'Seedless Flower Tamarind' },
-  { path: 'products/seedless-tamarind-slab-white-layer/index.html', name: 'White Layer Slab' },
-  { path: 'products/round-seedless-tamarind/index.html', name: 'Round Tamarind' },
-  { path: 'products/karipuli-tamarind-cake/index.html', name: 'Karipuli Cake' },
-  { path: 'products/loose-karipuli-30kg/index.html', name: 'Loose Karipuli 30kg' },
-  { path: 'wholesale-tamarind-supply/index.html', name: 'Wholesale Supply' },
+  { path: 'products/seedless-tamarind/index.html', name: 'Seedless Flower Tamarind', isProduct: true },
+  { path: 'products/seedless-tamarind-slab-white-layer/index.html', name: 'White Layer Slab', isProduct: true },
+  { path: 'products/seedless-tamarind-slab-without-white-layer/index.html', name: 'Clean Slab Without White Layer', isProduct: true },
+  { path: 'products/round-seedless-tamarind/index.html', name: 'Round Tamarind', isProduct: true },
+  { path: 'products/karipuli-tamarind-cake/index.html', name: 'Karipuli Cake', isProduct: true },
+  { path: 'products/loose-karipuli-30kg/index.html', name: 'Loose Karipuli 30kg', isProduct: true },
+  { path: 'products/raw-tamarind/index.html', name: 'Raw Tamarind Pods', isProduct: true },
+  { path: 'products/tamarind-paste/index.html', name: 'Tamarind Pulp Paste', isProduct: true },
+  { path: 'products/wildflower-honey/index.html', name: 'Raw Forest Wildflower Honey', isProduct: true },
+  { path: 'wholesale-tamarind-supply/index.html', name: 'Wholesale Tamarind Supply' },
   { path: 'retail-distribution/index.html', name: 'Retail Distribution' },
   { path: 'custom-packaging/index.html', name: 'Custom Packaging' },
+  { path: 'services/index.html', name: 'Services Overview' },
   { path: 'contact/index.html', name: 'Contact Page' },
+  { path: 'enquiry/index.html', name: 'Enquiry Page' },
   { path: 'resources/index.html', name: 'Resources Hub' },
   { path: 'resources/tamarind-buying-guide/index.html', name: 'Buying Guide Article' },
+  { path: 'resources/quality-and-moisture-standards/index.html', name: 'Quality Standards Article' },
   { path: 'privacy-policy/index.html', name: 'Privacy Policy' },
   { path: '404.html', name: 'Custom 404 Page' }
 ];
 
 const titles = new Set();
 
-for (const p of samplePages) {
+for (const p of allPages) {
   const filePath = path.resolve(distDir, p.path);
   const exists = fs.existsSync(filePath);
   assert(exists, `${p.name} exists at dist/${p.path}`);
@@ -97,6 +145,13 @@ for (const p of samplePages) {
 
   const content = fs.readFileSync(filePath, 'utf-8');
   
+  // HTML Tag Balance Check
+  const balanceErrors = checkHtmlBalance(content, p.path);
+  assert(balanceErrors.length === 0, `${p.name} has valid balanced HTML structure (0 tag mismatches)`);
+  if (balanceErrors.length > 0) {
+    console.error(`     Tag errors in ${p.path}:`, balanceErrors);
+  }
+
   // Title
   const titleMatch = content.match(/<title>(.*?)<\/title>/);
   assert(titleMatch && titleMatch[1].length > 10, `${p.name} has descriptive title ("${titleMatch ? titleMatch[1].slice(0, 45) : ''}...")`);
@@ -128,6 +183,18 @@ for (const p of samplePages) {
       const parsed = JSON.parse(jsonLdMatch[1]);
       assert(parsed['@context'] === 'https://schema.org', `${p.name} JSON-LD has @context schema.org`);
       assert(Array.isArray(parsed['@graph']), `${p.name} JSON-LD has @graph array`);
+
+      // Verify Product Schema Image if this is a product page
+      if (p.isProduct) {
+        const productSchema = parsed['@graph'].find(item => item['@type'] === 'Product');
+        assert(productSchema !== undefined, `${p.name} schema graph contains Product entity`);
+        if (productSchema) {
+          const img = Array.isArray(productSchema.image) ? productSchema.image[0] : productSchema.image;
+          const isGeneric = img && img.includes('/og-image.jpg');
+          assert(!isGeneric, `${p.name} structured data uses specific product image instead of generic social image`);
+          assert(typeof img === 'string' && img.startsWith('https://bharathprabakar.github.io/MugilFoods/assets/'), `${p.name} product image URL points to valid asset path`);
+        }
+      }
     } catch (e) {
       assert(false, `${p.name} JSON-LD is valid JSON: ${e.message}`);
     }
@@ -160,4 +227,3 @@ console.log('=============================================\n');
 if (failCount > 0) {
   process.exit(1);
 }
-
