@@ -15,8 +15,8 @@ const rootDir = path.resolve(__dirname, '..');
 const distDir = path.resolve(rootDir, 'dist');
 const distSsrDir = path.resolve(rootDir, 'dist-ssr');
 
-const SITE_URL = 'https://bharathprabakar.github.io/MugilFoods';
-const ORIGIN = 'https://bharathprabakar.github.io';
+const SITE_URL = 'https://mugilfoods.com';
+const ORIGIN = 'https://mugilfoods.com';
 const SITE_NAME = 'Mugil Foods';
 const BRAND_NAME = 'Mugil Tamarind';
 const COMPANY_PHONE = '+919442177026';
@@ -46,7 +46,7 @@ const indexTemplate = fs.readFileSync(path.resolve(distDir, 'index.html'), 'utf-
 const distAssets = fs.readdirSync(path.resolve(distDir, 'assets'));
 const heroAsset = distAssets.find(f => f.startsWith('slide_mugil_foods') && f.endsWith('.webp'));
 const heroPreloadTag = heroAsset 
-  ? `<link rel="preload" as="image" href="/MugilFoods/assets/${heroAsset}" fetchpriority="high">`
+  ? `<link rel="preload" as="image" href="/assets/${heroAsset}" fetchpriority="high">`
   : '';
 
 // Route Definitions
