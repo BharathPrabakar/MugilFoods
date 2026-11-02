@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
+import LogoIntro from './components/LogoIntro';
 import HeroCarousel from './components/HeroCarousel';
 import CategoryCards from './components/CategoryCards';
 import ServicesSection from './components/ServicesSection';
@@ -103,23 +104,24 @@ function App({ initialUrl = '/' }) {
 
   return (
     <div className="app-container">
-      <Header 
-        currentPath={route.canonicalPath} 
-        currentPage={route.page} 
-        isScrolled={isScrolled} 
+      <LogoIntro />
+      <Header
+        currentPath={route.canonicalPath}
+        currentPage={route.page}
+        isScrolled={isScrolled}
       />
 
       <main id="main-content" tabIndex="-1">
         {route.page === 'product-detail' && activeProduct ? (
-          <ProductDetailPage 
+          <ProductDetailPage
             key={activeProduct.id}
-            product={activeProduct} 
+            product={activeProduct}
             onBackToProducts={() => navigateTo('/products/')}
             onSelectProduct={(p) => navigateTo(`/products/${p.id}/`)}
           />
         ) : route.page === 'products' ? (
-          <ProductsPage 
-            initialCategory="tamarind" 
+          <ProductsPage
+            initialCategory="tamarind"
             onSelectProduct={(p) => navigateTo(`/products/${p.id}/`)}
           />
         ) : route.page === 'services' ? (
