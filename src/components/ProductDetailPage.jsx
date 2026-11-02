@@ -72,6 +72,7 @@ export default function ProductDetailPage({
           <div className="detail-media-col">
             <div className="main-image-display">
               <img 
+                key={selectedImage || product.image}
                 src={selectedImage || product.image} 
                 alt={`${product.name} - ${BRAND_NAME} Dharmapuri`} 
                 className="product-primary-img" 
