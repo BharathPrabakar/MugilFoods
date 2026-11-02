@@ -77,7 +77,7 @@ if (fs.existsSync(robotsPath)) {
   const robots = fs.readFileSync(robotsPath, 'utf-8');
   assert(robots.includes('User-agent: *'), 'robots.txt specifies User-agent: *');
   assert(robots.includes('Allow: /'), 'robots.txt allows root path');
-  assert(robots.includes('Sitemap: https://bharathprabakar.github.io/MugilFoods/sitemap.xml'), 'robots.txt contains absolute sitemap URL');
+  assert(robots.includes('Sitemap: https://mugilfoods.com/sitemap.xml'), 'robots.txt contains absolute sitemap URL');
 }
 
 // 2. Verify sitemap.xml
@@ -97,7 +97,7 @@ if (fs.existsSync(sitemapPath)) {
   // Verify all URLs in sitemap actually exist in dist/
   let allExist = true;
   for (const loc of locMatches) {
-    const sub = loc.replace('https://bharathprabakar.github.io/MugilFoods', '').replace(/^\//, '');
+    const sub = loc.replace('https://mugilfoods.com', '').replace(/^\//, '');
     const expectedFile = sub === '' ? path.resolve(distDir, 'index.html') : path.resolve(distDir, sub, 'index.html');
     if (!fs.existsSync(expectedFile)) {
       console.error(`     Missing file for sitemap URL: ${loc} -> ${expectedFile}`);
@@ -166,7 +166,7 @@ for (const p of allPages) {
 
   // Canonical
   const canonicalMatch = content.match(/<link rel="canonical" href="(.*?)"/);
-  assert(canonicalMatch && canonicalMatch[1].startsWith('https://bharathprabakar.github.io/MugilFoods'), `${p.name} has absolute canonical link`);
+  assert(canonicalMatch && canonicalMatch[1].startsWith('https://mugilfoods.com'), `${p.name} has absolute canonical link`);
 
   // Robots meta tag
   const robotsMatch = content.match(/<meta name="robots" content="(.*?)"/);
@@ -203,7 +203,7 @@ for (const p of allPages) {
           const img = Array.isArray(productSchema.image) ? productSchema.image[0] : productSchema.image;
           const isGeneric = img && img.includes('/og-image.jpg');
           assert(!isGeneric, `${p.name} structured data uses specific product image instead of generic social image`);
-          assert(typeof img === 'string' && img.startsWith('https://bharathprabakar.github.io/MugilFoods/assets/'), `${p.name} product image URL points to valid asset path`);
+          assert(typeof img === 'string' && img.startsWith('https://mugilfoods.com/assets/'), `${p.name} product image URL points to valid asset path`);
         }
       }
     } catch (e) {
@@ -225,7 +225,7 @@ for (const link of linkMatches) {
     ? path.resolve(distDir, 'index.html') 
     : path.resolve(distDir, targetSub.replace(/\/$/, ''), 'index.html');
   if (!fs.existsSync(targetFile)) {
-    console.error(`     Broken internal link found: /MugilFoods/${link} -> ${targetFile}`);
+    console.error(`     Broken internal link found: /${link} -> ${targetFile}`);
     allLinksValid = false;
   }
 }
