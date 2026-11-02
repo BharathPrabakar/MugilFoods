@@ -15,11 +15,15 @@ const MOTION_TARGETS = [
   '.trust-metrics-ribbon',
   '.testimonials-title-group',
   '.testimonial-card',
-  '.products-header',
-  '.product-card',
+  '.products-top-banner',
+  '.compact-category-bar',
+  '.compact-products-section',
   '.clean-prod-card',
-  '.product-detail-gallery',
-  '.product-detail-info',
+  '.detail-top-nav-bar',
+  '.detail-main-section',
+  '.detail-media-col',
+  '.detail-info-col',
+  '.detail-content-col',
   '.service-page-header',
   '.about-page-header',
   '.enquiry-page-header',
@@ -35,7 +39,6 @@ const CARD_TARGETS = new Set([
   '.stat-box',
   '.feature-card',
   '.testimonial-card',
-  '.product-card',
   '.clean-prod-card',
   '.resource-card',
 ]);
@@ -71,9 +74,9 @@ export default function MotionEnhancer() {
           element.style.setProperty('--motion-delay', `${Math.max(0, siblingIndex % 4) * 70}ms`);
         }
 
-        if (element.matches('.about-snippet-stats, .product-detail-info')) {
+        if (element.matches('.about-snippet-stats, .detail-content-col, .detail-info-col')) {
           element.dataset.motionFrom = 'right';
-        } else if (element.matches('.about-snippet-left, .product-detail-gallery')) {
+        } else if (element.matches('.about-snippet-left, .detail-media-col')) {
           element.dataset.motionFrom = 'left';
         }
 
