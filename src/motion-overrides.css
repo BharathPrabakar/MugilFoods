@@ -1,3 +1,41 @@
+
+/* Header compacts on scroll while keeping the page's top offset aligned. */
+.header-container {
+  padding: 0.85rem 2.25rem;
+}
+
+.header-logo-img {
+  height: 48px;
+}
+
+@media (max-width: 800px) {
+  .header-container {
+    padding: 0.65rem 1.15rem;
+  }
+
+  .header.scrolled .header-container {
+    padding: 0.55rem 1.15rem;
+  }
+
+  .header-logo-img {
+    height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0.5rem 0.85rem;
+  }
+
+  .header.scrolled .header-container {
+    padding: 0.45rem 0.85rem;
+  }
+
+  .header-logo-img {
+    height: 38px;
+  }
+}
+
 /* Hero: existing crossfade plus a restrained image drift on each active slide. */
 .carousel-slide.active .carousel-img-full {
   animation: mugil-hero-drift 5s cubic-bezier(0.22, 1, 0.36, 1) both;
