@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import LogoIntro from './components/LogoIntro';
-import MotionEnhancer from './components/MotionEnhancer';
 import BackToTop from './components/BackToTop';
 import HeroCarousel from './components/HeroCarousel';
 import CategoryCards from './components/CategoryCards';
@@ -105,7 +104,7 @@ function App({ initialUrl = '/' }) {
   return (
     <div className="app-container">
       <LogoIntro />
-      <MotionEnhancer />
+
       <Header
         currentPath={route.canonicalPath}
         currentPage={route.page}
