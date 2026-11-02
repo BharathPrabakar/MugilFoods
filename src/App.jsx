@@ -30,6 +30,7 @@ import './motion-overrides.css';
 function App({ initialUrl = '/' }) {
   const [route, setRoute] = useState(() => parseRoute(typeof window !== 'undefined' ? window.location.pathname : initialUrl));
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isPageTransitioning, setIsPageTransitioning] = useState(false);
 
   useEffect(() => {
     const currentRoute = parseRoute();
@@ -52,10 +53,14 @@ function App({ initialUrl = '/' }) {
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
 
+    let transitionTimer;
     const handleRouteChange = () => {
       const parsed = parseRoute();
+      setIsPageTransitioning(true);
       setRoute(parsed);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      window.clearTimeout(transitionTimer);
+      transitionTimer = window.setTimeout(() => setIsPageTransitioning(false), 520);
     };
 
     window.addEventListener('popstate', handleRouteChange);
@@ -67,6 +72,7 @@ function App({ initialUrl = '/' }) {
       window.removeEventListener('popstate', handleRouteChange);
       window.removeEventListener('app-navigate', handleRouteChange);
       window.removeEventListener('hashchange', handleRouteChange);
+      window.clearTimeout(transitionTimer);
     };
   }, []);
 
@@ -104,6 +110,9 @@ function App({ initialUrl = '/' }) {
 
   return (
     <div className="app-container">
+      <div className={`page-transition-curtain${isPageTransitioning ? ' is-active' : ''}`} aria-hidden="true">
+        <span className="page-transition-curtain-mark">M</span>
+      </div>
       <LogoIntro />
       <MotionEnhancer />
       <Header
