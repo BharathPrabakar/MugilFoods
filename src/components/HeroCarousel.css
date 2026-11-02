@@ -186,3 +186,13 @@
   white-space: nowrap;
   border: 0;
 }
+
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-slide,
+  .carousel-img-full,
+  .pagination-dot {
+    transition: none !important;
+    animation: none !important;
+  }
+}
