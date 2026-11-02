@@ -591,19 +591,39 @@ for (const r of sitemapRoutes) {
   }
 }
 
+const escapeXml = (value) => String(value)
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;')
+  .replace(/'/g, '&apos;');
+
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${uniqueSitemapRoutes.map(r => `  <url>
-    <loc>${SITE_URL}${r.canonicalPath === '/' ? '/' : r.canonicalPath}</loc>
-    <lastmod>${TODAY}</lastmod>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${uniqueSitemapRoutes.map(r => {
+  const product = r.productId ? allProductsList.find(p => p.id === r.productId) : null;
+  const productImages = product
+    ? [...new Set([product.image, ...(Array.isArray(product.gallery) ? product.gallery : [])]
+        .filter(Boolean)
+        .map(resolveAbsoluteUrl))]
+    : [];
+  const imageEntries = productImages.map(img =>
+    `    <image:image><image:loc>${escapeXml(img)}</image:loc></image:image>`
+  ).join('\\n');
+
+  return `  <url>
+    <loc>${escapeXml(`${SITE_URL}${r.canonicalPath === '/' ? '/' : r.canonicalPath}`)}</loc>
+${imageEntries ? imageEntries + '\\n' : ''}    <lastmod>${TODAY}</lastmod>
     <changefreq>${r.changefreq || 'monthly'}</changefreq>
     <priority>${r.priority || '0.7'}</priority>
-  </url>`).join('\n')}
+  </url>`;
+}).join('\\n')}
 </urlset>
 `;
 
 fs.writeFileSync(path.resolve(distDir, 'sitemap.xml'), sitemapXml.trim() + '\n', 'utf-8');
-console.log(`  ✓ Generated sitemap.xml with ${uniqueSitemapRoutes.length} canonical indexable URLs`);
+console.log(`  ✓ Generated sitemap.xml with ${uniqueSitemapRoutes.length} canonical URLs and product image entries`);
 
 // Step 5: Generate Robots.txt
 console.log('🤖 Step 5: Generating robots.txt...');
