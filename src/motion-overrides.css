@@ -239,3 +239,29 @@ details > :not(summary) {
     to { transform: scale(1.02); }
   }
 }
+
+
+/* Small, deliberate interaction cues; avoid global transforms on every link/button. */
+@media (hover: hover) and (pointer: fine) {
+  .enquiry-btn:hover,
+  .btn-detail-enquire:hover {
+    transform: translateY(-2px);
+  }
+
+  .thumb-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
+:where(.enquiry-btn, .btn-detail-enquire, .back-to-catalog-btn, .mobile-toggle-btn):active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-slide.active .carousel-img-full,
+  .pagination-dot.active .dot-fill,
+  .product-primary-img {
+    animation: none !important;
+  }
+}
