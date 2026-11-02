@@ -14,7 +14,6 @@ export default function LogoIntro() {
 
     try {
       if (window.sessionStorage.getItem(INTRO_KEY)) return;
-      window.sessionStorage.setItem(INTRO_KEY, '1');
     } catch {
       // Continue with the intro if session storage is unavailable.
     }
@@ -73,6 +72,11 @@ export default function LogoIntro() {
           overlay.classList.add('is-leaving');
           fadeTimer = window.setTimeout(() => {
             document.documentElement.classList.remove('mugil-intro-active');
+            try {
+              window.sessionStorage.setItem(INTRO_KEY, '1');
+            } catch {
+              // The intro can still complete when storage is unavailable.
+            }
             setVisible(false);
           }, 320);
         };
