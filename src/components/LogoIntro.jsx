@@ -48,42 +48,51 @@ export default function LogoIntro() {
       const offsetY = targetY - startY;
       const scale = Math.min(target.width / 170, target.height / 170);
 
+      // Give the logo a more deliberate entrance: three full spins, then a
+      // calm, glowing center hold before it travels into the site header.
       spinAnimation = logo.animate(
         [
-          { transform: 'translate(-50%, -50%) rotateY(0deg) scale(.72)', opacity: 0 },
-          { transform: 'translate(-50%, -50%) rotateY(360deg) scale(1)', opacity: 1, offset: 0.8 },
-          { transform: 'translate(-50%, -50%) rotateY(360deg) scale(1)', opacity: 1 },
+          { transform: 'translate(-50%, -50%) rotateY(0deg) rotateZ(-8deg) scale(.62)', opacity: 0, offset: 0 },
+          { transform: 'translate(-50%, -50%) rotateY(540deg) rotateZ(4deg) scale(1.06)', opacity: 1, offset: 0.55 },
+          { transform: 'translate(-50%, -50%) rotateY(1080deg) rotateZ(0deg) scale(1)', opacity: 1, offset: 1 },
         ],
-        { duration: 950, easing: 'cubic-bezier(.2,.75,.25,1)', fill: 'forwards' }
+        { duration: 1900, easing: 'cubic-bezier(.2,.72,.2,1)', fill: 'forwards' }
       );
 
       spinAnimation.onfinish = () => {
-        travelAnimation = logo.animate(
-          [
-            { transform: 'translate(-50%, -50%) rotateY(360deg) scale(1)' },
-            {
-              transform: `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px)) rotateY(720deg) scale(${scale})`,
-            },
-          ],
-          { duration: 650, easing: 'cubic-bezier(.22,.8,.25,1)', fill: 'forwards' }
-        );
+        overlay.classList.add('is-holding');
+        window.setTimeout(() => {
+          if (!logoRef.current || !overlayRef.current) return;
 
-        travelAnimation.onfinish = () => {
-          overlay.classList.add('is-leaving');
-          fadeTimer = window.setTimeout(() => {
-            document.documentElement.classList.remove('mugil-intro-active');
-            try {
-              window.sessionStorage.setItem(INTRO_KEY, '1');
-            } catch {
-              // The intro can still complete when storage is unavailable.
-            }
-            setVisible(false);
-          }, 320);
-        };
+          travelAnimation = logo.animate(
+            [
+              { transform: 'translate(-50%, -50%) rotateY(1080deg) scale(1)', opacity: 1 },
+              {
+                transform: `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px)) rotateY(1440deg) scale(${scale})`,
+                opacity: 1,
+              },
+            ],
+            { duration: 850, easing: 'cubic-bezier(.22,.8,.25,1)', fill: 'forwards' }
+          );
+
+          travelAnimation.onfinish = () => {
+            overlay.classList.remove('is-holding');
+            overlay.classList.add('is-leaving');
+            fadeTimer = window.setTimeout(() => {
+              document.documentElement.classList.remove('mugil-intro-active');
+              try {
+                window.sessionStorage.setItem(INTRO_KEY, '1');
+              } catch {
+                // The intro can still complete when storage is unavailable.
+              }
+              setVisible(false);
+            }, 450);
+          };
+        }, 950);
       };
     };
 
-    const startTimer = window.setTimeout(startAnimation, 80);
+    const startTimer = window.setTimeout(startAnimation, 100);
 
     return () => {
       window.clearTimeout(startTimer);
@@ -98,7 +107,11 @@ export default function LogoIntro() {
 
   return (
     <div className="mugil-logo-intro" ref={overlayRef} aria-hidden="true">
+      <div className="mugil-logo-intro-glow" />
+      <div className="mugil-logo-intro-ring mugil-logo-intro-ring-one" />
+      <div className="mugil-logo-intro-ring mugil-logo-intro-ring-two" />
       <img ref={logoRef} className="mugil-logo-intro-image" src={logoImg} alt="" />
+      <span className="mugil-logo-intro-caption">MUGIL FOODS</span>
     </div>
   );
 }
