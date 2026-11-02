@@ -3,7 +3,7 @@
  * for all crawlable pages of Mugil Foods.
  */
 
-export const SITE_URL = 'https://bharathprabakar.github.io/MugilFoods';
+export const SITE_URL = 'https://mugilfoods.com';
 export const SITE_NAME = 'Mugil Foods';
 export const BRAND_NAME = 'Mugil Tamarind';
 export const COMPANY_PHONE = '+919442177026';
