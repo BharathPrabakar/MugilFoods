@@ -381,3 +381,28 @@
     padding: 0.45rem 0.65rem;
   }
 }
+
+
+/* Keep navigation feedback smooth without affecting layout. */
+.nav-link::after {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link::after,
+  .enquiry-btn,
+  .enquiry-btn .cta-arrow,
+  .header,
+  .header-container,
+  .header-logo-img {
+    transition: none !important;
+  }
+}
