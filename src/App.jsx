@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import LogoIntro from './components/LogoIntro';
 import MotionEnhancer from './components/MotionEnhancer';
+import BackToTop from './components/BackToTop';
 import HeroCarousel from './components/HeroCarousel';
 import CategoryCards from './components/CategoryCards';
 import ServicesSection from './components/ServicesSection';
@@ -24,6 +25,7 @@ import { productsData } from './data/productsData';
 import { parseRoute, navigateTo, toAppPath } from './utils/navigation';
 import { SITE_NAME, BRAND_NAME } from './data/routesData';
 import './App.css';
+import './motion-overrides.css';
 
 function App({ initialUrl = '/' }) {
   const [route, setRoute] = useState(() => parseRoute(typeof window !== 'undefined' ? window.location.pathname : initialUrl));
@@ -154,6 +156,7 @@ function App({ initialUrl = '/' }) {
 
       <Footer />
       <FloatingWhatsApp />
+      <BackToTop />
     </div>
   );
 }
