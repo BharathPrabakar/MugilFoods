@@ -5,34 +5,6 @@
   --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Only hide motion targets after JavaScript has prepared them. Without JS,
-   all content remains visible and readable. */
-html.motion-ready .motion-reveal:not(.motion-visible) {
-  opacity: 0;
-  transform: translate3d(0, 18px, 0);
-}
-
-html.motion-ready .motion-reveal[data-motion-from="left"]:not(.motion-visible) {
-  transform: translate3d(-18px, 0, 0);
-}
-
-html.motion-ready .motion-reveal[data-motion-from="right"]:not(.motion-visible) {
-  transform: translate3d(18px, 0, 0);
-}
-
-.motion-reveal {
-  transition:
-    opacity var(--motion-reveal) var(--motion-ease),
-    transform var(--motion-reveal) var(--motion-ease);
-  transition-delay: var(--motion-delay, 0ms);
-  backface-visibility: hidden;
-}
-
-.motion-reveal.motion-visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
-
 /* Page content settles in quickly after client-side navigation. */
 .page-transition {
   animation: mugil-page-enter 280ms var(--motion-ease) both;
