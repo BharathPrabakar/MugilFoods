@@ -34,6 +34,7 @@ function App({ initialUrl = '/' }) {
   useEffect(() => {
     const currentRoute = parseRoute();
     setRoute(currentRoute);
+    setIsScrolled(window.scrollY > 20);
 
     if (typeof window !== 'undefined' && window.location.hash && currentRoute.canonicalPath) {
       window.history.replaceState({}, '', toAppPath(currentRoute.canonicalPath));
