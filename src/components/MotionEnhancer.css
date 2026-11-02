@@ -1,0 +1,165 @@
+:root {
+  --motion-fast: 200ms;
+  --motion-normal: 300ms;
+  --motion-reveal: 520ms;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Only hide motion targets after JavaScript has prepared them. Without JS,
+   all content remains visible and readable. */
+html.motion-ready .motion-reveal:not(.motion-visible) {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+}
+
+html.motion-ready .motion-reveal[data-motion-from="left"]:not(.motion-visible) {
+  transform: translate3d(-18px, 0, 0);
+}
+
+html.motion-ready .motion-reveal[data-motion-from="right"]:not(.motion-visible) {
+  transform: translate3d(18px, 0, 0);
+}
+
+.motion-reveal {
+  transition:
+    opacity var(--motion-reveal) var(--motion-ease),
+    transform var(--motion-reveal) var(--motion-ease);
+  transition-delay: var(--motion-delay, 0ms);
+  backface-visibility: hidden;
+}
+
+.motion-reveal.motion-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Page content settles in quickly after client-side navigation. */
+.page-transition {
+  animation: mugil-page-enter 280ms var(--motion-ease) both;
+}
+
+@keyframes mugil-page-enter {
+  from {
+    opacity: 0.72;
+    transform: translate3d(0, 6px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Shared micro-interactions. Existing component-specific styles retain their
+   own colors and visual identity. */
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+  touch-action: manipulation;
+}
+
+button:not(:disabled),
+a[href] {
+  transition-timing-function: var(--motion-ease);
+}
+
+button:active:not(:disabled),
+a[href]:active {
+  transform: scale(0.985);
+}
+
+:where(.category-card, .service-card, .feature-card, .stat-box, .testimonial-card, .product-card, .clean-prod-card, .resource-card) {
+  will-change: auto;
+}
+
+:where(.category-card, .service-card, .feature-card, .stat-box, .testimonial-card, .product-card, .clean-prod-card, .resource-card) img {
+  backface-visibility: hidden;
+}
+
+:where(.service-cta-link, .btn-snippet-link, .nav-link, .mobile-nav-link, .footer-link, footer a) {
+  text-underline-offset: 4px;
+  transition:
+    color var(--motion-normal) var(--motion-ease),
+    background-color var(--motion-normal) var(--motion-ease),
+    border-color var(--motion-normal) var(--motion-ease),
+    text-decoration-color var(--motion-normal) var(--motion-ease),
+    transform var(--motion-normal) var(--motion-ease);
+}
+
+:where(.service-cta-link, .btn-snippet-link) svg {
+  transition: transform var(--motion-normal) var(--motion-ease);
+}
+
+:where(.service-cta-link, .btn-snippet-link):hover svg {
+  transform: translateX(4px);
+}
+
+/* Better focus feedback for interactive cards and controls. */
+:where(.category-card, .testimonial-card, .service-card, .feature-card):focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+/* Product/detail interactions apply to existing and future product card variants. */
+:where(.product-card, .clean-prod-card) {
+  transition:
+    transform 280ms var(--motion-ease),
+    box-shadow 280ms var(--motion-ease),
+    border-color 280ms var(--motion-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :where(.product-card, .clean-prod-card):hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px rgba(24, 24, 27, 0.09);
+  }
+
+  :where(.product-card, .clean-prod-card) img {
+    transition: transform 520ms var(--motion-ease);
+  }
+
+  :where(.product-card, .clean-prod-card):hover img {
+    transform: scale(1.035);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  html.motion-ready .motion-reveal,
+  html.motion-ready .motion-reveal:not(.motion-visible),
+  html.motion-ready .motion-reveal[data-motion-from="left"]:not(.motion-visible),
+  html.motion-ready .motion-reveal[data-motion-from="right"]:not(.motion-visible) {
+    opacity: 1;
+    transform: none;
+  }
+
+  .page-transition {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .motion-reveal {
+    transition-duration: 420ms;
+    transition-delay: 0ms;
+  }
+
+  html.motion-ready .motion-reveal:not(.motion-visible) {
+    transform: translate3d(0, 12px, 0);
+  }
+}
