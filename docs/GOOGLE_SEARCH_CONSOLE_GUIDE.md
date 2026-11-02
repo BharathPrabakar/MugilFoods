@@ -6,22 +6,22 @@ This guide provides step-by-step instructions for the website owner to set up, v
 
 ## 1. Domain & Deployment Configuration
 
-- **Production URL**: `https://bharathprabakar.github.io/MugilFoods/` (or custom domain if configured, e.g., `https://mugilfoods.com/`)
-- **Protocol**: HTTPS (enforced by GitHub Pages)
-- **Robots.txt Location**: `https://bharathprabakar.github.io/MugilFoods/robots.txt`
-- **XML Sitemap Location**: `https://bharathprabakar.github.io/MugilFoods/sitemap.xml`
+- **Production URL**: `https://mugilfoods.com/`
+- **Protocol**: HTTPS (enforced by Cloudflare Pages)
+- **Robots.txt Location**: `https://mugilfoods.com/robots.txt`
+- **XML Sitemap Location**: `https://mugilfoods.com/sitemap.xml`
 - **Missing Page Handling**: Custom branded `404.html` served for all nonexistent routes.
 
 ---
 
 ## 2. Step-by-Step Google Search Console Verification
 
-### Method A: URL Prefix Verification (Recommended for GitHub Pages)
+### Method A: URL Prefix Verification (Recommended for Cloudflare Pages)
 1. Navigate to [Google Search Console](https://search.google.com/search-console/).
 2. Click **Add Property** in the property dropdown.
 3. Select **URL prefix** and enter:
    ```
-   https://bharathprabakar.github.io/MugilFoods/
+   https://mugilfoods.com/
    ```
    *(Note: Ensure you include the exact protocol `https://` and trailing slash `/MugilFoods/`)*.
 4. Choose one of the following verification methods:
@@ -56,12 +56,12 @@ This guide provides step-by-step instructions for the website owner to set up, v
 For the most critical commercial landing pages, use the **URL Inspection Tool** to verify crawlability:
 
 1. Copy one of the key URLs:
-   - Homepage: `https://bharathprabakar.github.io/MugilFoods/`
-   - Wholesale Supply: `https://bharathprabakar.github.io/MugilFoods/wholesale-tamarind-supply/`
-   - Seedless Flower Tamarind: `https://bharathprabakar.github.io/MugilFoods/products/seedless-tamarind/`
-   - Round Seedless Tamarind: `https://bharathprabakar.github.io/MugilFoods/products/round-seedless-tamarind/`
-   - Karipuli Cake: `https://bharathprabakar.github.io/MugilFoods/products/karipuli-tamarind-cake/`
-   - Contact & Enquiries: `https://bharathprabakar.github.io/MugilFoods/contact/`
+   - Homepage: `https://mugilfoods.com/`
+   - Wholesale Supply: `https://mugilfoods.com/wholesale-tamarind-supply/`
+   - Seedless Flower Tamarind: `https://mugilfoods.com/products/seedless-tamarind/`
+   - Round Seedless Tamarind: `https://mugilfoods.com/products/round-seedless-tamarind/`
+   - Karipuli Cake: `https://mugilfoods.com/products/karipuli-tamarind-cake/`
+   - Contact & Enquiries: `https://mugilfoods.com/contact/`
 2. Paste the URL into the search bar at the top of Google Search Console.
 3. Click **Test Live URL** to confirm that Googlebot can fetch the page without errors.
 4. Review the "Page fetch" status: It must state **Successful (HTTP 200)**.
