@@ -53,14 +53,7 @@ a[href] {
   transition-timing-function: var(--motion-ease);
 }
 
-button:active:not(:disabled),
-a[href]:active {
-  transform: scale(0.985);
-}
 
-:where(.category-card, .service-card, .feature-card, .stat-box, .testimonial-card, .product-card, .clean-prod-card, .resource-card) {
-  will-change: auto;
-}
 
 :where(.category-card, .testimonial-card, .service-card, .feature-card):focus-visible {
   outline: 3px solid var(--color-primary);
