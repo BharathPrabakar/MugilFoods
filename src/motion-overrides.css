@@ -239,3 +239,77 @@ details > :not(summary) {
     to { transform: scale(1.02); }
   }
 }
+
+
+/* Branded page-to-page transition: a quick harvest-green curtain with a warm
+   center glint, then the new page settles into view underneath it. */
+.page-transition-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.page-transition-curtain::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    radial-gradient(circle at 50% 48%, rgba(255, 213, 111, .24), transparent 23%),
+    linear-gradient(135deg, #0d512c 0%, #176b38 48%, #0b4525 100%);
+  transform: scaleY(0);
+  transform-origin: top center;
+}
+
+.page-transition-curtain-mark {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border: 1px solid rgba(255, 230, 165, .65);
+  border-radius: 50%;
+  color: #fff2c6;
+  font-family: Georgia, serif;
+  font-size: 26px;
+  opacity: 0;
+  transform: scale(.82) rotate(-12deg);
+  text-shadow: 0 0 22px rgba(255, 218, 128, .5);
+}
+
+.page-transition-curtain.is-active {
+  visibility: visible;
+}
+
+.page-transition-curtain.is-active::before {
+  animation: mugil-page-curtain 520ms cubic-bezier(.76, 0, .24, 1) both;
+}
+
+.page-transition-curtain.is-active .page-transition-curtain-mark {
+  animation: mugil-page-mark 380ms ease 100ms both;
+}
+
+@keyframes mugil-page-curtain {
+  0% { transform: scaleY(0); }
+  24% { transform: scaleY(1); }
+  72% { transform: scaleY(1); }
+  100% { transform: scaleY(0); transform-origin: bottom center; }
+}
+
+@keyframes mugil-page-mark {
+  0% { opacity: 0; transform: scale(.82) rotate(-12deg); }
+  40% { opacity: 1; transform: scale(1) rotate(0deg); }
+  75% { opacity: 1; transform: scale(1.04); }
+  100% { opacity: 0; transform: scale(1.12); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition-curtain {
+    display: none !important;
+  }
+}
