@@ -1,0 +1,199 @@
+/* Hero: existing crossfade plus a restrained image drift on each active slide. */
+.carousel-slide.active .carousel-img-full {
+  animation: mugil-hero-drift 5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes mugil-hero-drift {
+  from { transform: scale(1); }
+  to { transform: scale(1.045); }
+}
+
+.carousel-img-full {
+  transform-origin: center;
+  will-change: transform;
+}
+
+.pagination-dot {
+  position: relative;
+  overflow: hidden;
+}
+
+.pagination-dot .dot-fill {
+  position: absolute;
+  inset: 0;
+  display: block;
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.22);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.pagination-dot.active .dot-fill {
+  animation: mugil-pagination-progress 5s linear both;
+}
+
+@keyframes mugil-pagination-progress {
+  to { transform: scaleX(1); }
+}
+
+/* Mobile navigation becomes a real animated drawer rather than a display toggle. */
+@media (max-width: 800px) {
+  .header {
+    isolation: isolate;
+  }
+
+  .mobile-nav-drawer {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transform: translateY(-8px);
+    transform-origin: top center;
+    transition:
+      max-height 300ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 220ms ease,
+      transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+      padding 300ms ease,
+      visibility 0s linear 300ms;
+  }
+
+  .mobile-nav-drawer.open {
+    display: block;
+    max-height: min(75vh, 520px);
+    padding: 1.1rem 1.25rem 1.5rem;
+    opacity: 1;
+    visibility: visible;
+    overflow-y: auto;
+    transform: translateY(0);
+    transition-delay: 0s;
+  }
+
+  .mobile-nav-list > li {
+    opacity: 0;
+    transform: translateY(7px);
+    transition: opacity 220ms ease, transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mobile-nav-drawer.open .mobile-nav-list > li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .mobile-nav-drawer.open .mobile-nav-list > li:nth-child(1) { transition-delay: 35ms; }
+  .mobile-nav-drawer.open .mobile-nav-list > li:nth-child(2) { transition-delay: 65ms; }
+  .mobile-nav-drawer.open .mobile-nav-list > li:nth-child(3) { transition-delay: 95ms; }
+  .mobile-nav-drawer.open .mobile-nav-list > li:nth-child(4) { transition-delay: 125ms; }
+  .mobile-nav-drawer.open .mobile-nav-list > li:nth-child(5) { transition-delay: 155ms; }
+  .mobile-nav-drawer.open .mobile-nav-list > li:nth-child(6) { transition-delay: 185ms; }
+}
+
+@media (min-width: 801px) {
+  .mobile-nav-drawer {
+    display: none !important;
+  }
+}
+
+/* Product gallery image changes feel deliberate and don't flash abruptly. */
+.product-primary-img {
+  animation: mugil-product-image-arrive 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes mugil-product-image-arrive {
+  from { opacity: 0.35; transform: scale(0.99); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+:where(.thumb-btn, .compact-cat-card, .pagination-dot, .testimonial-arrow-btn, .mobile-toggle-btn) {
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    color 220ms ease,
+    opacity 220ms ease;
+}
+
+:where(.thumb-btn, .compact-cat-card, .testimonial-arrow-btn):active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+/* Forms feel responsive while retaining their existing layout. */
+:where(input, select, textarea) {
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+:where(input, select, textarea):focus {
+  border-color: var(--color-green);
+  box-shadow: 0 0 0 3px rgba(10, 130, 58, 0.12);
+}
+
+/* Accordions can opt into a gentle disclosure transition without JS. */
+details > :not(summary) {
+  animation: mugil-disclosure-enter 220ms ease both;
+}
+
+@keyframes mugil-disclosure-enter {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* A quiet animated line for existing section headings and timeline accents. */
+.categories-badge,
+.services-badge,
+.why-badge,
+.testimonials-badge,
+.about-tag,
+.products-banner-badge {
+  transition: background-color 220ms ease, border-color 220ms ease, color 220ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .category-card:hover .category-image,
+  .service-card:hover .service-img {
+    filter: saturate(1.035);
+  }
+
+  .feature-card:hover .feature-icon-box svg {
+    transform: scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-slide.active .carousel-img-full,
+  .pagination-dot.active .dot-fill,
+  .product-primary-img,
+  details > :not(summary) {
+    animation: none !important;
+  }
+
+  .mobile-nav-drawer,
+  .mobile-nav-list > li {
+    transition: none !important;
+  }
+
+  .mobile-nav-list > li {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel-slide.active .carousel-img-full {
+    animation-name: mugil-hero-drift-mobile;
+  }
+
+  @keyframes mugil-hero-drift-mobile {
+    from { transform: scale(1); }
+    to { transform: scale(1.02); }
+  }
+}
