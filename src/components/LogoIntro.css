@@ -2,21 +2,93 @@
   position: fixed;
   inset: 0;
   z-index: 10000;
+  display: grid;
+  place-items: center;
   overflow: hidden;
   pointer-events: none;
-  background: #fbf8f0;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at center, rgba(255, 248, 225, .96) 0%, rgba(251, 248, 240, .99) 42%, #fbf8f0 76%);
   opacity: 1;
-  transition: opacity 320ms ease;
+  transition: opacity 450ms ease;
+}
+
+.mugil-logo-intro::before,
+.mugil-logo-intro::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  content: "";
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.mugil-logo-intro::before {
+  width: min(72vw, 430px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(255, 202, 75, .22), rgba(255, 224, 145, .12) 38%, transparent 70%);
+  filter: blur(12px);
+  opacity: .55;
+  animation: mugil-intro-aura 2.8s ease-in-out infinite alternate;
+}
+
+.mugil-logo-intro::after {
+  width: min(88vw, 520px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(206, 150, 43, .12);
+  box-shadow: 0 0 45px rgba(221, 169, 59, .08), inset 0 0 45px rgba(221, 169, 59, .06);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.8);
+}
+
+.mugil-logo-intro.is-holding::after {
+  animation: mugil-intro-orbit 1.2s ease-out both;
 }
 
 .mugil-logo-intro.is-leaving {
   opacity: 0;
 }
 
+.mugil-logo-intro-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 213, 99, .34) 0%, rgba(255, 228, 164, .2) 34%, rgba(255, 239, 205, .06) 62%, transparent 72%);
+  filter: blur(5px);
+  opacity: .7;
+  transform: translate(-50%, -50%) scale(.72);
+  animation: mugil-intro-glow 2.6s ease-in-out infinite;
+}
+
+.mugil-logo-intro-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 205px;
+  height: 205px;
+  border: 1px solid rgba(205, 153, 44, .3);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.72);
+}
+
+.mugil-logo-intro-ring-one {
+  animation: mugil-intro-ring 2.2s ease-out .15s infinite;
+}
+
+.mugil-logo-intro-ring-two {
+  animation: mugil-intro-ring 2.2s ease-out 1.15s infinite;
+}
+
 .mugil-logo-intro-image {
   position: absolute;
   top: 50%;
   left: 50%;
+  z-index: 2;
   display: block;
   width: 170px;
   height: 170px;
@@ -26,10 +98,59 @@
   transform-origin: center;
   will-change: transform, opacity;
   backface-visibility: hidden;
+  filter: drop-shadow(0 12px 24px rgba(99, 73, 23, .12));
+}
+
+.mugil-logo-intro-caption {
+  position: absolute;
+  top: calc(50% + 118px);
+  left: 50%;
+  color: #87621d;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .34em;
+  opacity: 0;
+  transform: translate(-50%, 8px);
+  animation: mugil-intro-caption .7s ease .9s forwards;
+}
+
+.mugil-logo-intro.is-holding .mugil-logo-intro-caption {
+  animation: mugil-intro-caption-hold 1s ease-in-out infinite alternate;
 }
 
 html.mugil-intro-active .header-logo-img {
   opacity: 0 !important;
+}
+
+@keyframes mugil-intro-aura {
+  from { opacity: .4; transform: translate(-50%, -50%) scale(.86); }
+  to { opacity: .95; transform: translate(-50%, -50%) scale(1.08); }
+}
+
+@keyframes mugil-intro-glow {
+  0%, 100% { opacity: .48; transform: translate(-50%, -50%) scale(.78); }
+  50% { opacity: .95; transform: translate(-50%, -50%) scale(1.12); }
+}
+
+@keyframes mugil-intro-ring {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(.72); }
+  22% { opacity: .55; }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.3); }
+}
+
+@keyframes mugil-intro-orbit {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(.8) rotate(0deg); }
+  35% { opacity: 1; }
+  100% { opacity: .2; transform: translate(-50%, -50%) scale(1.08) rotate(18deg); }
+}
+
+@keyframes mugil-intro-caption {
+  to { opacity: .85; transform: translate(-50%, 0); }
+}
+
+@keyframes mugil-intro-caption-hold {
+  from { opacity: .65; }
+  to { opacity: 1; }
 }
 
 @media (max-width: 600px) {
@@ -37,6 +158,21 @@ html.mugil-intro-active .header-logo-img {
     width: 145px;
     height: 145px;
     border-radius: 14px;
+  }
+
+  .mugil-logo-intro-glow {
+    width: 185px;
+    height: 185px;
+  }
+
+  .mugil-logo-intro-ring {
+    width: 175px;
+    height: 175px;
+  }
+
+  .mugil-logo-intro-caption {
+    top: calc(50% + 105px);
+    font-size: 9px;
   }
 }
 
