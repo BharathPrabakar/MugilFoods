@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import LogoIntro from './components/LogoIntro';
+import MotionEnhancer from './components/MotionEnhancer';
 import HeroCarousel from './components/HeroCarousel';
 import CategoryCards from './components/CategoryCards';
 import ServicesSection from './components/ServicesSection';
@@ -29,11 +30,9 @@ function App({ initialUrl = '/' }) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    // Sync initial client route from window location if on client
     const currentRoute = parseRoute();
     setRoute(currentRoute);
 
-    // If client arrived with legacy hash, seamlessly normalize address to clean canonical path
     if (typeof window !== 'undefined' && window.location.hash && currentRoute.canonicalPath) {
       window.history.replaceState({}, '', toAppPath(currentRoute.canonicalPath));
     }
@@ -68,14 +67,12 @@ function App({ initialUrl = '/' }) {
     };
   }, []);
 
-  // Find active product if on product-detail page
   let activeProduct = null;
   if (route.page === 'product-detail' && route.param) {
     const allProds = Object.values(productsData).flat();
     activeProduct = allProds.find((p) => p.id === route.param);
   }
 
-  // Update client-side page title when navigating
   useEffect(() => {
     if (typeof document === 'undefined') return;
     if (route.page === 'product-detail' && activeProduct) {
@@ -105,13 +102,14 @@ function App({ initialUrl = '/' }) {
   return (
     <div className="app-container">
       <LogoIntro />
+      <MotionEnhancer />
       <Header
         currentPath={route.canonicalPath}
         currentPage={route.page}
         isScrolled={isScrolled}
       />
 
-      <main id="main-content" tabIndex="-1">
+      <main id="main-content" className="page-transition" key={route.canonicalPath} tabIndex="-1">
         {route.page === 'product-detail' && activeProduct ? (
           <ProductDetailPage
             key={activeProduct.id}
@@ -140,7 +138,6 @@ function App({ initialUrl = '/' }) {
           <NotFoundPage />
         ) : (
           <>
-            {/* Homepage */}
             <HeroCarousel />
             <CategoryCards />
             <div id="services-preview">
