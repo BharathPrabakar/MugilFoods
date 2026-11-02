@@ -610,15 +610,15 @@ ${uniqueSitemapRoutes.map(r => {
     : [];
   const imageEntries = productImages.map(img =>
     `    <image:image><image:loc>${escapeXml(img)}</image:loc></image:image>`
-  ).join('\\n');
+  ).join('\n');
 
   return `  <url>
     <loc>${escapeXml(`${SITE_URL}${r.canonicalPath === '/' ? '/' : r.canonicalPath}`)}</loc>
-${imageEntries ? imageEntries + '\\n' : ''}    <lastmod>${TODAY}</lastmod>
+${imageEntries ? imageEntries + '\n' : ''}    <lastmod>${TODAY}</lastmod>
     <changefreq>${r.changefreq || 'monthly'}</changefreq>
     <priority>${r.priority || '0.7'}</priority>
   </url>`;
-}).join('\\n')}
+}).join('\n')}
 </urlset>
 `;
 
