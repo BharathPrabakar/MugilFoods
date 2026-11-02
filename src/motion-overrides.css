@@ -32,6 +32,10 @@
   animation: mugil-pagination-progress 5s linear both;
 }
 
+.pagination-dot.is-paused .dot-fill {
+  animation-play-state: paused;
+}
+
 @keyframes mugil-pagination-progress {
   to { transform: scaleX(1); }
 }
