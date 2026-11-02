@@ -3,7 +3,7 @@ import './Header.css';
 import logoImg from '../assets/logo.png';
 import { toAppPath, handleLinkClick } from '../utils/navigation';
 
-export default function Header({ currentPath = '/', currentPage = 'home' }) {
+export default function Header({ currentPath = '/', currentPage = 'home', isScrolled = false }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
@@ -20,7 +20,7 @@ export default function Header({ currentPath = '/', currentPage = 'home' }) {
   };
 
   return (
-    <header className="header scrolled">
+    <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="header-container">
         {/* Logo Section on Left */}
         <a 
