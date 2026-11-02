@@ -170,7 +170,7 @@ export default function HeroCarousel() {
         {slidesData.map((_, idx) => (
           <button
             key={idx}
-            className={`pagination-dot ${idx === currentIndex ? 'active' : ''}`}
+            className={`pagination-dot ${idx === currentIndex ? 'active' : ''} ${isPlaying ? 'is-playing' : 'is-paused'}`}
             onClick={() => goToSlide(idx)}
             aria-label={`Go to slide ${idx + 1}`}
             role="tab"
