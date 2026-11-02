@@ -215,7 +215,7 @@ for (const p of allPages) {
 // 4. Validate internal links & assets across sample files
 console.log('\n4. Validating internal links and image references in HTML:');
 const htmlSample = fs.readFileSync(path.resolve(distDir, 'index.html'), 'utf-8');
-const linkMatches = [...htmlSample.matchAll(/href="\/MugilFoods\/(.*?)"/g)].map(m => m[1]);
+const linkMatches = [...htmlSample.matchAll(/href="\/(.*?)"/g)].map(m => m[1]);
 
 let allLinksValid = true;
 for (const link of linkMatches) {
