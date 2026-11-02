@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './ProductDetailPage.css';
 import { productsData, categoriesData } from '../data/productsData';
 import { toAppPath, handleLinkClick } from '../utils/navigation';
@@ -10,6 +10,23 @@ export default function ProductDetailPage({
   onSelectProduct 
 }) {
   const [selectedImage, setSelectedImage] = useState(product?.image);
+  const touchStartX = useRef(null);
+  const galleryImages = product?.gallery?.length ? product.gallery : [product?.image].filter(Boolean);
+
+  const handleGalleryTouchStart = (event) => {
+    touchStartX.current = event.touches[0]?.clientX ?? null;
+  };
+
+  const handleGalleryTouchEnd = (event) => {
+    if (touchStartX.current === null || galleryImages.length < 2) return;
+    const deltaX = event.changedTouches[0].clientX - touchStartX.current;
+    touchStartX.current = null;
+    if (Math.abs(deltaX) < 45) return;
+
+    const currentIndex = Math.max(0, galleryImages.indexOf(selectedImage || product.image));
+    const nextIndex = (currentIndex + (deltaX < 0 ? 1 : -1) + galleryImages.length) % galleryImages.length;
+    setSelectedImage(galleryImages[nextIndex]);
+  };
 
   if (!product) return null;
 
@@ -70,7 +87,7 @@ export default function ProductDetailPage({
         <div className="detail-container detail-main-grid">
           {/* Left Column: Image Gallery & Previews */}
           <div className="detail-media-col">
-            <div className="main-image-display">
+            <div className="main-image-display" onTouchStart={handleGalleryTouchStart} onTouchEnd={handleGalleryTouchEnd}>
               <img 
                 key={selectedImage || product.image}
                 src={selectedImage || product.image} 
