@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import LogoIntro from './components/LogoIntro';
 import BackToTop from './components/BackToTop';
+import MotionEnhancer from './components/MotionEnhancer';
 import HeroCarousel from './components/HeroCarousel';
 import CategoryCards from './components/CategoryCards';
 import ServicesSection from './components/ServicesSection';
@@ -103,6 +104,7 @@ function App({ initialUrl = '/' }) {
 
   return (
     <div className="app-container">
+      <MotionEnhancer />
       <LogoIntro />
 
       <Header
