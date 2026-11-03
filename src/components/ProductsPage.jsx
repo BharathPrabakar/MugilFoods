@@ -3,12 +3,14 @@ import './ProductsPage.css';
 import { categoriesData, productsData } from '../data/productsData';
 import { toAppPath, handleLinkClick } from '../utils/navigation';
 import { BRAND_NAME, SITE_NAME } from '../data/routesData';
+import { useCart } from './CartContext';
 
 export default function ProductsPage({ 
   initialCategory = 'tamarind',
   onSelectProduct 
 }) {
   const [selectedCategoryId, setSelectedCategoryId] = useState(initialCategory);
+  const { addToCart } = useCart();
   const productsSectionRef = useRef(null);
 
   useEffect(() => {
@@ -108,20 +110,20 @@ export default function ProductsPage({
               const productUrl = `/products/${prod.id}/`;
 
               return (
-                <a
-                  key={prod.id}
-                  href={toAppPath(productUrl)}
-                  className="clean-prod-card"
-                  aria-label={`View full specifications and bulk inquiry for ${prod.name}`}
-                  onClick={(e) => {
-                    if (onSelectProduct) {
-                      handleLinkClick(e, productUrl);
-                      onSelectProduct(prod);
-                    } else {
-                      handleLinkClick(e, productUrl);
-                    }
-                  }}
-                >
+                <article key={prod.id} className="clean-prod-card">
+                  <a
+                    href={toAppPath(productUrl)}
+                    className="clean-prod-link"
+                    aria-label={`View full specifications and bulk inquiry for ${prod.name}`}
+                    onClick={(e) => {
+                      if (onSelectProduct) {
+                        handleLinkClick(e, productUrl);
+                        onSelectProduct(prod);
+                      } else {
+                        handleLinkClick(e, productUrl);
+                      }
+                    }}
+                  >
                   {/* Photo with zoom & hover overlay */}
                   <div className="clean-prod-img-wrap">
                     <img 
@@ -160,7 +162,11 @@ export default function ProductsPage({
                       </svg>
                     </div>
                   </div>
-                </a>
+                  </a>
+                  <button type="button" className="clean-prod-add" onClick={() => addToCart(prod)} disabled={isComingSoon} aria-label={isComingSoon ? `${prod.name} is coming soon` : `Add ${prod.name} to cart`}>
+                    {isComingSoon ? "Coming Soon" : "+ Add to Enquiry Cart"}
+                  </button>
+                </article>
               );
             })}
           </div>

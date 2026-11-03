@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import './Header.css';
 import logoImg from '../assets/logo.png';
 import { toAppPath, handleLinkClick } from '../utils/navigation';
+import { useCart } from './CartContext';
 
 export default function Header({ currentPath = '/', currentPage = 'home', isScrolled = false }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { itemCount, openCart } = useCart();
 
   const navLinks = [
     { label: 'Home', path: '/', page: 'home' },
@@ -65,6 +67,10 @@ export default function Header({ currentPath = '/', currentPage = 'home', isScro
 
           {/* Make an Enquiry CTA Button */}
           <div className="header-cta-group">
+            <button type="button" className="header-cart-btn" onClick={openCart} aria-label={`Open shopping cart with ${itemCount} items`}>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 1.9-1.4L22 8H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+              <span className="header-cart-label">Cart</span><span className="header-cart-count">{itemCount}</span>
+            </button>
             <a
               href={toAppPath('/contact/')}
               className="enquiry-btn"

@@ -11,6 +11,8 @@ import WhyChooseUs from './components/WhyChooseUs';
 import TestimonialsSection from './components/TestimonialsSection';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import { CartProvider } from './components/CartContext';
+import CartDrawer from './components/CartDrawer';
 
 import ProductsPage from './components/ProductsPage';
 import ProductDetailPage from './components/ProductDetailPage';
@@ -103,6 +105,7 @@ function App({ initialUrl = '/' }) {
   }, [route, activeProduct]);
 
   return (
+    <CartProvider>
     <div className="app-container">
       <MotionEnhancer />
       <LogoIntro />
@@ -159,7 +162,9 @@ function App({ initialUrl = '/' }) {
       <Footer />
       <FloatingWhatsApp />
       <BackToTop />
+      <CartDrawer />
     </div>
+    </CartProvider>
   );
 }
 
