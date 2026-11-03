@@ -3,6 +3,7 @@ import './ProductDetailPage.css';
 import { productsData, categoriesData } from '../data/productsData';
 import { toAppPath, handleLinkClick } from '../utils/navigation';
 import { BRAND_NAME, COMPANY_PHONE_DISPLAY } from '../data/routesData';
+import { useCart } from './CartContext';
 
 export default function ProductDetailPage({ 
   product, 
@@ -10,6 +11,7 @@ export default function ProductDetailPage({
   onSelectProduct 
 }) {
   const [selectedImage, setSelectedImage] = useState(product?.image);
+  const { addToCart } = useCart();
   const touchStartX = useRef(null);
   const galleryImages = product?.gallery?.length ? product.gallery : [product?.image].filter(Boolean);
 
@@ -207,6 +209,9 @@ export default function ProductDetailPage({
 
             {/* Action CTAs */}
             <div className="detail-actions-row">
+              <button type="button" className="btn-detail-add-cart" onClick={() => addToCart(product)} disabled={product.status === "coming-soon"}>
+                {product.status === "coming-soon" ? "Coming Soon" : "Add to Enquiry Cart"}
+              </button>
               <a 
                 href={toAppPath('/contact/')} 
                 className="btn-detail-enquire"
