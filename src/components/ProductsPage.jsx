@@ -155,16 +155,21 @@ export default function ProductsPage({
                   {/* Product Name & Arrow */}
                   <div className="clean-prod-footer">
                     <h3 className="clean-prod-name">{prod.name}</h3>
-                    <div className="clean-prod-arrow" aria-hidden="true">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
+                    <span className="clean-prod-view-link">
+                      View details
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M5 12h14M13 6l6 6-6 6" />
                       </svg>
-                    </div>
+                    </span>
                   </div>
                   </a>
                   <button type="button" className="clean-prod-add" onClick={() => addToCart(prod)} disabled={isComingSoon} aria-label={isComingSoon ? `${prod.name} is coming soon` : `Add ${prod.name} to cart`}>
-                    {isComingSoon ? "Coming Soon" : "+ Add to Enquiry Cart"}
+                    {isComingSoon ? "Coming Soon" : (
+                      <>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 1.9-1.4L22 8H6" /><circle cx="10" cy="20" r="1" /><circle cx="18" cy="20" r="1" /></svg>
+                        Add to cart
+                      </>
+                    )}
                   </button>
                 </article>
               );
