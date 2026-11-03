@@ -17,16 +17,25 @@ function readStoredCart() {
 }
 
 export function CartProvider({ children }) {
-  const [items, setItems] = useState(readStoredCart);
+  // Start empty so the first client render matches the prerendered HTML.
+  // Restore persisted items after hydration to avoid a static-site hydration mismatch.
+  const [items, setItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [hasRestoredCart, setHasRestoredCart] = useState(false);
 
   useEffect(() => {
+    setItems(readStoredCart());
+    setHasRestoredCart(true);
+  }, []);
+
+  useEffect(() => {
+    if (!hasRestoredCart) return;
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
     } catch {
       // The cart remains usable for this session when browser storage is unavailable.
     }
-  }, [items]);
+  }, [items, hasRestoredCart]);
 
   const addToCart = useCallback((product, quantity = 1) => {
     if (!product?.id || product.status === 'coming-soon') return false;
